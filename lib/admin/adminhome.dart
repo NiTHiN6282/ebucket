@@ -100,7 +100,7 @@ class _AdminHomeState extends State<AdminHome> {
                       child: Center(
                         child: ListTile(
                           leading: Icon(
-                            Icons.person,
+                            Icons.group,
                             size: 40,
                           ),
                           title: Padding(
@@ -134,7 +134,7 @@ class _AdminHomeState extends State<AdminHome> {
                       child: Center(
                         child: ListTile(
                           leading: Icon(
-                            Icons.person,
+                            Icons.campaign,
                             size: 40,
                           ),
                           title: Padding(
@@ -168,12 +168,46 @@ class _AdminHomeState extends State<AdminHome> {
                       child: Center(
                         child: ListTile(
                           leading: Icon(
-                            Icons.person,
+                            Icons.card_travel,
                             size: 40,
                           ),
                           title: Padding(
                             padding: const EdgeInsets.only(left: 20.0),
                             child: Text("Products"),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AdminProducts()));
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: Card(
+                    elevation: 10,
+                    shadowColor: Colors.grey,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: Color(0xff00adb5),
+                      ),
+                      child: Center(
+                        child: ListTile(
+                          leading: Icon(
+                            Icons.shopping_cart,
+                            size: 40,
+                          ),
+                          title: Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text("Orders"),
                           ),
                           onTap: () {
                             Navigator.push(

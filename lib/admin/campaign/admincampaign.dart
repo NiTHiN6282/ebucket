@@ -37,7 +37,7 @@ class _AdminCampaignState extends State<AdminCampaign> {
                     child: Center(
                       child: ListTile(
                         leading: Icon(
-                          Icons.person,
+                          Icons.campaign,
                           size: 40,
                         ),
                         title: Padding(
@@ -67,7 +67,7 @@ class _AdminCampaignState extends State<AdminCampaign> {
                     child: Center(
                       child: ListTile(
                         leading: Icon(
-                          Icons.person,
+                          Icons.add,
                           size: 40,
                         ),
                         title: Padding(
