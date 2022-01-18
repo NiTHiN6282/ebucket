@@ -34,7 +34,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
   void setdata(){
     _widgetOptions = <Widget>[
       EwasteList(),
-      RecycleProductsList(),
+      RecycleProductsList(uid: widget.uid,name: widget.name,address: widget.address,location: widget.location,phone: widget.phone,email: widget.email,category: widget.category,),
       ViewCampaigns(),
       OrdersList(uid: widget.uid,),
       SalesList(uid: widget.uid,),
