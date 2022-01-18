@@ -118,21 +118,19 @@ class _UserLandingPageState extends State<UserLandingPage> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: [
-          /// Home
+
           SalomonBottomBarItem(
             icon: Icon(Icons.home),
             title: Text("Home"),
             selectedColor: Colors.purple,
           ),
 
-          /// Likes
           SalomonBottomBarItem(
             icon: Icon(Icons.change_circle),
             title: Text("Recycle Mall"),
             selectedColor: Colors.pink,
           ),
 
-          /// Search
           SalomonBottomBarItem(
             icon: Icon(Icons.campaign),
             title: Text("Campaigns"),
@@ -145,7 +143,6 @@ class _UserLandingPageState extends State<UserLandingPage> {
             selectedColor: Colors.pink,
           ),
 
-          /// Profile
           SalomonBottomBarItem(
             icon: Icon(Icons.event_note),
             title: Text("Requests"),

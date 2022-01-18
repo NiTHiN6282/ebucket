@@ -116,21 +116,19 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: [
-          /// Home
+
           SalomonBottomBarItem(
             icon: Icon(Icons.home),
             title: Text("Home"),
             selectedColor: Colors.purple,
           ),
 
-          /// Likes
           SalomonBottomBarItem(
             icon: Icon(Icons.change_circle),
             title: Text("Recycle Mall"),
             selectedColor: Colors.pink,
           ),
 
-          /// Search
           SalomonBottomBarItem(
             icon: Icon(Icons.campaign),
             title: Text("Campaigns"),
@@ -143,7 +141,6 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
             selectedColor: Colors.pink,
           ),
 
-          /// Profile
         ],
       ),
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
