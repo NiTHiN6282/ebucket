@@ -5,7 +5,6 @@ import 'package:ebucket/common/campaigns.dart';
 import 'package:ebucket/common/loginpage.dart';
 import 'package:ebucket/common/orderslist.dart';
 import 'package:ebucket/common/recycleproductslist.dart';
-import 'package:ebucket/common/saleslist.dart';
 import 'package:ebucket/common/viewprofile.dart';
 import 'package:ebucket/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +36,6 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
       RecycleProductsList(uid: widget.uid,name: widget.name,address: widget.address,location: widget.location,phone: widget.phone,email: widget.email,category: widget.category,),
       ViewCampaigns(),
       OrdersList(uid: widget.uid,),
-      SalesList(uid: widget.uid,),
     ];
   }
 
@@ -146,11 +144,6 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
           ),
 
           /// Profile
-          SalomonBottomBarItem(
-            icon: Icon(Icons.person),
-            title: Text("Sales"),
-            selectedColor: Colors.teal,
-          ),
         ],
       ),
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
