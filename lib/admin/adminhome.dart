@@ -1,3 +1,4 @@
+import 'package:ebucket/admin/adminorderslist.dart';
 import 'package:ebucket/admin/adminsettings.dart';
 import 'package:ebucket/admin/campaign/admincampaign.dart';
 import 'package:ebucket/admin/notification/adminnotification.dart';
@@ -213,7 +214,7 @@ class _AdminHomeState extends State<AdminHome> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AdminProducts()));
+                                    builder: (context) => AdminOrdersList()));
                           },
                         ),
                       ),
