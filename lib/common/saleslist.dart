@@ -27,7 +27,7 @@ class _SalesListState extends State<SalesList> {
                 }
                 else if(snapshot.hasData&&snapshot.data!.docs.length==0)
                 {
-                  return Center(child: Text('no sales found'));
+                  return Center(child: Text('no requests found'));
 
                 }
                 else

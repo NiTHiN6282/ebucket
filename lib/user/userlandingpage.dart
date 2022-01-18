@@ -147,8 +147,8 @@ class _UserLandingPageState extends State<UserLandingPage> {
 
           /// Profile
           SalomonBottomBarItem(
-            icon: Icon(Icons.sell),
-            title: Text("Sales"),
+            icon: Icon(Icons.event_note),
+            title: Text("Requests"),
             selectedColor: Colors.teal,
           ),
         ],
