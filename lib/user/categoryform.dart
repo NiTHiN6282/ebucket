@@ -152,7 +152,7 @@ class _CategoryFormState extends State<CategoryForm> {
                                 'quantity':quantityinputcontroller.text,
                                 'price':priceinputcontroller.text,
                                 'status':1,
-                                'date':DateTime.now()
+                                'date':DateTime.now().toString()
 
                               }).then((value) {
                                 showsnackbar('Ewaste Submitted');

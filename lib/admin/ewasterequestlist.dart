@@ -1,23 +1,23 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebucket/admin/adminordersdetails.dart';
+import 'package:ebucket/admin/ewasterequestsdetails.dart';
 import 'package:flutter/material.dart';
 
-class AdminOrdersList extends StatefulWidget {
-  AdminOrdersList({Key? key}) : super(key: key);
+class EwasteRequestList extends StatefulWidget {
+  EwasteRequestList({Key? key}) : super(key: key);
 
   @override
-  _AdminOrdersListState createState() => _AdminOrdersListState();
+  _EwasteRequestListState createState() => _EwasteRequestListState();
 }
 
-class _AdminOrdersListState extends State<AdminOrdersList> {
+class _EwasteRequestListState extends State<EwasteRequestList> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff246EE9),
-        title: Text("Orders"),
+        title: Text("Requests"),
         centerTitle: true,
 
       ),
@@ -25,14 +25,14 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance.collection('orders').snapshots(),
+              stream: FirebaseFirestore.instance.collection('ewastes').snapshots(),
               builder: (context, snapshot) {
                 if(!snapshot.hasData){
                   return Center(child: CircularProgressIndicator());
                 }
                 else if(snapshot.hasData&&snapshot.data!.docs.length==0)
                 {
-                  return Center(child: Text('no orders found'));
+                  return Center(child: Text('no requests found'));
 
                 }
                 else
@@ -51,27 +51,25 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                             width: 200,
                             child: Center(
                               child: ListTile(
-                                leading: Image.network(snapshot.data!.docs[index]['url']),
-                                title: Text(snapshot.data!.docs[index]['product']),
-                                subtitle: Text(snapshot.data!.docs[index]['price']),
+                                leading: Text((index + 1).toString()),
+                                title: Text(snapshot.data!.docs[index]['category']),
+                                subtitle: Text(snapshot.data!.docs[index]['quantity']+'KG'),
 
                                 onTap: () {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => AdminOrdersDetails(
-                                        product: snapshot.data!.docs[index]['product'],
+                                      builder: (context) => EwasteRequestsDetails(
+                                        category: snapshot.data!.docs[index]['category'],
+                                        quantity: snapshot.data!.docs[index]['quantity'],
                                         price: snapshot.data!.docs[index]['price'],
-                                        url: snapshot.data!.docs[index]['url'],
                                         name: snapshot.data!.docs[index]['name'],
                                         location: snapshot.data!.docs[index]['location'],
                                         address: snapshot.data!.docs[index]['address'],
-                                        email: snapshot.data!.docs[index]['email'],
                                         phone: snapshot.data!.docs[index]['phone'],
-                                        apid: snapshot.data!.docs[index]['apid'],
-                                        oid: snapshot.data!.docs[index]['oid'],
+                                        eid: snapshot.data!.docs[index]['eid'],
                                         date: snapshot.data!.docs[index]['date'],
-
+                                        uid: snapshot.data!.docs[index]['uid'],
                                       ),
                                     ),
                                   );
