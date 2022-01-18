@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "82439140136",
+    "project_id": "ebucket-153bc",
+    "storage_bucket": "ebucket-153bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82439140136:android:3999bf86c0a7893009961d",
+        "android_client_info": {
+          "package_name": "com.example.ebucket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82439140136-kcca60j5kv8litsveqnn3mcg2q8r75hm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb597HboezOZwSxVAO9viEplcMUciOP80"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82439140136-kcca60j5kv8litsveqnn3mcg2q8r75hm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
