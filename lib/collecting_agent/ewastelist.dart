@@ -7,7 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'ewastelistdetails.dart';
 
 class EwasteList extends StatefulWidget {
-  const EwasteList({Key? key}) : super(key: key);
+  var agentid;
+  var agentname;
+  EwasteList({Key? key,this.agentid,this.agentname}) : super(key: key);
 
   @override
   _EwasteListState createState() => _EwasteListState();
@@ -45,11 +47,14 @@ class _EwasteListState extends State<EwasteList> {
                             MaterialPageRoute(
                               builder: (context) => EwasteListDetails(
                                 name: snapshot.data!.docs[index]['name'],
+                                uid: snapshot.data!.docs[index]['uid'],
                                 phone: snapshot.data!.docs[index]['phone'],
                                 location: snapshot.data!.docs[index]['location'],
                                 quantity: snapshot.data!.docs[index]['quantity'],
                                 category: snapshot.data!.docs[index]['category'],
                                 price: snapshot.data!.docs[index]['price'],
+                                agentid: widget.agentid,
+                                agentname: widget.agentname,
                               ),
                             ),
                           );

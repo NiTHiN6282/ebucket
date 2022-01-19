@@ -18,8 +18,10 @@ class AgentLandingPage extends StatefulWidget {
   var phone;
   var email;
   var category;
+  var agentid;
+  var agentname;
 
-  AgentLandingPage({Key? key,this.uid,this.name,this.address,this.location,this.phone,this.email,this.category}) : super(key: key);
+  AgentLandingPage({Key? key,this.agentid,this.agentname,this.uid,this.name,this.address,this.location,this.phone,this.email,this.category}) : super(key: key);
 
   @override
   _AgentLandingPageState createState() => _AgentLandingPageState();
@@ -32,7 +34,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
   var _widgetOptions ;
   void setdata(){
     _widgetOptions = <Widget>[
-      EwasteList(),
+      EwasteList(agentid: widget.agentid,agentname: widget.agentname,),
       RecycleProductsList(uid: widget.uid,name: widget.name,address: widget.address,location: widget.location,phone: widget.phone,email: widget.email,category: widget.category,),
       ViewCampaigns(),
       OrdersList(uid: widget.uid,),

@@ -126,7 +126,8 @@ class _LoginPageState extends State<LoginPage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => AgentLandingPage(
-                                                uid:value.data()!['uid'] ,
+                                                agentid:value.data()!['uid'] ,
+                                                agentname: value.data()!['name'],
                                                 address: value.data()!['address'],
                                                 name: value.data()!['name'],
                                                 location: value.data()!['location'],
