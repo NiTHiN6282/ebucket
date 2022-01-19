@@ -55,6 +55,16 @@ class _EwasteRequestListState extends State<EwasteRequestList> {
                                 title: Text(snapshot.data!.docs[index]['category']),
                                 subtitle: Text(snapshot.data!.docs[index]['quantity']+'KG'),
 
+                                trailing: IconButton(
+                                    icon: Icon(Icons.delete, color: Colors.red),
+                                    onPressed: () {
+                                      FirebaseFirestore.instance.collection('ewastes').doc(snapshot.data!.docs[index]['eid']).delete().then((value) {
+                                        showsnackbar('Request Cancelled');
+                                        Navigator.pop(context);
+
+                                      });
+                                    }),
+
                                 onTap: () {
                                   Navigator.push(
                                     context,
@@ -87,4 +97,14 @@ class _EwasteRequestListState extends State<EwasteRequestList> {
 
     );
   }
+
+  showsnackbar(String msg){
+    final snackBar = SnackBar( content: Text(msg),backgroundColor: Colors.blue,);
+
+
+    ScaffoldMessenger.of(context).showSnackBar(
+        snackBar
+    );
+  }
+
 }

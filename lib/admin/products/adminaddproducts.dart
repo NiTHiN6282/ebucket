@@ -160,7 +160,8 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
                                   "status": 1,
                                   "apid": apid,
                                   "createdDate": DateTime.now(),
-                                  'url': url
+                                  "fileName": fileName,
+                                  'url': url,
                                 }).then((value) {
                                   showsnackbar("Succesfully Added!");
                                   Navigator.pop(context);
