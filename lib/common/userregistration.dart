@@ -172,7 +172,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               'phone':phoneinputcontroller.text,
                               'email':emailinputcontroller.text,
                               'usertype':category,
-                              'password':passwordinputcontroller.text,
                               'status':category=='User'? 1 : 0,
                               'date':DateTime.now(),
 
