@@ -51,7 +51,12 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                             width: 200,
                             child: Center(
                               child: ListTile(
-                                leading: Image.network(snapshot.data!.docs[index]['url']),
+                                leading: Image.network(snapshot.data!.docs[index]['url'],
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Image.asset(
+                                        'images/oos.png',
+                                        fit: BoxFit.fitWidth);
+                                  },),
                                 title: Text(snapshot.data!.docs[index]['product']),
                                 subtitle: Text(snapshot.data!.docs[index]['price']),
 
