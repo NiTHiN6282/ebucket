@@ -407,21 +407,8 @@ class BuyPageState extends State<BuyPage>
                         widget.location = locationinputcontroller.text;
                         widget.phone = phoneinputcontroller.text;
                         widget.address = addressinputcontroller.text;
-                      });
-
-                      FirebaseFirestore.instance
-                          .collection('user')
-                          .doc(widget.uid)
-                          .update({
-                        'name': nameinputcontroller.text,
-                        'address': addressinputcontroller.text,
-                        'location': locationinputcontroller.text,
-                        'phone': phoneinputcontroller.text,
-                      }).then((value) {
-                        setState(() {
-                          _status = true;
-                          FocusScope.of(context).requestFocus(new FocusNode());
-                        });
+                        _status = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
                       });
                     },
                   )),
