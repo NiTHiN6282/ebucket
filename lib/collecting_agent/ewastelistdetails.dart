@@ -11,6 +11,7 @@ class EwasteListDetails extends StatefulWidget {
   var price;
   var agentid;
   var agentname;
+  var eid;
 
   EwasteListDetails({
     this.name,
@@ -22,6 +23,7 @@ class EwasteListDetails extends StatefulWidget {
     this.agentname,
     this.agentid,
     this.price,
+    this.eid,
   });
 
   @override
@@ -31,6 +33,7 @@ class EwasteListDetails extends StatefulWidget {
 class _EwasteListDetailsState extends State<EwasteListDetails> {
   var aid;
   var status;
+  var oldaid;
   var _auctionkey = new GlobalKey<FormState>();
   TextEditingController auctionpriceinputcontroller =
       new TextEditingController();
@@ -154,7 +157,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
               Expanded(
                 child: StreamBuilder<QuerySnapshot>(
                     stream: FirebaseFirestore.instance
-                        .collection('auctions')
+                        .collection('auctions').where('eid', isEqualTo: widget.eid)
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
@@ -171,7 +174,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     // color: Colors.red,
-                                    color: Color(0xff009E60),
+                                    color: Color(0xff009e60),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   height: 100,
@@ -183,6 +186,19 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                           ['agentname']),
                                       subtitle: Text(snapshot.data!.docs[index]
                                           ['agentprice']),
+                                      trailing: IconButton(
+                                          icon: snapshot.data!.docs[index]['agentid']==widget.agentid ? Icon(Icons.edit, color: Colors.blue) : Icon(Icons.call, color: Color(0xff009e60)),
+                                          onPressed: () {
+                                            if (snapshot.data!.docs[index]
+                                            ['status'] !=
+                                                0 &&
+                                                snapshot.data!.docs[index]
+                                                ['agentid'] ==
+                                                    widget.agentid) {
+                                              oldaid=snapshot.data!.docs[index]['aid'];
+                                              showalertupdate();
+                                            }
+                                          }),
                                       onTap: () {
                                         if (snapshot.data!.docs[index]
                                                     ['status'] !=
@@ -190,6 +206,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                             snapshot.data!.docs[index]
                                                     ['agentid'] ==
                                                 widget.agentid) {
+                                          oldaid=snapshot.data!.docs[index]['aid'];
                                           showalertupdate();
                                         }
                                       },
@@ -249,6 +266,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                     .collection('auctions')
                                     .doc(aid)
                                     .set({
+                                  'eid' : widget.eid,
                                   'aid': aid,
                                   'agentprice':
                                       auctionpriceinputcontroller.text,
@@ -316,10 +334,13 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                               if (_auctionkey.currentState!.validate()) {
                                 FirebaseFirestore.instance
                                     .collection('auctions')
-                                    .doc(aid)
+                                    .doc(oldaid)
                                     .update({
                                   'agentprice':
                                       auctionpriceinputcontroller.text,
+                                }).then((value) {
+                                  showsnackbar('Auction Updated');
+                                  Navigator.pop(context);
                                 });
                               }
                             },

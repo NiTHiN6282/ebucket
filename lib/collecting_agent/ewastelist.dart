@@ -46,6 +46,7 @@ class _EwasteListState extends State<EwasteList> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => EwasteListDetails(
+                                eid: snapshot.data!.docs[index]['eid'],
                                 name: snapshot.data!.docs[index]['name'],
                                 uid: snapshot.data!.docs[index]['uid'],
                                 phone: snapshot.data!.docs[index]['phone'],
