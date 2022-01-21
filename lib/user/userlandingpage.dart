@@ -1,9 +1,9 @@
 
-import 'package:ebucket/common/campaigns.dart';
+import 'package:ebucket/common/campaigns/campaigns.dart';
 import 'package:ebucket/common/loginpage.dart';
-import 'package:ebucket/common/orderslist.dart';
-import 'package:ebucket/common/recycleproductslist.dart';
-import 'package:ebucket/common/saleslist.dart';
+import 'package:ebucket/common/orders/orderslist.dart';
+import 'package:ebucket/common/recyclemall/recycleproductslist.dart';
+import 'package:ebucket/user/requests/saleslist.dart';
 import 'package:ebucket/common/viewprofile.dart';
 import 'package:ebucket/styles/colors.dart';
 import 'package:ebucket/user/userhome.dart';

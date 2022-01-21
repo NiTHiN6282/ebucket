@@ -1,7 +1,7 @@
-import 'package:ebucket/admin/adminorderslist.dart';
+import 'package:ebucket/admin/orders/adminorderslist.dart';
 import 'package:ebucket/admin/adminsettings.dart';
 import 'package:ebucket/admin/campaign/admincampaign.dart';
-import 'package:ebucket/admin/ewasterequestlist.dart';
+import 'package:ebucket/admin/ewasterequests/ewasterequestlist.dart';
 import 'package:ebucket/admin/notification/adminnotification.dart';
 import 'package:ebucket/admin/products/adminproducts.dart';
 import 'package:ebucket/admin/viewagents/agentlist.dart';

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebucket/common/recycleproductsdetails.dart';
+import 'package:ebucket/common/recyclemall/recycleproductsdetails.dart';
 import 'package:flutter/material.dart';
 
 class RecycleProductsList extends StatefulWidget {

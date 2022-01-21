@@ -1,6 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebucket/common/campaigndetails.dart';
+import 'package:ebucket/common/campaigns/campaigndetails.dart';
 import 'package:flutter/material.dart';
 
 class ViewCampaigns extends StatefulWidget {

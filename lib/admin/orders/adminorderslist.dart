@@ -1,26 +1,31 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebucket/common/ordersdetails.dart';
+import 'package:ebucket/admin/orders/adminordersdetails.dart';
 import 'package:flutter/material.dart';
 
-class OrdersList extends StatefulWidget {
-  var uid;
-  OrdersList({Key? key,this.uid}) : super(key: key);
+class AdminOrdersList extends StatefulWidget {
+  AdminOrdersList({Key? key}) : super(key: key);
 
   @override
-  _OrdersListState createState() => _OrdersListState();
+  _AdminOrdersListState createState() => _AdminOrdersListState();
 }
 
-class _OrdersListState extends State<OrdersList> {
+class _AdminOrdersListState extends State<AdminOrdersList> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff246EE9),
+        title: Text("Orders"),
+        centerTitle: true,
+
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance.collection('orders').where('uid', isEqualTo: widget.uid).snapshots(),
+              stream: FirebaseFirestore.instance.collection('orders').snapshots(),
               builder: (context, snapshot) {
                 if(!snapshot.hasData){
                   return Center(child: CircularProgressIndicator());
@@ -47,11 +52,11 @@ class _OrdersListState extends State<OrdersList> {
                             child: Center(
                               child: ListTile(
                                 leading: Image.network(snapshot.data!.docs[index]['url'],
-                                errorBuilder: (context, error, stackTrace) {
-                                  return Image.asset(
-                                      'images/oos.png',
-                                      fit: BoxFit.fitWidth);
-                                },),
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Image.asset(
+                                        'images/oos.png',
+                                        fit: BoxFit.fitWidth);
+                                  },),
                                 title: Text(snapshot.data!.docs[index]['product']),
                                 subtitle: Text(snapshot.data!.docs[index]['price']),
 
@@ -59,10 +64,18 @@ class _OrdersListState extends State<OrdersList> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => OrdersDetails(
+                                      builder: (context) => AdminOrdersDetails(
                                         product: snapshot.data!.docs[index]['product'],
                                         price: snapshot.data!.docs[index]['price'],
                                         url: snapshot.data!.docs[index]['url'],
+                                        name: snapshot.data!.docs[index]['name'],
+                                        location: snapshot.data!.docs[index]['location'],
+                                        address: snapshot.data!.docs[index]['address'],
+                                        email: snapshot.data!.docs[index]['email'],
+                                        phone: snapshot.data!.docs[index]['phone'],
+                                        apid: snapshot.data!.docs[index]['apid'],
+                                        oid: snapshot.data!.docs[index]['oid'],
+                                        date: snapshot.data!.docs[index]['date'],
 
                                       ),
                                     ),

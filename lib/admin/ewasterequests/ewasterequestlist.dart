@@ -1,6 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebucket/admin/ewasterequestsdetails.dart';
+import 'package:ebucket/admin/ewasterequests/ewasterequestsdetails.dart';
 import 'package:flutter/material.dart';
 
 class EwasteRequestList extends StatefulWidget {

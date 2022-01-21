@@ -1,7 +1,7 @@
 
 import 'package:ebucket/collecting_agent/ewastelist.dart';
-import 'package:ebucket/common/campaigns.dart';
-import 'package:ebucket/common/recycleproductslist.dart';
+import 'package:ebucket/common/campaigns/campaigns.dart';
+import 'package:ebucket/common/recyclemall/recycleproductslist.dart';
 import 'package:ebucket/common/viewprofile.dart';
 import 'package:flutter/material.dart';
 

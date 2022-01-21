@@ -1,6 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebucket/common/salesdetails.dart';
+import 'package:ebucket/user/requests/salesdetails.dart';
 import 'package:flutter/material.dart';
 
 class SalesList extends StatefulWidget {
