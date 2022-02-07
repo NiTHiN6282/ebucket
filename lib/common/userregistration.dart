@@ -18,6 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController emailinputcontroller = new TextEditingController();
   TextEditingController passwordinputcontroller = new TextEditingController();
   TextEditingController locationinputcontroller = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -162,25 +163,30 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: ElevatedButton.icon(
                         onPressed: () {
                           if (_loginkey.currentState!.validate()) {
-                            FirebaseAuth.instance.createUserWithEmailAndPassword(email: emailinputcontroller.text, password: passwordinputcontroller.text).
-                            then((value) => FirebaseFirestore.instance.collection('user').doc(value.user!.uid).
-                            set({
-                              'uid':value.user!.uid,
-                              'name':nameinputcontroller.text,
-                              'address':addressinputcontroller.text,
-                              'location':locationinputcontroller.text,
-                              'phone':phoneinputcontroller.text,
-                              'email':emailinputcontroller.text,
-                              'usertype':category,
-                              'status':category=='User'? 1 : 0,
-                              'date':DateTime.now(),
-
-                            }).catchError((e)=>showsnackbar('Registration Failed'))).then((value) {
+                            FirebaseAuth.instance
+                                .createUserWithEmailAndPassword(
+                                    email: emailinputcontroller.text,
+                                    password: passwordinputcontroller.text)
+                                .then((value) => FirebaseFirestore.instance
+                                        .collection('user')
+                                        .doc(value.user!.uid)
+                                        .set({
+                                      'uid': value.user!.uid,
+                                      'name': nameinputcontroller.text,
+                                      'address': addressinputcontroller.text,
+                                      'location': locationinputcontroller.text,
+                                      'phone': phoneinputcontroller.text,
+                                      'email': emailinputcontroller.text,
+                                      'usertype': category,
+                                      'status': category == 'User' ? 1 : 0,
+                                      'date': DateTime.now(),
+                                    }).catchError((e) => showsnackbar(
+                                            'Registration Failed')))
+                                .then((value) {
                               showsnackbar('Registered successfully');
                               Navigator.pop(context);
-
-
-                            }).catchError((e)=>showsnackbar('Registration failed'));
+                            }).catchError(
+                                    (e) => showsnackbar('Registration failed'));
                           }
                         },
                         icon: Icon(Icons.login),
@@ -198,13 +204,12 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  showsnackbar(String msg){
-    final snackBar = SnackBar( content: Text(msg),backgroundColor: Colors.blue,);
-
-
-    ScaffoldMessenger.of(context).showSnackBar(
-        snackBar
+  showsnackbar(String msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+      backgroundColor: Colors.blue,
     );
-  }
 
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }
