@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CampaignDetails extends StatefulWidget {
   var title;
@@ -22,7 +23,7 @@ class _CampaignDetailsState extends State<CampaignDetails> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               SizedBox(
@@ -37,10 +38,9 @@ class _CampaignDetailsState extends State<CampaignDetails> {
                 height: 40,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 10,
-                  ),
+
                   Text(widget.description,
                     style: GoogleFonts.lato(
                       fontSize: 20,
@@ -53,9 +53,23 @@ class _CampaignDetailsState extends State<CampaignDetails> {
               ),
               Row(
                 children: [
-                  Text('Link: '+widget.link,
-                    style: GoogleFonts.lato(
+                  Text("Link",style: GoogleFonts.lato(
                       fontSize: 20,
+
+                  ),),
+                  SizedBox(
+                  width: 20,
+                  ),
+                  GestureDetector(
+                    onDoubleTap: (){
+                      launch(widget.link);
+                    },
+                    child:
+                     Text(widget.link,
+                      style: GoogleFonts.lato(
+                        fontSize: 20,
+                        color: Colors.blue
+                      ),
                     ),
                   ),
                 ],

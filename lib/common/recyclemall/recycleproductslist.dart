@@ -75,45 +75,54 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
                                 ),
                               );
                             },
-                            child: Container(
-                              color: Colors.grey,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  child: Column(
-                                    children: [
-                                      snapshot.data!.docs[index]['url'] == null
-                                          ? Image.asset(
-                                              "images/logo.png",
-                                              height: 100,
-                                              width: 100,
-                                            )
-                                          : Image.network(
-                                              snapshot.data!.docs[index]['url'],
-                                            ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      Text(
-                                        snapshot.data!.docs[index]
-                                            ['productname'],
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text(
-                                        'Price: ' +
-                                            snapshot.data!.docs[index]['price'],
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
+                            child: Card(
+                              elevation: 5.0,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 300,
+                                    color: Colors.black87,
+                                    child: snapshot.data!.docs[index]['url'] ==
+                                            null
+                                        ? Image.asset(
+                                            "images/logo.png",
+                                            fit: BoxFit.cover,
+                                            height: 100,
+                                            width: 100,
+                                          )
+                                        : Image.network(
+                                            snapshot.data!.docs[index]['url'],
+                                            fit: BoxFit.cover,
+                                          ),
                                   ),
-                                ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 20, bottom: 30, top: 20),
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            snapshot.data!.docs[index]
+                                                ['productname'],
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            'Price: RS. ' +
+                                                snapshot.data!.docs[index]
+                                                    ['price'],
+                                            style: TextStyle(
+                                                fontSize: 22,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),

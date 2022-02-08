@@ -36,6 +36,7 @@ dependencies:
   cloud_firestore: ^3.1.4
   firebase_storage: ^10.2.3
   google_fonts: ^2.2.0
+  getwidget: ^2.0.4
 
 
 dev_dependencies:

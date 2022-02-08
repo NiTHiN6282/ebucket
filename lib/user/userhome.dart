@@ -152,11 +152,15 @@ class _UserHomeState extends State<UserHome> {
       child: Padding(
         padding: const EdgeInsets.only(left: 20, bottom: 20),
         child: Card(
+          color: Colors.green,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
           elevation: 5.0,
           child: Container(
             decoration: BoxDecoration(
               color:   selected==0? Colors.black:Colors.green,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(50),bottomLeft: Radius.circular(10),topLeft: Radius.circular(10),topRight: Radius.circular(10)),
                 // gradient: LinearGradient(
                 //     begin: Alignment.topCenter,
                 //     end: Alignment.bottomCenter,

@@ -34,7 +34,7 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance.collection('orders').snapshots(),
+              stream: FirebaseFirestore.instance.collection('ewastes').snapshots(),
               builder: (context, snapshot) {
                 if(!snapshot.hasData){
                   return Center(child: CircularProgressIndicator());
@@ -59,6 +59,21 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                               ),
                             ),
 
+                            SizedBox(
+                              height: 40,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('Price: '+widget.price+'Rs',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
                             SizedBox(
                               height: 40,
                             ),
@@ -167,51 +182,38 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                             SizedBox(
                               height: 40,
                             ),
-                            // Row(
-                            //   children: [
-                            //     SizedBox(
-                            //       width: 10,
-                            //     ),
-                            //     Text('apid: '+widget.apid,
-                            //       style: GoogleFonts.lato(
-                            //         fontSize: 20,
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            // SizedBox(
-                            //   height: 40,
-                            // ),
-                            // Row(
-                            //   children: [
-                            //     SizedBox(
-                            //       width: 10,
-                            //     ),
-                            //     Text('oid: '+widget.oid,
-                            //       style: GoogleFonts.lato(
-                            //         fontSize: 20,
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            // SizedBox(
-                            //   height: 40,
-                            // ),
-                            // Row(
-                            //   children: [
-                            //     SizedBox(
-                            //       width: 10,
-                            //     ),
-                            //     Text('Date of order: '+widget.date,
-                            //       style: GoogleFonts.lato(
-                            //         fontSize: 20,
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            // SizedBox(
-                            //   height: 20,
-                            // ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('eid: '+widget.eid,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 40,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Expanded(
+                                  child: Text('Date of order: '+widget.date,
+                                    style: GoogleFonts.lato(
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
                             Container(
                               width: 150,
                               height: 50,
