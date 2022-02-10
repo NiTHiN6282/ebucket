@@ -58,6 +58,7 @@ class _SalesListState extends State<SalesList> {
                                         category: snapshot.data!.docs[index]['category'],
                                         quantity: snapshot.data!.docs[index]['quantity'],
                                         price: snapshot.data!.docs[index]['price'],
+                                        eid: snapshot.data!.docs[index]['eid'],
                                       ),
                                     ),
                                   );
