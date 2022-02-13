@@ -93,14 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: ElevatedButton.icon(
                         onPressed: () {
                           if (_loginkey.currentState!.validate()) {
-                            if (emailinputcontroller.text ==
-                                    "admin" &&
-                                passwordinputcontroller.text == "1234")
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AdminHome()));
-                            else{
+
                               FirebaseAuth.instance.signInWithEmailAndPassword(email: emailinputcontroller.text, password: passwordinputcontroller.text).
                               then((value) => FirebaseFirestore.instance.collection('user').doc(value.user!.uid).get().
                               then((value) {
@@ -136,11 +129,16 @@ class _LoginPageState extends State<LoginPage> {
                                                 category: value.data()!['usertype'],
                                               )));
                                     }
+                                else if(value.data()!['status']=='admin'){
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AdminHome()));
+                                }
                                 else
                                   showsnackbar('Cannot login');
 
                               })).catchError((e)=>showsnackbar('Login failed'));
-                            }
 
 
                           }
