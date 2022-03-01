@@ -31,30 +31,36 @@ class EwasteListDetails extends StatefulWidget {
 }
 
 class _EwasteListDetailsState extends State<EwasteListDetails> {
+  // var estatus=true;
   var aid;
   var status;
   var oldaid;
   var _auctionkey = new GlobalKey<FormState>();
   TextEditingController auctionpriceinputcontroller =
       new TextEditingController();
-
+  // var snapshot;
+  var documents;
   @override
   void initState() {
     aid = DateTime.now().toString();
     // TODO: implement initState
     super.initState();
+    // snapshot=FirebaseFirestore.instance.collection('auctions').get();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showalert();
-        },
-        child: Icon(
-          Icons.add,
-          size: 40,
+      floatingActionButton: Visibility(
+        visible: true,
+        child: FloatingActionButton(
+          onPressed: () {
+            showalert();
+          },
+          child: Icon(
+            Icons.add,
+            size: 40,
+          ),
         ),
       ),
       appBar: AppBar(
@@ -169,6 +175,11 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                         return ListView.builder(
                             itemCount: snapshot.data!.docs.length,
                             itemBuilder: (context, index) {
+
+                              if(snapshot.data!.docs[index]['eid']==widget.eid)
+                                {
+                                  estatus=false;
+                                }
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
