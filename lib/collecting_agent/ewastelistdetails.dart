@@ -176,10 +176,6 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                             itemCount: snapshot.data!.docs.length,
                             itemBuilder: (context, index) {
 
-                              if(snapshot.data!.docs[index]['eid']==widget.eid)
-                                {
-                                  estatus=false;
-                                }
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
