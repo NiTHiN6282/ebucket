@@ -34,6 +34,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
   // var estatus=true;
   var aid;
   var status;
+  var auctioncheck;
   var oldaid;
   var _auctionkey = new GlobalKey<FormState>();
   TextEditingController auctionpriceinputcontroller =
@@ -45,6 +46,13 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
     aid = DateTime.now().toString();
     // TODO: implement initState
     super.initState();
+    FirebaseFirestore.instance.collection('ewastes').doc(widget.eid).get().then((value) {
+      if(value.data()![widget.agentid]!=null)
+      {
+        auctioncheck=true;
+      }
+      oldaid=value.data()![widget.agentid];
+    });
     // snapshot=FirebaseFirestore.instance.collection('auctions').get();
   }
 
@@ -55,7 +63,15 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
         visible: true,
         child: FloatingActionButton(
           onPressed: () {
-            showalert();
+            print(auctioncheck);
+            if(auctioncheck==true){
+              print(oldaid);
+              showalertupdate();
+            }
+            else{
+              showalert();
+            }
+
           },
           child: Icon(
             Icons.add,
@@ -283,6 +299,9 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                   'date': DateTime.now().toString()
                                 }).then((value) {
                                   showsnackbar('Auction Submitted');
+                                  FirebaseFirestore.instance.collection('ewastes').doc(widget.eid).update({
+                                    widget.agentid: aid,
+                                  });
                                   Navigator.pop(context);
                                 });
                               }
@@ -339,6 +358,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                         child: ElevatedButton.icon(
                             onPressed: () {
                               if (_auctionkey.currentState!.validate()) {
+
                                 FirebaseFirestore.instance
                                     .collection('auctions')
                                     .doc(oldaid)
