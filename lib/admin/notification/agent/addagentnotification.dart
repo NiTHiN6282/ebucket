@@ -14,13 +14,15 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
   var addagentnotificationkey = new GlobalKey<FormState>();
   TextEditingController titleinputcontroller = new TextEditingController();
   TextEditingController descriptioninputcontroller =
-  new TextEditingController();
+      new TextEditingController();
+
   @override
   void initState() {
-    anid=DateTime.now().toString();
+    anid = DateTime.now().toString();
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,12 +44,12 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
                   ),
                   Center(
                       child: Text(
-                        "Add Agent Notification",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
-                      )),
+                    "Add Agent Notification",
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold),
+                  )),
                   SizedBox(
                     height: 30,
                   ),
@@ -100,15 +102,17 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
                     ),
                     child: ElevatedButton.icon(
                         onPressed: () {
-                          if (addagentnotificationkey.currentState!.validate()) {
-                            FirebaseFirestore.instance.collection('Agent Notifications').doc(anid).set({
-                              'anid':anid,
-                              'title':titleinputcontroller.text,
-                              'description':descriptioninputcontroller.text,
-
-                              'status':1,
-                              'date':DateTime.now()
-
+                          if (addagentnotificationkey.currentState!
+                              .validate()) {
+                            FirebaseFirestore.instance
+                                .collection('Agent Notifications')
+                                .doc(anid)
+                                .set({
+                              'anid': anid,
+                              'title': titleinputcontroller.text,
+                              'description': descriptioninputcontroller.text,
+                              'status': 1,
+                              'date': DateTime.now()
                             }).then((value) {
                               showsnackbar('Notification Added');
                               Navigator.pop(context);
@@ -130,13 +134,12 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
     );
   }
 
-  showsnackbar(String msg){
-    final snackBar = SnackBar( content: Text(msg),backgroundColor: Colors.blue,);
-
-
-    ScaffoldMessenger.of(context).showSnackBar(
-        snackBar
+  showsnackbar(String msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+      backgroundColor: Colors.blue,
     );
-  }
 
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }

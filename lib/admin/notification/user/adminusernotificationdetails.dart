@@ -8,10 +8,12 @@ class AdminUserNotificationDetails extends StatefulWidget {
   AdminUserNotificationDetails({this.title, this.description});
 
   @override
-  _AdminUserNotificationDetailsState createState() => _AdminUserNotificationDetailsState();
+  _AdminUserNotificationDetailsState createState() =>
+      _AdminUserNotificationDetailsState();
 }
 
-class _AdminUserNotificationDetailsState extends State<AdminUserNotificationDetails> {
+class _AdminUserNotificationDetailsState
+    extends State<AdminUserNotificationDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +56,6 @@ class _AdminUserNotificationDetailsState extends State<AdminUserNotificationDeta
                     onPressed: () {
                       // showalert();
                       launch("https://google.com/");
-
                     },
                     icon: Icon(Icons.delete),
                     label: Text("delete")),
@@ -65,18 +66,21 @@ class _AdminUserNotificationDetailsState extends State<AdminUserNotificationDeta
       ),
     );
   }
-  showalert(){
-    showDialog(context: context,
+
+  showalert() {
+    showDialog(
+        context: context,
         builder: (context) {
           return AlertDialog(
             content: Text("Do you want to delete?"),
             title: Text("alertbox"),
             actions: [
-              TextButton(onPressed: (){
-                Navigator.pop(context);
-              }, child: Text("confirm")),
-              TextButton(onPressed: (){}, child:Text("cancel"))
-
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("confirm")),
+              TextButton(onPressed: () {}, child: Text("cancel"))
             ],
           );
         });

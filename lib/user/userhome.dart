@@ -2,8 +2,8 @@ import 'package:ebucket/common/models.dart';
 import 'package:ebucket/styles/textstyles.dart';
 import 'package:ebucket/user/categoryform.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper_tv/flutter_swiper.dart';
 import 'package:flutter_page_indicator_tv/flutter_page_indicator.dart';
+import 'package:flutter_swiper_tv/flutter_swiper.dart';
 
 class UserHome extends StatefulWidget {
   var uid;
@@ -40,7 +40,6 @@ class _UserHomeState extends State<UserHome> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Container(
-
         width: size.width,
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -128,7 +127,7 @@ class _UserHomeState extends State<UserHome> {
 
   _cards(String title, IconData icons, Color color1, Color color2, var index) {
     Size size = MediaQuery.of(context).size;
-    var cardwidth=size.width*0.40;
+    var cardwidth = size.width * 0.40;
     return GestureDetector(
       onTap: () {
         if (index == 1) {

@@ -45,7 +45,6 @@ class _LoginPageState extends State<LoginPage> {
                     controller: emailinputcontroller,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-
                       labelText: 'Email',
                       hintText: 'abc@gmail.com',
                       prefixIcon: Icon(Icons.email),
@@ -83,7 +82,6 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     height: 20,
                   ),
-
                   Container(
                     // decoration: BoxDecoration(
                     //   borderRadius: BorderRadius.circular(80),
@@ -93,54 +91,73 @@ class _LoginPageState extends State<LoginPage> {
                     child: ElevatedButton.icon(
                         onPressed: () {
                           if (_loginkey.currentState!.validate()) {
-
-                              FirebaseAuth.instance.signInWithEmailAndPassword(email: emailinputcontroller.text, password: passwordinputcontroller.text).
-                              then((value) => FirebaseFirestore.instance.collection('user').doc(value.user!.uid).get().
-                              then((value) {
-                                if(value.data()!['status']==1&&value.data()!['usertype']=='User')
-                                  {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => UserLandingPage(
-                                              uid:value.data()!['uid'] ,
-                                              address: value.data()!['address'],
-                                              name: value.data()!['name'],
-                                              location: value.data()!['location'],
-                                              phone: value.data()!['phone'],
-                                              email: value.data()!['email'],
-                                              category: value.data()!['usertype'],
-
-
-                                            )));
-                                  }else if(value.data()!['status']==1&&value.data()!['usertype']=='Collecting Agent')
-                                    {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => AgentLandingPage(
-                                                agentid:value.data()!['uid'] ,
-                                                agentname: value.data()!['name'],
-                                                address: value.data()!['address'],
-                                                name: value.data()!['name'],
-                                                location: value.data()!['location'],
-                                                phone: value.data()!['phone'],
-                                                email: value.data()!['email'],
-                                                category: value.data()!['usertype'],
-                                              )));
-                                    }
-                                else if(value.data()!['status']=='admin'){
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AdminHome()));
-                                }
-                                else
-                                  showsnackbar('Cannot login');
-
-                              })).catchError((e)=>showsnackbar('Login failed'));
-
-
+                            FirebaseAuth.instance
+                                .signInWithEmailAndPassword(
+                                    email: emailinputcontroller.text,
+                                    password: passwordinputcontroller.text)
+                                .then((value) => FirebaseFirestore.instance
+                                        .collection('user')
+                                        .doc(value.user!.uid)
+                                        .get()
+                                        .then((value) {
+                                      if (value.data()!['status'] == 1 &&
+                                          value.data()!['usertype'] == 'User') {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    UserLandingPage(
+                                                      uid: value.data()!['uid'],
+                                                      address: value
+                                                          .data()!['address'],
+                                                      name:
+                                                          value.data()!['name'],
+                                                      location: value
+                                                          .data()!['location'],
+                                                      phone: value
+                                                          .data()!['phone'],
+                                                      email: value
+                                                          .data()!['email'],
+                                                      category: value
+                                                          .data()!['usertype'],
+                                                    )));
+                                      } else if (value.data()!['status'] == 1 &&
+                                          value.data()!['usertype'] ==
+                                              'Collecting Agent') {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AgentLandingPage(
+                                                      agentid:
+                                                          value.data()!['uid'],
+                                                      agentname:
+                                                          value.data()!['name'],
+                                                      address: value
+                                                          .data()!['address'],
+                                                      name:
+                                                          value.data()!['name'],
+                                                      location: value
+                                                          .data()!['location'],
+                                                      phone: value
+                                                          .data()!['phone'],
+                                                      email: value
+                                                          .data()!['email'],
+                                                      category: value
+                                                          .data()!['usertype'],
+                                                    )));
+                                      } else if (value.data()!['status'] ==
+                                          'admin') {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AdminHome()));
+                                      } else
+                                        showsnackbar('Cannot login');
+                                    }))
+                                .catchError(
+                                    (e) => showsnackbar('Login failed'));
                           }
                         },
                         icon: Icon(Icons.login),
@@ -180,13 +197,13 @@ class _LoginPageState extends State<LoginPage> {
       _isHidden = !_isHidden;
     });
   }
-  showsnackbar(String msg){
-    final snackBar = SnackBar( content: Text(msg),backgroundColor: Colors.blue,);
 
-
-    ScaffoldMessenger.of(context).showSnackBar(
-        snackBar
+  showsnackbar(String msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+      backgroundColor: Colors.blue,
     );
-  }
 
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }

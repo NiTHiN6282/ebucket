@@ -1,4 +1,3 @@
-
 import 'package:ebucket/admin/notification/agent/adminagentnotification.dart';
 import 'package:ebucket/admin/notification/user/adminusernotification.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +48,8 @@ class _AdminNotificationState extends State<AdminNotification> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AdminAgentNotification()));
+                                builder: (context) =>
+                                    AdminAgentNotification()));
                       },
                     ),
                   ),

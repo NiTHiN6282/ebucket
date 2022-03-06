@@ -6,6 +6,7 @@ class UserDetails extends StatefulWidget {
   var address;
   var phoneno;
   var location;
+
   UserDetails(
       {this.names, this.email, this.address, this.phoneno, this.location});
 

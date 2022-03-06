@@ -29,7 +29,8 @@ class _CampaignDetailsState extends State<CampaignDetails> {
               SizedBox(
                 height: 10,
               ),
-              Text(widget.title,
+              Text(
+                widget.title,
                 style: GoogleFonts.lato(
                   fontSize: 25,
                 ),
@@ -40,8 +41,8 @@ class _CampaignDetailsState extends State<CampaignDetails> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-
-                  Text(widget.description,
+                  Text(
+                    widget.description,
                     style: GoogleFonts.lato(
                       fontSize: 20,
                     ),
@@ -53,23 +54,22 @@ class _CampaignDetailsState extends State<CampaignDetails> {
               ),
               Row(
                 children: [
-                  Text("Link",style: GoogleFonts.lato(
+                  Text(
+                    "Link",
+                    style: GoogleFonts.lato(
                       fontSize: 20,
-
-                  ),),
+                    ),
+                  ),
                   SizedBox(
-                  width: 20,
+                    width: 20,
                   ),
                   GestureDetector(
-                    onDoubleTap: (){
+                    onDoubleTap: () {
                       launch(widget.link);
                     },
-                    child:
-                     Text(widget.link,
-                      style: GoogleFonts.lato(
-                        fontSize: 20,
-                        color: Colors.blue
-                      ),
+                    child: Text(
+                      widget.link,
+                      style: GoogleFonts.lato(fontSize: 20, color: Colors.blue),
                     ),
                   ),
                 ],

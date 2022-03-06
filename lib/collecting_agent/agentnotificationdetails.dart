@@ -7,7 +7,8 @@ class AgentNotificationDetails extends StatefulWidget {
   AgentNotificationDetails({this.title, this.description});
 
   @override
-  _AgentNotificationDetailsState createState() => _AgentNotificationDetailsState();
+  _AgentNotificationDetailsState createState() =>
+      _AgentNotificationDetailsState();
 }
 
 class _AgentNotificationDetailsState extends State<AgentNotificationDetails> {
@@ -47,5 +48,4 @@ class _AgentNotificationDetailsState extends State<AgentNotificationDetails> {
       ),
     );
   }
-
 }

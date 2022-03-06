@@ -67,7 +67,6 @@ class _AdminCampaignDetailsState extends State<AdminCampaignDetails> {
                     onPressed: () {
                       // showalert();
                       launch("https://google.com/");
-
                     },
                     icon: Icon(Icons.delete),
                     label: Text("delete")),
@@ -78,20 +77,23 @@ class _AdminCampaignDetailsState extends State<AdminCampaignDetails> {
       ),
     );
   }
-  showalert(){
-    showDialog(context: context,
-        builder: (context) {
-      return AlertDialog(
-        content: Text("Do you want to delete?"),
-        title: Text("alertbox"),
-        actions: [
-          TextButton(onPressed: (){
-            Navigator.pop(context);
-          }, child: Text("confirm")),
-          TextButton(onPressed: (){}, child:Text("cancel"))
 
-        ],
-      );
+  showalert() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text("Do you want to delete?"),
+            title: Text("alertbox"),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("confirm")),
+              TextButton(onPressed: () {}, child: Text("cancel"))
+            ],
+          );
         });
   }
 }

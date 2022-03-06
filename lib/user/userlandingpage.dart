@@ -1,10 +1,9 @@
 import 'package:ebucket/common/campaigns/campaigns.dart';
-import 'package:ebucket/common/loginpage.dart';
 import 'package:ebucket/common/orders/orderslist.dart';
 import 'package:ebucket/common/recyclemall/recycleproductslist.dart';
-import 'package:ebucket/user/requests/saleslist.dart';
 import 'package:ebucket/common/viewprofile.dart';
 import 'package:ebucket/styles/colors.dart';
+import 'package:ebucket/user/requests/saleslist.dart';
 import 'package:ebucket/user/userhome.dart';
 import 'package:ebucket/user/usernotification.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -143,9 +142,9 @@ class _UserLandingPageState extends State<UserLandingPage> {
             ListTile(
               title: const Text('Logout'),
               onTap: () {
-
-
-                FirebaseAuth.instance.signOut().then((value) => Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false));
+                FirebaseAuth.instance.signOut().then((value) =>
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/login', (Route<dynamic> route) => false));
 
                 //
                 // Navigator.pushReplacement(context,

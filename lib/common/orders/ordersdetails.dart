@@ -6,14 +6,15 @@ class OrdersDetails extends StatefulWidget {
   var product;
   var price;
   var url;
-  OrdersDetails({Key? key,this.price,this.product,this.url}) : super(key: key);
+
+  OrdersDetails({Key? key, this.price, this.product, this.url})
+      : super(key: key);
 
   @override
   _OrdersDetailsState createState() => _OrdersDetailsState();
 }
 
 class _OrdersDetailsState extends State<OrdersDetails> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,17 +27,15 @@ class _OrdersDetailsState extends State<OrdersDetails> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance.collection('orders').snapshots(),
+              stream:
+                  FirebaseFirestore.instance.collection('orders').snapshots(),
               builder: (context, snapshot) {
-                if(!snapshot.hasData){
+                if (!snapshot.hasData) {
                   return Center(child: CircularProgressIndicator());
-                }
-                else if(snapshot.hasData&&snapshot.data!.docs.length==0)
-                {
+                } else if (snapshot.hasData &&
+                    snapshot.data!.docs.length == 0) {
                   return Center(child: Text('no orders found'));
-
-                }
-                else
+                } else
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
@@ -45,22 +44,19 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                             SizedBox(
                               height: 10,
                             ),
-                            Text(widget.product,
+                            Text(
+                              widget.product,
                               style: GoogleFonts.lato(
                                 fontSize: 25,
                               ),
                             ),
-
                             widget.url == null
                                 ? Image.asset(
-                              "images/logo.png",
-                              height: 100,
-                              width: 100,
-                            )
-                                : Image.network(
-                                widget.url
-                            ),
-
+                                    "images/logo.png",
+                                    height: 100,
+                                    width: 100,
+                                  )
+                                : Image.network(widget.url),
                             SizedBox(
                               height: 40,
                             ),
@@ -69,7 +65,8 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text('Price: '+widget.price+'Rs',
+                                Text(
+                                  'Price: ' + widget.price + 'Rs',
                                   style: GoogleFonts.lato(
                                     fontSize: 20,
                                   ),
@@ -89,10 +86,13 @@ class _OrdersDetailsState extends State<OrdersDetails> {
 
                               child: ElevatedButton.icon(
                                   onPressed: () {
-                                    FirebaseFirestore.instance.collection('orders').doc(snapshot.data!.docs[index]['oid']).delete().then((value) {
+                                    FirebaseFirestore.instance
+                                        .collection('orders')
+                                        .doc(snapshot.data!.docs[index]['oid'])
+                                        .delete()
+                                        .then((value) {
                                       showsnackbar('Order Cancelled');
                                       Navigator.pop(context);
-
                                     });
                                   },
                                   icon: Icon(Icons.remove_shopping_cart),
@@ -101,18 +101,18 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                           ],
                         );
                       });
-              }
-          ),
+              }),
         ),
       ),
     );
   }
-  showsnackbar(String msg){
-    final snackBar = SnackBar( content: Text(msg),backgroundColor: Colors.blue,);
 
-
-    ScaffoldMessenger.of(context).showSnackBar(
-        snackBar
+  showsnackbar(String msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+      backgroundColor: Colors.blue,
     );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

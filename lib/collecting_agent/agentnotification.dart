@@ -1,4 +1,3 @@
-
 import 'package:ebucket/collecting_agent/agentnotificationdetails.dart';
 import 'package:flutter/material.dart';
 
@@ -11,12 +10,7 @@ class AgentNotification extends StatefulWidget {
 
 class _AgentNotificationState extends State<AgentNotification> {
   List title = ['noti1', 'noti2', 'noti3', 'noti4'];
-  List description = [
-    'fdgdgd',
-    'dfgdgr',
-    'fgrtrtg',
-    'rfhytyty'
-  ];
+  List description = ['fdgdgd', 'dfgdgr', 'fgrtrtg', 'rfhytyty'];
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +41,6 @@ class _AgentNotificationState extends State<AgentNotification> {
                         leading: Text((index + 1).toString()),
                         title: Text(title[index]),
                         subtitle: Text(description[index]),
-
                         onTap: () {
                           Navigator.push(
                             context,

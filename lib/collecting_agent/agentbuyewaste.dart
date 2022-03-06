@@ -20,8 +20,10 @@ class _AgentBuyEwasteState extends State<AgentBuyEwaste> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AgentNotification()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AgentNotification()));
               },
               icon: Icon(Icons.notifications, color: Colors.yellow)),
           IconButton(

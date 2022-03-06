@@ -1,4 +1,3 @@
 import 'package:flutter/material.dart';
 
-
-final Color appbarcolor=Colors.black;
+final Color appbarcolor = Colors.black;

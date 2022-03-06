@@ -1,8 +1,8 @@
-import 'package:ebucket/admin/orders/adminorderslist.dart';
 import 'package:ebucket/admin/adminsettings.dart';
 import 'package:ebucket/admin/campaign/admincampaign.dart';
 import 'package:ebucket/admin/ewasterequests/ewasterequestlist.dart';
 import 'package:ebucket/admin/notification/adminnotification.dart';
+import 'package:ebucket/admin/orders/adminorderslist.dart';
 import 'package:ebucket/admin/products/adminproducts.dart';
 import 'package:ebucket/admin/viewagents/agentlist.dart';
 import 'package:ebucket/admin/viewusers/userlist.dart';
@@ -14,7 +14,8 @@ class AdminHome extends StatefulWidget {
   var status;
   var name;
   var phone;
-  AdminHome({Key? key,this.status,this.name,this.phone}) : super(key: key);
+
+  AdminHome({Key? key, this.status, this.name, this.phone}) : super(key: key);
 
   @override
   _AdminHomeState createState() => _AdminHomeState();
@@ -32,8 +33,10 @@ class _AdminHomeState extends State<AdminHome> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AdminNotification()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AdminNotification()));
               },
               icon: Icon(Icons.notification_add, color: Colors.yellow)),
           IconButton(
@@ -44,7 +47,6 @@ class _AdminHomeState extends State<AdminHome> {
               icon: Icon(Icons.logout, color: Colors.red)),
         ],
       ),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -113,7 +115,11 @@ class _AdminHomeState extends State<AdminHome> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AgentList(status: widget.status,name: widget.name,phone: widget.phone,)));
+                                    builder: (context) => AgentList(
+                                          status: widget.status,
+                                          name: widget.name,
+                                          phone: widget.phone,
+                                        )));
                           },
                         ),
                       ),

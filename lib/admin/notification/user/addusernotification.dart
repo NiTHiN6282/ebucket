@@ -13,13 +13,15 @@ class _AddUserNotificationState extends State<AddUserNotification> {
   var addusernotificationkey = new GlobalKey<FormState>();
   TextEditingController titleinputcontroller = new TextEditingController();
   TextEditingController descriptioninputcontroller =
-  new TextEditingController();
+      new TextEditingController();
+
   @override
   void initState() {
-    unid=DateTime.now().toString();
+    unid = DateTime.now().toString();
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,12 +43,12 @@ class _AddUserNotificationState extends State<AddUserNotification> {
                   ),
                   Center(
                       child: Text(
-                        "Add User Notification",
-                        style: TextStyle(
-                            fontSize: 30,
-                            color: Colors.green,
-                            fontWeight: FontWeight.bold),
-                      )),
+                    "Add User Notification",
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold),
+                  )),
                   SizedBox(
                     height: 30,
                   ),
@@ -100,14 +102,15 @@ class _AddUserNotificationState extends State<AddUserNotification> {
                     child: ElevatedButton.icon(
                         onPressed: () {
                           if (addusernotificationkey.currentState!.validate()) {
-                            FirebaseFirestore.instance.collection('User Notifications').doc(unid).set({
-                              'unid':unid,
-                              'title':titleinputcontroller.text,
-                              'description':descriptioninputcontroller.text,
-
-                              'status':1,
-                              'date':DateTime.now()
-
+                            FirebaseFirestore.instance
+                                .collection('User Notifications')
+                                .doc(unid)
+                                .set({
+                              'unid': unid,
+                              'title': titleinputcontroller.text,
+                              'description': descriptioninputcontroller.text,
+                              'status': 1,
+                              'date': DateTime.now()
                             }).then((value) {
                               showsnackbar('Notification Added');
                               Navigator.pop(context);
@@ -129,13 +132,12 @@ class _AddUserNotificationState extends State<AddUserNotification> {
     );
   }
 
-  showsnackbar(String msg){
-    final snackBar = SnackBar( content: Text(msg),backgroundColor: Colors.blue,);
-
-
-    ScaffoldMessenger.of(context).showSnackBar(
-        snackBar
+  showsnackbar(String msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+      backgroundColor: Colors.blue,
     );
-  }
 
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }

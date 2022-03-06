@@ -36,7 +36,6 @@ class RecycleProductsDetails extends StatefulWidget {
 }
 
 class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -61,17 +60,13 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                   fontSize: 25,
                 ),
               ),
-
               widget.url == null
                   ? Image.asset(
-                "images/logo.png",
-                height: 100,
-                width: 100,
-              )
-                  : Image.network(
-                widget.url
-              ),
-
+                      "images/logo.png",
+                      height: 100,
+                      width: 100,
+                    )
+                  : Image.network(widget.url),
               SizedBox(
                 height: 20,
               ),
@@ -157,8 +152,21 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                     //   Navigator.push(context,
                     //       MaterialPageRoute(builder: (context) => BuyPage(uid: widget.uid,name: widget.name,phone: widget.phone,address: widget.address,location: widget.location,email: widget.email,productname: widget.productname,price: widget.price,)));
                     // });
-                    Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => BuyPage(apid: widget.apid,uid: widget.uid,name: widget.name,phone: widget.phone,address: widget.address,location: widget.location,email: widget.email,productname: widget.productname,price: widget.price,url: widget.url,)));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BuyPage(
+                                  apid: widget.apid,
+                                  uid: widget.uid,
+                                  name: widget.name,
+                                  phone: widget.phone,
+                                  address: widget.address,
+                                  location: widget.location,
+                                  email: widget.email,
+                                  productname: widget.productname,
+                                  price: widget.price,
+                                  url: widget.url,
+                                )));
                   },
                   icon: Icon(Icons.shopping_cart),
                   label: Text("Buy"),

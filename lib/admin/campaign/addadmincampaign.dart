@@ -18,7 +18,7 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
 
   @override
   void initState() {
-    cid=DateTime.now().toString();
+    cid = DateTime.now().toString();
     // TODO: implement initState
     super.initState();
   }
@@ -118,15 +118,16 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                     child: ElevatedButton.icon(
                         onPressed: () {
                           if (addcampaignkey.currentState!.validate()) {
-                            FirebaseFirestore.instance.collection('campaign').doc(cid).set({
-                              'cid':cid,
-                              'title':titleinputcontroller.text,
-                              'description':descriptioninputcontroller.text,
-                              'link':linkinputcontroller.text,
-
-                              'status':1,
-                              'date':DateTime.now()
-
+                            FirebaseFirestore.instance
+                                .collection('campaign')
+                                .doc(cid)
+                                .set({
+                              'cid': cid,
+                              'title': titleinputcontroller.text,
+                              'description': descriptioninputcontroller.text,
+                              'link': linkinputcontroller.text,
+                              'status': 1,
+                              'date': DateTime.now()
                             }).then((value) {
                               showsnackbar('Campaign Added');
                               Navigator.pop(context);
@@ -148,13 +149,12 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
     );
   }
 
-  showsnackbar(String msg){
-    final snackBar = SnackBar( content: Text(msg),backgroundColor: Colors.blue,);
-
-
-    ScaffoldMessenger.of(context).showSnackBar(
-        snackBar
+  showsnackbar(String msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+      backgroundColor: Colors.blue,
     );
-  }
 
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 }

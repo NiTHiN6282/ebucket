@@ -12,8 +12,18 @@ class AdminProductDetails extends StatefulWidget {
   var phone;
   var email;
   var category;
+
   AdminProductDetails(
-      {this.productname, this.description, this.price,this.uid,this.name,this.address,this.location,this.phone,this.email,this.category});
+      {this.productname,
+      this.description,
+      this.price,
+      this.uid,
+      this.name,
+      this.address,
+      this.location,
+      this.phone,
+      this.email,
+      this.category});
 
   @override
   _AdminProductDetailsState createState() => _AdminProductDetailsState();

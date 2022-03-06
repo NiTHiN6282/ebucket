@@ -7,7 +7,8 @@ class UserNotificationDetails extends StatefulWidget {
   UserNotificationDetails({this.title, this.description});
 
   @override
-  _UserNotificationDetailsState createState() => _UserNotificationDetailsState();
+  _UserNotificationDetailsState createState() =>
+      _UserNotificationDetailsState();
 }
 
 class _UserNotificationDetailsState extends State<UserNotificationDetails> {
@@ -41,12 +42,10 @@ class _UserNotificationDetailsState extends State<UserNotificationDetails> {
               SizedBox(
                 height: 20,
               ),
-
             ],
           ),
         ),
       ),
     );
   }
-
 }

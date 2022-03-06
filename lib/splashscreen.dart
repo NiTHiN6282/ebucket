@@ -19,53 +19,50 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     FirebaseAuth.instance.authStateChanges().listen((currentuser) {
-      if(currentuser==null){
+      if (currentuser == null) {
         Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => LoginPage()));
-      }
-      else{
-        FirebaseFirestore.instance.collection('user').doc(currentuser.uid).get().
-        then((value) {
-          if(value.data()!['status']==1&&value.data()!['usertype']=='User')
-          {
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
+      } else {
+        FirebaseFirestore.instance
+            .collection('user')
+            .doc(currentuser.uid)
+            .get()
+            .then((value) {
+          if (value.data()!['status'] == 1 &&
+              value.data()!['usertype'] == 'User') {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                     builder: (context) => UserLandingPage(
-                      uid:value.data()!['uid'] ,
-                      address: value.data()!['address'],
-                      name: value.data()!['name'],
-                      location: value.data()!['location'],
-                      phone: value.data()!['phone'],
-                      email: value.data()!['email'],
-                      category: value.data()!['usertype'],
-
-
-                    )));
-          }else if(value.data()!['status']==1&&value.data()!['usertype']=='Collecting Agent')
-          {
+                          uid: value.data()!['uid'],
+                          address: value.data()!['address'],
+                          name: value.data()!['name'],
+                          location: value.data()!['location'],
+                          phone: value.data()!['phone'],
+                          email: value.data()!['email'],
+                          category: value.data()!['usertype'],
+                        )));
+          } else if (value.data()!['status'] == 1 &&
+              value.data()!['usertype'] == 'Collecting Agent') {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                     builder: (context) => AgentLandingPage(
-                      agentid:value.data()!['uid'] ,
-                      agentname: value.data()!['name'],
-                      address: value.data()!['address'],
-                      name: value.data()!['name'],
-                      location: value.data()!['location'],
-                      phone: value.data()!['phone'],
-                      email: value.data()!['email'],
-                      category: value.data()!['usertype'],
-                    )));
+                          agentid: value.data()!['uid'],
+                          agentname: value.data()!['name'],
+                          address: value.data()!['address'],
+                          name: value.data()!['name'],
+                          location: value.data()!['location'],
+                          phone: value.data()!['phone'],
+                          email: value.data()!['email'],
+                          category: value.data()!['usertype'],
+                        )));
           }
-
-
         });
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,4 +1,3 @@
-
 import 'package:ebucket/collecting_agent/agentnotification.dart';
 import 'package:ebucket/collecting_agent/ewastelist.dart';
 import 'package:ebucket/common/campaigns/campaigns.dart';
@@ -21,32 +20,56 @@ class AgentLandingPage extends StatefulWidget {
   var agentid;
   var agentname;
 
-  AgentLandingPage({Key? key,this.agentid,this.agentname,this.uid,this.name,this.address,this.location,this.phone,this.email,this.category}) : super(key: key);
+  AgentLandingPage(
+      {Key? key,
+      this.agentid,
+      this.agentname,
+      this.uid,
+      this.name,
+      this.address,
+      this.location,
+      this.phone,
+      this.email,
+      this.category})
+      : super(key: key);
 
   @override
   _AgentLandingPageState createState() => _AgentLandingPageState();
 }
 
 class _AgentLandingPageState extends State<AgentLandingPage> {
-
   var _selectedIndex = 0;
 
-  var _widgetOptions ;
-  void setdata(){
+  var _widgetOptions;
+
+  void setdata() {
     _widgetOptions = <Widget>[
-      EwasteList(agentid: widget.agentid,agentname: widget.agentname,),
-      RecycleProductsList(uid: widget.uid,name: widget.name,address: widget.address,location: widget.location,phone: widget.phone,email: widget.email,category: widget.category,),
+      EwasteList(
+        agentid: widget.agentid,
+        agentname: widget.agentname,
+      ),
+      RecycleProductsList(
+        uid: widget.uid,
+        name: widget.name,
+        address: widget.address,
+        location: widget.location,
+        phone: widget.phone,
+        email: widget.email,
+        category: widget.category,
+      ),
       ViewCampaigns(),
-      OrdersList(uid: widget.uid,),
+      OrdersList(
+        uid: widget.uid,
+      ),
     ];
   }
-
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
+
   @override
   void initState() {
     setdata();
@@ -57,7 +80,6 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         backgroundColor: appbarcolor,
         title: Text("E-Bucket"),
@@ -73,9 +95,18 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
               icon: Icon(Icons.notifications, color: Colors.yellow)),
           IconButton(
               onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) =>
-                        ViewProfile(uid: widget.uid,name: widget.name,address: widget.address,location: widget.location,phone: widget.phone,email: widget.email,category: widget.category,)));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ViewProfile(
+                              uid: widget.uid,
+                              name: widget.name,
+                              address: widget.address,
+                              location: widget.location,
+                              phone: widget.phone,
+                              email: widget.email,
+                              category: widget.category,
+                            )));
               },
               icon: Icon(Icons.person_outline, color: Colors.blueAccent)),
         ],
@@ -90,7 +121,6 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
@@ -118,31 +148,26 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: [
-
           SalomonBottomBarItem(
             icon: Icon(Icons.home),
             title: Text("Home"),
             selectedColor: Colors.purple,
           ),
-
           SalomonBottomBarItem(
             icon: Icon(Icons.change_circle),
             title: Text("Recycle Mall"),
             selectedColor: Colors.pink,
           ),
-
           SalomonBottomBarItem(
             icon: Icon(Icons.campaign),
             title: Text("Campaigns"),
             selectedColor: Colors.orange,
           ),
-
           SalomonBottomBarItem(
             icon: Icon(Icons.shopping_cart),
             title: Text("Orders"),
             selectedColor: Colors.pink,
           ),
-
         ],
       ),
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
