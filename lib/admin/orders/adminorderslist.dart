@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebucket/admin/orders/adminordersdetails.dart';
 import 'package:flutter/material.dart';
@@ -46,12 +47,11 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                             width: 200,
                             child: Center(
                               child: ListTile(
-                                leading: Image.network(
-                                  snapshot.data!.docs[index]['url'],
-                                  errorBuilder: (context, error, stackTrace) {
-                                    return Image.asset('images/oos.png',
-                                        fit: BoxFit.fitWidth);
-                                  },
+                                leading: CachedNetworkImage(
+                                  imageUrl: snapshot.data!.docs[index]['url'],
+                                  errorWidget: (context, url, error) =>
+                                      Image.asset('images/oos.png',
+                                          fit: BoxFit.fitWidth),
                                 ),
                                 title:
                                     Text(snapshot.data!.docs[index]['product']),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebucket/common/recyclemall/recycleproductsdetails.dart';
 import 'package:flutter/material.dart';
@@ -90,10 +91,11 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
                                             height: 100,
                                             width: 100,
                                           )
-                                        : Image.network(
-                                            snapshot.data!.docs[index]['url'],
-                                            fit: BoxFit.cover,
-                                          ),
+                                        : CachedNetworkImage(
+                                      imageUrl: snapshot.data!.docs[index]
+                                      ['url'],
+                                      errorWidget: (context, url, error) => Icon(Icons.error),
+                                    ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(

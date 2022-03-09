@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -77,7 +78,12 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                     height: 100,
                                     width: 100,
                                   )
-                                : Image.network(widget.url),
+                                : CachedNetworkImage(
+                              imageUrl: widget.url,
+                              errorWidget: (context, url, error) =>
+                                  Image.asset('images/oos.png',
+                                      fit: BoxFit.fitWidth),
+                            ),
 
                             SizedBox(
                               height: 40,

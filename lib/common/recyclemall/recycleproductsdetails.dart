@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ebucket/common/buypage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -66,7 +67,12 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                       height: 100,
                       width: 100,
                     )
-                  : Image.network(widget.url),
+                  : CachedNetworkImage(
+                imageUrl: widget.url,
+                errorWidget: (context, url, error) =>
+                    Image.asset('images/oos.png',
+                        fit: BoxFit.fitWidth),
+              ),
               SizedBox(
                 height: 20,
               ),
