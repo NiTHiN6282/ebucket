@@ -58,6 +58,10 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        appBar: AppBar(
+          title: Text("Campaigns"),
+          centerTitle: true,
+        ),
         body: new Container(
       color: Colors.white,
       child: new ListView(

@@ -26,6 +26,10 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Campaigns"),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Form(
           key: addcampaignkey, // set key(it specifies the form

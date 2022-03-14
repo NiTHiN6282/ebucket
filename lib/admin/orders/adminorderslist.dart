@@ -47,11 +47,12 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                             width: 200,
                             child: Center(
                               child: ListTile(
-                                leading: CachedNetworkImage(
-                                  imageUrl: snapshot.data!.docs[index]['url'],
-                                  errorWidget: (context, url, error) =>
-                                      Image.asset('images/oos.png',
-                                          fit: BoxFit.fitWidth),
+                                leading: Image.network(
+                                  snapshot.data!.docs[index]['url'],
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Image.asset('images/oos.png',
+                                        fit: BoxFit.fitWidth);
+                                  },
                                 ),
                                 title:
                                     Text(snapshot.data!.docs[index]['product']),

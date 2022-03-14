@@ -95,7 +95,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
               icon: Icon(Icons.notifications, color: Colors.yellow)),
           IconButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => ViewProfile(
