@@ -7,8 +7,9 @@ class SalesDetails extends StatefulWidget {
   var price;
   var quantity;
   var eid;
+  var uid;
 
-  SalesDetails({Key? key, this.price, this.category, this.quantity, this.eid})
+  SalesDetails({Key? key, this.price, this.category, this.quantity, this.eid,this.uid})
       : super(key: key);
 
   @override
@@ -16,6 +17,14 @@ class SalesDetails extends StatefulWidget {
 }
 
 class _SalesDetailsState extends State<SalesDetails> {
+  var oid;
+  var agentid;
+  @override
+  void initState() {
+    // TODO: implement initState
+    oid=DateTime.now().toString();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -155,7 +164,36 @@ class _SalesDetailsState extends State<SalesDetails> {
                                         trailing: IconButton(
                                             icon: Icon(Icons.done,
                                                 color: Colors.blue),
-                                            onPressed: () {}),
+                                            onPressed: () {
+                                              setState(() {
+                                                agentid=snapshot.data!.docs[index]
+                                                ['agentid'];
+                                              });
+                                              FirebaseFirestore.instance
+                                                  .collection('ewastes')
+                                                  .doc(widget.eid)
+                                                  .update({
+                                                'status': 0,
+                                              }).then((value) => {
+                                              FirebaseFirestore.instance
+                                                  .collection('eorders')
+                                                  .doc(oid)
+                                                  .set({
+                                              'eoid': oid,
+                                              'category': widget.category,
+                                              'quantity': widget.quantity,
+                                              'price': widget.price,
+                                              'eid': widget.eid,
+                                              'uid': agentid,
+                                              'agentid': agentid,
+
+                                              'date': DateTime.now()
+                                              }).then((value) {
+                                              showsnackbar('Order Submitted');
+                                              Navigator.pop(context);
+                                              })
+                                              });
+                                            }),
                                       ),
                                     ),
                                   ),

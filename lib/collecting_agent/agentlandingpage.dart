@@ -9,6 +9,8 @@ import 'package:ebucket/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+import '../common/orders/eorderslist.dart';
+
 class AgentLandingPage extends StatefulWidget {
   var name;
   var address;
@@ -57,6 +59,9 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
       ),
       ViewCampaigns(),
       OrdersList(
+        uid: widget.agentid,
+      ),
+      EOrdersList(
         uid: widget.agentid,
       ),
     ];
@@ -165,6 +170,11 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
             icon: Icon(Icons.shopping_cart),
             title: Text("Orders"),
             selectedColor: Colors.pink,
+          ),
+          SalomonBottomBarItem(
+            icon: Icon(Icons.shopping_cart_outlined),
+            title: Text("Eorders"),
+            selectedColor: Colors.purple,
           ),
         ],
       ),
