@@ -12,6 +12,7 @@ class SalesList extends StatefulWidget {
 }
 
 class _SalesListState extends State<SalesList> {
+  var category;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,20 +53,26 @@ class _SalesListState extends State<SalesList> {
                                         ['quantity'] +
                                     'KG'),
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SalesDetails(
-                                        category: snapshot.data!.docs[index]
-                                            ['category'],
-                                        quantity: snapshot.data!.docs[index]
-                                            ['quantity'],
-                                        price: snapshot.data!.docs[index]
-                                            ['price'],
-                                        eid: snapshot.data!.docs[index]['eid'],
+                                  if(snapshot.data!.docs[index]
+                                  ['status']==0){
+                                    showsnackbar('order placed');
+                                  }
+                                  else{
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SalesDetails(
+                                          category: snapshot.data!.docs[index]
+                                          ['category'],
+                                          quantity: snapshot.data!.docs[index]
+                                          ['quantity'],
+                                          price: snapshot.data!.docs[index]
+                                          ['price'],
+                                          eid: snapshot.data!.docs[index]['eid'],
+                                        ),
                                       ),
-                                    ),
-                                  );
+                                    );
+                                  }
                                 },
                               ),
                             ),
@@ -76,5 +83,13 @@ class _SalesListState extends State<SalesList> {
         ),
       ),
     );
+  }
+  showsnackbar(String msg) {
+    final snackBar = SnackBar(
+      content: Text(msg),
+      backgroundColor: Colors.blue,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
