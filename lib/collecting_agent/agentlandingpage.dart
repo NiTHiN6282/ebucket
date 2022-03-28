@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class AgentLandingPage extends StatefulWidget {
-  var uid;
   var name;
   var address;
   var location;
@@ -24,7 +23,6 @@ class AgentLandingPage extends StatefulWidget {
       {Key? key,
       this.agentid,
       this.agentname,
-      this.uid,
       this.name,
       this.address,
       this.location,
@@ -49,7 +47,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
         agentname: widget.agentname,
       ),
       RecycleProductsList(
-        uid: widget.uid,
+        uid: widget.agentid,
         name: widget.name,
         address: widget.address,
         location: widget.location,
@@ -59,7 +57,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
       ),
       ViewCampaigns(),
       OrdersList(
-        uid: widget.uid,
+        uid: widget.agentid,
       ),
     ];
   }
@@ -99,7 +97,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => ViewProfile(
-                              uid: widget.uid,
+                              uid: widget.agentid,
                               name: widget.name,
                               address: widget.address,
                               location: widget.location,
