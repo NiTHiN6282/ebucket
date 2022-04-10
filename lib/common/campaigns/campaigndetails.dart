@@ -53,25 +53,14 @@ class _CampaignDetailsState extends State<CampaignDetails> {
                 height: 20,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Link",
-                    style: GoogleFonts.lato(
-                      fontSize: 20,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  GestureDetector(
-                    onDoubleTap: () {
-                      launch(widget.link);
-                    },
-                    child: Text(
-                      widget.link,
-                      style: GoogleFonts.lato(fontSize: 20, color: Colors.blue),
-                    ),
-                  ),
+                  ElevatedButton.icon(
+                      onPressed: () {
+                        launch(widget.link);
+                      },
+                      icon: Icon(Icons.open_in_browser),
+                      label: Text("Open in Browser")),
                 ],
               ),
               SizedBox(

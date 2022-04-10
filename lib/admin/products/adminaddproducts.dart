@@ -82,6 +82,7 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
                   ),
                   TextFormField(
                     controller: priceinputcontroller,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Price',
                       prefixIcon: Icon(Icons.attach_money),
