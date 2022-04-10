@@ -117,10 +117,6 @@ class _UserLandingPageState extends State<UserLandingPage> {
         ],
       ),
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-
         child: ListView(
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
@@ -131,13 +127,6 @@ class _UserLandingPageState extends State<UserLandingPage> {
               ),
               child: Text('Ebucket'),
             ),
-            ListTile(
-              title: const Text('Terms & Conditions'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
             const Divider(),
             ListTile(
               title: const Text('Logout'),
@@ -145,10 +134,6 @@ class _UserLandingPageState extends State<UserLandingPage> {
                 FirebaseAuth.instance.signOut().then((value) =>
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         '/login', (Route<dynamic> route) => false));
-
-                //
-                // Navigator.pushReplacement(context,
-                //     MaterialPageRoute(builder: (context) => LoginPage()));
               },
             ),
           ],

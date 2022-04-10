@@ -68,11 +68,10 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                       width: 100,
                     )
                   : CachedNetworkImage(
-                imageUrl: widget.url,
-                errorWidget: (context, url, error) =>
-                    Image.asset('images/oos.png',
-                        fit: BoxFit.fitWidth),
-              ),
+                      imageUrl: widget.url,
+                      errorWidget: (context, url, error) =>
+                          Image.asset('images/oos.png', fit: BoxFit.fitWidth),
+                    ),
               SizedBox(
                 height: 20,
               ),

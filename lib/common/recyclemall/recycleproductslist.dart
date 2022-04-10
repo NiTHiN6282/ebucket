@@ -92,10 +92,12 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
                                             width: 100,
                                           )
                                         : CachedNetworkImage(
-                                      imageUrl: snapshot.data!.docs[index]
-                                      ['url'],
-                                      errorWidget: (context, url, error) => Icon(Icons.error),
-                                    ),
+                                            imageUrl: snapshot.data!.docs[index]
+                                                ['url'],
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    Icon(Icons.error),
+                                          ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(

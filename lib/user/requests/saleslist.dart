@@ -14,6 +14,7 @@ class SalesList extends StatefulWidget {
 
 class _SalesListState extends State<SalesList> {
   var category;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,44 +49,49 @@ class _SalesListState extends State<SalesList> {
                               child: ListTile(
                                 leading: Container(
                                   height: double.infinity,
-                                  child: Icon(Icons.remove_from_queue,color: Colors.black,),
+                                  child: Icon(
+                                    Icons.remove_from_queue,
+                                    color: Colors.black,
+                                  ),
                                 ),
                                 title: Text(
                                     snapshot.data!.docs[index]['category']),
                                 subtitle: Text(snapshot.data!.docs[index]
                                         ['quantity'] +
                                     'KG'),
-                                trailing: snapshot.data!.docs[index]['status'] == 0
-                                    ? Image.asset("images/placedpic.png")
-                                    : null,
+                                trailing:
+                                    snapshot.data!.docs[index]['status'] == 0
+                                        ? Image.asset("images/placedpic.png")
+                                        : null,
                                 onTap: () {
-                                  if(snapshot.data!.docs[index]
-                                  ['status']==0){
-                                    Navigator.push(context, MaterialPageRoute(
-                                        builder: (context) => OrderSummary(
-                                          category: snapshot.data!.docs[index]
-                                          ['category'],
-                                          quantity: snapshot.data!.docs[index]
-                                          ['quantity'],
-                                          price: snapshot.data!.docs[index]
-                                          ['price'],
-                                          eid: snapshot.data!.docs[index]['eid'],
-                                        )
-                                    )
-                                    );
-                                  }
-                                  else{
+                                  if (snapshot.data!.docs[index]['status'] ==
+                                      0) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => OrderSummary(
+                                                  category: snapshot.data!
+                                                      .docs[index]['category'],
+                                                  quantity: snapshot.data!
+                                                      .docs[index]['quantity'],
+                                                  price: snapshot.data!
+                                                      .docs[index]['price'],
+                                                  eid: snapshot
+                                                      .data!.docs[index]['eid'],
+                                                )));
+                                  } else {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => SalesDetails(
                                           category: snapshot.data!.docs[index]
-                                          ['category'],
+                                              ['category'],
                                           quantity: snapshot.data!.docs[index]
-                                          ['quantity'],
+                                              ['quantity'],
                                           price: snapshot.data!.docs[index]
-                                          ['price'],
-                                          eid: snapshot.data!.docs[index]['eid'],
+                                              ['price'],
+                                          eid: snapshot.data!.docs[index]
+                                              ['eid'],
                                         ),
                                       ),
                                     );
@@ -101,6 +107,7 @@ class _SalesListState extends State<SalesList> {
       ),
     );
   }
+
   showsnackbar(String msg) {
     final snackBar = SnackBar(
       content: Text(msg),

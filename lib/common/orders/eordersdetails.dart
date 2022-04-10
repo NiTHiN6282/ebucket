@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,8 +6,7 @@ class EOrdersDetails extends StatefulWidget {
   var category;
   var price;
 
-  EOrdersDetails({Key? key, this.price, this.category})
-      : super(key: key);
+  EOrdersDetails({Key? key, this.price, this.category}) : super(key: key);
 
   @override
   _EOrdersDetailsState createState() => _EOrdersDetailsState();
@@ -16,6 +14,7 @@ class EOrdersDetails extends StatefulWidget {
 
 class _EOrdersDetailsState extends State<EOrdersDetails> {
   var eid;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +28,7 @@ class _EOrdersDetailsState extends State<EOrdersDetails> {
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
               stream:
-              FirebaseFirestore.instance.collection('eorders').snapshots(),
+                  FirebaseFirestore.instance.collection('eorders').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(child: CircularProgressIndicator());
@@ -89,7 +88,7 @@ class _EOrdersDetailsState extends State<EOrdersDetails> {
                                       Navigator.pop(context);
                                     });
                                     setState(() {
-                                      eid=snapshot.data!.docs[index]['eid'];
+                                      eid = snapshot.data!.docs[index]['eid'];
                                     });
                                     FirebaseFirestore.instance
                                         .collection('ewastes')

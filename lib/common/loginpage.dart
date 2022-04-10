@@ -54,7 +54,8 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      final pattern = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
+                      final pattern =
+                          r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
                       final regExp = RegExp(pattern);
 
                       if (value!.isEmpty) {

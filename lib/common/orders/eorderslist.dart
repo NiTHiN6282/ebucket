@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebucket/common/orders/ordersdetails.dart';
 import 'package:flutter/material.dart';
 
 import 'eordersdetails.dart';
@@ -48,19 +46,19 @@ class _EOrdersListState extends State<EOrdersList> {
                             width: 200,
                             child: Center(
                               child: ListTile(
-                                title:
-                                Text(snapshot.data!.docs[index]['category']),
+                                title: Text(
+                                    snapshot.data!.docs[index]['category']),
                                 subtitle:
-                                Text(snapshot.data!.docs[index]['price']),
+                                    Text(snapshot.data!.docs[index]['price']),
                                 onTap: () {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => EOrdersDetails(
                                         category: snapshot.data!.docs[index]
-                                        ['category'],
+                                            ['category'],
                                         price: snapshot.data!.docs[index]
-                                        ['price'],
+                                            ['price'],
                                       ),
                                     ),
                                   );

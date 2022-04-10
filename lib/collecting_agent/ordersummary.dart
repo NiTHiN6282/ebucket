@@ -7,7 +7,7 @@ class OrderSummary extends StatefulWidget {
   var category;
   var quantity;
 
-  OrderSummary({Key? key, this.eid, this.category, this.price, this.quantity })
+  OrderSummary({Key? key, this.eid, this.category, this.price, this.quantity})
       : super(key: key);
 
   @override
@@ -18,9 +18,7 @@ class _OrderSummaryState extends State<OrderSummary> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-
-      ),
+      appBar: AppBar(),
       body: SafeArea(
         child: Column(
           children: [
@@ -28,7 +26,10 @@ class _OrderSummaryState extends State<OrderSummary> {
             SizedBox(
               height: 30,
             ),
-            Text('Sale Placed', style: TextStyle(fontSize: 50),),
+            Text(
+              'Sale Placed',
+              style: TextStyle(fontSize: 50),
+            ),
             SizedBox(
               height: 50,
             ),
@@ -38,10 +39,8 @@ class _OrderSummaryState extends State<OrderSummary> {
                   Clipboard.setData(ClipboardData(text: widget.eid));
                   showsnackbar("Id Copied");
                 },
-                icon:
-                Icon(Icons.copy),
-                label: Text("Copy")
-            ),
+                icon: Icon(Icons.copy),
+                label: Text("Copy")),
             SizedBox(
               height: 30,
             ),
@@ -53,7 +52,8 @@ class _OrderSummaryState extends State<OrderSummary> {
             SizedBox(
               height: 30,
             ),
-            Text("Quantity: " + widget.quantity, style: TextStyle(fontSize: 20)),
+            Text("Quantity: " + widget.quantity,
+                style: TextStyle(fontSize: 20)),
           ],
         ),
       ),
@@ -68,5 +68,4 @@ class _OrderSummaryState extends State<OrderSummary> {
 
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
-
 }

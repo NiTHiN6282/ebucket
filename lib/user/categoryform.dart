@@ -57,7 +57,8 @@ class _CategoryFormState extends State<CategoryForm> {
           child: Container(
         height: double.infinity,
         decoration: BoxDecoration(
-            color: Colors.grey.shade200.withOpacity(0.5),),
+          color: Colors.grey.shade200.withOpacity(0.5),
+        ),
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(

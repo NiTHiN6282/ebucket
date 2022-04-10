@@ -17,6 +17,7 @@ class OrdersDetails extends StatefulWidget {
 
 class _OrdersDetailsState extends State<OrdersDetails> {
   var apid;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,11 +60,11 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                                     width: 100,
                                   )
                                 : CachedNetworkImage(
-                              imageUrl: widget.url,
-                              errorWidget: (context, url, error) =>
-                                  Image.asset('images/oos.png',
-                                      fit: BoxFit.fitWidth),
-                            ),
+                                    imageUrl: widget.url,
+                                    errorWidget: (context, url, error) =>
+                                        Image.asset('images/oos.png',
+                                            fit: BoxFit.fitWidth),
+                                  ),
                             SizedBox(
                               height: 40,
                             ),
@@ -102,7 +103,7 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                                       Navigator.pop(context);
                                     });
                                     setState(() {
-                                      apid=snapshot.data!.docs[index]['apid'];
+                                      apid = snapshot.data!.docs[index]['apid'];
                                     });
                                     FirebaseFirestore.instance
                                         .collection('recycleproducts')

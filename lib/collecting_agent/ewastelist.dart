@@ -23,8 +23,10 @@ class _EwasteListState extends State<EwasteList> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
-              stream:
-                  FirebaseFirestore.instance.collection('ewastes').where('status', isEqualTo: 1).snapshots(),
+              stream: FirebaseFirestore.instance
+                  .collection('ewastes')
+                  .where('status', isEqualTo: 1)
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(child: CircularProgressIndicator());
