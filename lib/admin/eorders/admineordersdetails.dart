@@ -1,38 +1,35 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EwasteRequestsDetails extends StatefulWidget {
+class AdminEOrdersDetails extends StatefulWidget {
   var category;
   var price;
   var quantity;
-  var name;
-  var location;
-  var address;
-  var phone;
-  var date;
-  var eid;
+  var agentid;
   var uid;
+  var eid;
+  var eoid;
+  var date;
 
-  EwasteRequestsDetails(
+  AdminEOrdersDetails(
       {Key? key,
       this.price,
       this.category,
       this.quantity,
-      this.name,
-      this.location,
-      this.address,
-      this.phone,
+      this.agentid,
       this.eid,
-      this.date,
-      this.uid})
+      this.uid,
+      this.eoid,
+      this.date})
       : super(key: key);
 
   @override
-  _EwasteRequestsDetailsState createState() => _EwasteRequestsDetailsState();
+  _AdminEOrdersDetailsState createState() => _AdminEOrdersDetailsState();
 }
 
-class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
+class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +43,13 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
               stream:
-                  FirebaseFirestore.instance.collection('ewastes').snapshots(),
+                  FirebaseFirestore.instance.collection('eorders').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasData &&
                     snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no orders found'));
+                  return Center(child: Text('No Eorders found'));
                 } else
                   return ListView.builder(
                       itemCount: 1,
@@ -93,7 +90,7 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                   width: 10,
                                 ),
                                 Text(
-                                  'Price: ' + widget.price + 'Rs',
+                                  'Quantity: ' + widget.quantity,
                                   style: GoogleFonts.lato(
                                     fontSize: 20,
                                   ),
@@ -108,10 +105,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Text(
-                                  'Quantity: ' + widget.quantity + 'KG',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 20,
+                                Expanded(
+                                  child: Text(
+                                    'Agentid: ' + widget.agentid,
+                                    style: GoogleFonts.lato(
+                                      fontSize: 20,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -125,71 +124,7 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                   width: 10,
                                 ),
                                 Text(
-                                  'User: ' + widget.name,
-                                  style: GoogleFonts.lato(
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Location: ' + widget.location,
-                                  style: GoogleFonts.lato(
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Address: ' + widget.address,
-                                  style: GoogleFonts.lato(
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Date: ' + widget.date,
-                                  style: GoogleFonts.lato(
-                                    fontSize: 20,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 40,
-                            ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  'Phone: ' + widget.phone,
+                                  'date: ' + widget.date,
                                   style: GoogleFonts.lato(
                                     fontSize: 20,
                                   ),
@@ -220,18 +155,32 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    'Date of order: ' + widget.date,
-                                    style: GoogleFonts.lato(
-                                      fontSize: 20,
-                                    ),
+                                Text(
+                                  'Eoid: ' + widget.eoid,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 20,
                                   ),
                                 ),
                               ],
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 40,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'uid: ' + widget.uid,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 40,
                             ),
                             Container(
                               width: 150,
@@ -240,10 +189,16 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                   onPressed: () {
                                     FirebaseFirestore.instance
                                         .collection('ewastes')
-                                        .doc(snapshot.data!.docs[index]['eid'])
+                                        .doc(widget.eid)
+                                        .update({
+                                      'status': 1,
+                                    });
+                                    FirebaseFirestore.instance
+                                        .collection('eorders')
+                                        .doc(snapshot.data!.docs[index]['eoid'])
                                         .delete()
                                         .then((value) {
-                                      showsnackbar('Request Cancelled');
+                                      showsnackbar('EOrder Cancelled');
                                       Navigator.pop(context);
                                     });
                                   },

@@ -87,6 +87,7 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                   ),
                   TextFormField(
                     controller: linkinputcontroller,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                         labelText: 'link',
                         prefixIcon: Icon(Icons.link),
@@ -94,7 +95,17 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
-                      if (value!.length <= 5) return ' pls add description';
+                      final pattern =
+                          r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
+                      final regExp = RegExp(pattern);
+
+                      if (value!.isEmpty) {
+                        return 'Enter an link';
+                      } else if (!regExp.hasMatch(value)) {
+                        return 'Enter a valid link';
+                      } else {
+                        return null;
+                      }
                     },
                   ),
                   SizedBox(

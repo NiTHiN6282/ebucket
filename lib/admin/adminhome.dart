@@ -1,5 +1,6 @@
 import 'package:ebucket/admin/adminsettings.dart';
 import 'package:ebucket/admin/campaign/admincampaign.dart';
+import 'package:ebucket/admin/eorders/admineorderslist.dart';
 import 'package:ebucket/admin/ewasterequests/ewasterequestlist.dart';
 import 'package:ebucket/admin/notification/adminnotification.dart';
 import 'package:ebucket/admin/orders/adminorderslist.dart';
@@ -221,6 +222,40 @@ class _AdminHomeState extends State<AdminHome> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => AdminOrdersList()));
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: Card(
+                    elevation: 10,
+                    shadowColor: Colors.grey,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.75,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: Color(0xff00adb5),
+                      ),
+                      child: Center(
+                        child: ListTile(
+                          leading: Icon(
+                            Icons.shopping_cart,
+                            size: 40,
+                          ),
+                          title: Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text("EOrders"),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AdminEOrdersList()));
                           },
                         ),
                       ),

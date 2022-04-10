@@ -186,7 +186,7 @@ class _SalesDetailsState extends State<SalesDetails> {
                                                           'eid': widget.eid,
                                                           'uid': agentid,
                                                           'agentid': agentid,
-                                                          'date': DateTime.now()
+                                                          'date': DateTime.now().toString()
                                                         }).then((value) {
                                                           showsnackbar(
                                                               'Order Submitted');
