@@ -57,9 +57,7 @@ class _CategoryFormState extends State<CategoryForm> {
           child: Container(
         height: double.infinity,
         decoration: BoxDecoration(
-            color: Colors.grey.shade200.withOpacity(0.5),
-            image: DecorationImage(
-                fit: BoxFit.cover, image: AssetImage('images/backimage.jpg'))),
+            color: Colors.grey.shade200.withOpacity(0.5),),
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -98,26 +96,11 @@ class _CategoryFormState extends State<CategoryForm> {
                       controller: quantityinputcontroller,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-
-                        fillColor: Colors.white70,
-                        filled: true,
                         hintText: 'Quantity in KG',
-                        //labelText: 'Quantity',
-                        labelStyle: TextStyle(color: Colors.black87),
-                        prefixIcon: Icon(
-                          Icons.production_quantity_limits,
-                          color: Colors.black,
-                        ),
+                        labelText: 'Quantity',
+                        prefixIcon: Icon(Icons.production_quantity_limits),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(30)),
                       ),
                       validator: (value) {
                         if (value!.length < 1)
