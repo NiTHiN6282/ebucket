@@ -51,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      if (value!.length <= 3) return 'Invalid Name';
+                      if (value!.length < 3) return 'Invalid Name';
                     },
                   ),
                   SizedBox(
@@ -94,6 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     validator: (value) {
                       if (value!.length != 10)
                         return 'Number should contain 10 characters!';
+                      return null;
                     },
                   ),
                   SizedBox(
@@ -101,6 +102,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   TextFormField(
                     controller: emailinputcontroller,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: 'Email',
@@ -108,6 +110,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
+                    validator: (value) {
+                      final pattern = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
+                      final regExp = RegExp(pattern);
+
+                      if (value!.isEmpty) {
+                        return 'Enter an email';
+                      } else if (!regExp.hasMatch(value)) {
+                        return 'Enter a valid email';
+                      } else {
+                        return null;
+                      }
+                    },
                   ),
                   SizedBox(
                     height: 20,
@@ -140,6 +154,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   TextFormField(
                     controller: passwordinputcontroller,
                     keyboardType: TextInputType.visiblePassword,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                       labelText: 'Password',
                       prefixIcon: Icon(Icons.lock),
@@ -147,8 +162,11 @@ class _RegisterPageState extends State<RegisterPage> {
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      if (value!.length < 8)
-                        return 'Number should contain 8 characters!';
+                      if (value!.length < 6) {
+                        return 'Password must be at least 6 characters long';
+                      } else {
+                        return null;
+                      }
                     },
                   ),
                   SizedBox(
@@ -162,6 +180,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 40,
                     child: ElevatedButton.icon(
                         onPressed: () {
+                          FocusScope.of(context).unfocus();
                           if (_loginkey.currentState!.validate()) {
                             FirebaseAuth.instance
                                 .createUserWithEmailAndPassword(

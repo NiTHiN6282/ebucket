@@ -44,6 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextFormField(
                     controller: emailinputcontroller,
                     autofillHints: [AutofillHints.email],
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: 'Email',
@@ -53,7 +54,16 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      if (value!.length <= 3) return 'Invalid Username';
+                      final pattern = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
+                      final regExp = RegExp(pattern);
+
+                      if (value!.isEmpty) {
+                        return 'Enter an email';
+                      } else if (!regExp.hasMatch(value)) {
+                        return 'Enter a valid email';
+                      } else {
+                        return null;
+                      }
                     },
                   ),
                   SizedBox(
@@ -62,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextFormField(
                     controller: passwordinputcontroller,
                     obscureText: _isHidden,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     // keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: 'Password',
@@ -76,8 +87,11 @@ class _LoginPageState extends State<LoginPage> {
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      if (value!.length < 4)
-                        return 'Password should contain 4 characters!';
+                      if (value!.length < 6) {
+                        return 'Password must be at least 6 characters long';
+                      } else {
+                        return null;
+                      }
                     },
                   ),
                   SizedBox(
@@ -91,6 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 40,
                     child: ElevatedButton.icon(
                         onPressed: () {
+                          FocusScope.of(context).unfocus();
                           if (_loginkey.currentState!.validate()) {
                             FirebaseAuth.instance
                                 .signInWithEmailAndPassword(
