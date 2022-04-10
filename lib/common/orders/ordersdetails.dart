@@ -16,6 +16,7 @@ class OrdersDetails extends StatefulWidget {
 }
 
 class _OrdersDetailsState extends State<OrdersDetails> {
+  var apid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,6 +100,15 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                                         .then((value) {
                                       showsnackbar('Order Cancelled');
                                       Navigator.pop(context);
+                                    });
+                                    setState(() {
+                                      apid=snapshot.data!.docs[index]['apid'];
+                                    });
+                                    FirebaseFirestore.instance
+                                        .collection('recycleproducts')
+                                        .doc(apid)
+                                        .update({
+                                      'status': 1,
                                     });
                                   },
                                   icon: Icon(Icons.remove_shopping_cart),

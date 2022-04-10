@@ -38,7 +38,7 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection('recycle products')
+                  .collection('recycleproducts')
                   .where('status', isEqualTo: 1)
                   .snapshots(),
               builder: (context, snapshot) {

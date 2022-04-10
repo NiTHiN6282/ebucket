@@ -149,8 +149,8 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
                               url = (await ref.getDownloadURL()).toString();
                               print(url);
                             }).then((value) => FirebaseFirestore.instance
-                                    .collection("recycle products")
-                                    .doc(fileName)
+                                    .collection("recycleproducts")
+                                    .doc(apid)
                                     .set({
                                   "productname":
                                       productnameinputcontroller.text,

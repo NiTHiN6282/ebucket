@@ -341,6 +341,12 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                 child: ElevatedButton.icon(
                   onPressed: () {
                     FirebaseFirestore.instance
+                        .collection('recycleproducts')
+                        .doc(widget.apid)
+                        .update({
+                      'status': 0,
+                    });
+                    FirebaseFirestore.instance
                         .collection('orders')
                         .doc(oid)
                         .set({

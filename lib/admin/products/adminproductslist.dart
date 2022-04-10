@@ -25,7 +25,7 @@ class _AdminProductsListState extends State<AdminProductsList> {
           padding: const EdgeInsets.all(8.0),
           child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
-                  .collection('recycle products')
+                  .collection('recycleproducts')
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
@@ -59,7 +59,7 @@ class _AdminProductsListState extends State<AdminProductsList> {
                                     icon: Icon(Icons.delete, color: Colors.red),
                                     onPressed: () {
                                       FirebaseFirestore.instance
-                                          .collection('recycle products')
+                                          .collection('recycleproducts')
                                           .doc(snapshot.data!.docs[index]
                                               ['fileName'])
                                           .delete()
