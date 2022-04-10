@@ -15,6 +15,7 @@ class EOrdersDetails extends StatefulWidget {
 }
 
 class _EOrdersDetailsState extends State<EOrdersDetails> {
+  var eid;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +87,15 @@ class _EOrdersDetailsState extends State<EOrdersDetails> {
                                         .then((value) {
                                       showsnackbar('Order Cancelled');
                                       Navigator.pop(context);
+                                    });
+                                    setState(() {
+                                      eid=snapshot.data!.docs[index]['eid'];
+                                    });
+                                    FirebaseFirestore.instance
+                                        .collection('ewastes')
+                                        .doc(eid)
+                                        .update({
+                                      'status': 1,
                                     });
                                   },
                                   icon: Icon(Icons.remove_shopping_cart),

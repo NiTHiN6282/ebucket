@@ -43,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextFormField(
                     controller: emailinputcontroller,
+                    autofillHints: [AutofillHints.email],
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: 'Email',

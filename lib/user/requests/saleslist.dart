@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebucket/collecting_agent/ordersummary.dart';
 import 'package:ebucket/user/requests/salesdetails.dart';
 import 'package:flutter/material.dart';
 
@@ -38,24 +39,40 @@ class _SalesListState extends State<SalesList> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              // color: Colors.red,
-                              color: Color(0xff009E60),
+                              color: Colors.blueGrey,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             height: 100,
                             width: 200,
                             child: Center(
                               child: ListTile(
-                                leading: Text((index + 1).toString()),
+                                leading: Container(
+                                  height: double.infinity,
+                                  child: Icon(Icons.remove_from_queue,color: Colors.black,),
+                                ),
                                 title: Text(
                                     snapshot.data!.docs[index]['category']),
                                 subtitle: Text(snapshot.data!.docs[index]
                                         ['quantity'] +
                                     'KG'),
+                                trailing: snapshot.data!.docs[index]['status'] == 0
+                                    ? Image.asset("images/placedpic.png")
+                                    : null,
                                 onTap: () {
                                   if(snapshot.data!.docs[index]
                                   ['status']==0){
-                                    showsnackbar('order placed');
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (context) => OrderSummary(
+                                          category: snapshot.data!.docs[index]
+                                          ['category'],
+                                          quantity: snapshot.data!.docs[index]
+                                          ['quantity'],
+                                          price: snapshot.data!.docs[index]
+                                          ['price'],
+                                          eid: snapshot.data!.docs[index]['eid'],
+                                        )
+                                    )
+                                    );
                                   }
                                   else{
                                     Navigator.push(
