@@ -2,7 +2,7 @@
     package="com.example.ebucket">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
    <application
-        android:label="ebucket"
+        android:label="E-Bucket"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
