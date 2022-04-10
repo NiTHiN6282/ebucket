@@ -42,7 +42,6 @@ class _CategoryFormState extends State<CategoryForm> {
     categoryinputcontroller.text = widget.category;
     locationinputcontroller.text = widget.location;
     phoneinputcontroller.text = widget.phone;
-    // TODO: implement initState
     super.initState();
   }
 
@@ -160,9 +159,6 @@ class _CategoryFormState extends State<CategoryForm> {
                       height: 20,
                     ),
                     Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.circular(80),
-                      // ),
                       width: 150,
                       height: 44,
                       child: ElevatedButton.icon(

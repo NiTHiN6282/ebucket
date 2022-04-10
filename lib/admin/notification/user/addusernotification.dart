@@ -18,7 +18,6 @@ class _AddUserNotificationState extends State<AddUserNotification> {
   @override
   void initState() {
     unid = DateTime.now().toString();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -32,7 +31,7 @@ class _AddUserNotificationState extends State<AddUserNotification> {
       ),
       body: SafeArea(
         child: Form(
-          key: addusernotificationkey, // set key(it specifies the form
+          key: addusernotificationkey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: SingleChildScrollView(
@@ -52,13 +51,11 @@ class _AddUserNotificationState extends State<AddUserNotification> {
                   SizedBox(
                     height: 30,
                   ),
-                  // Image.asset('images/demo2.png',height: 100,width: 500,),
                   SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: titleinputcontroller,
-
                     decoration: InputDecoration(
                         labelText: 'Title',
                         hintText: 'abc bd',
@@ -68,31 +65,26 @@ class _AddUserNotificationState extends State<AddUserNotification> {
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return 'mandatory';
-                    }, //check whether its correct
+                    },
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   TextFormField(
                     controller: descriptioninputcontroller,
-                    //obscureText: true,
-
                     decoration: InputDecoration(
                         labelText: 'description',
-                        //hintText: '********',
                         prefixIcon: Icon(Icons.description),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return ' pls add description';
-                    }, //check whether its correct
+                    },
                   ),
-
                   SizedBox(
                     height: 30,
                   ),
-
                   Container(
                     width: 150,
                     height: 50,

@@ -68,7 +68,6 @@ class _AdminProductsState extends State<AdminProducts> {
                   width: MediaQuery.of(context).size.width * 0.75,
                   height: 100,
                   decoration: BoxDecoration(
-                    // color: Colors.red,
                     color: Color(0xffFF4060),
                     borderRadius: BorderRadius.circular(20),
                   ),

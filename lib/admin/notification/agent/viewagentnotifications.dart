@@ -41,7 +41,6 @@ class _AdminViewAgentNotificationsState
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              // color: Colors.red,
                               color: Color(0xff009E60),
                               borderRadius: BorderRadius.circular(20),
                             ),

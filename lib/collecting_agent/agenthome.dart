@@ -39,15 +39,12 @@ class _AgentHomeState extends State<AgentHome> {
     locationinputcontroller.text = widget.location;
     addressinputcontroller.text = widget.address;
     phoneinputcontroller.text = widget.phone;
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print(size.height);
-    print(size.width);
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Container(

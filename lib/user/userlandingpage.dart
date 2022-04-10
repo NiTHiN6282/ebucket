@@ -78,7 +78,6 @@ class _UserLandingPageState extends State<UserLandingPage> {
   @override
   void initState() {
     setdata();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -118,7 +117,6 @@ class _UserLandingPageState extends State<UserLandingPage> {
       ),
       drawer: Drawer(
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(

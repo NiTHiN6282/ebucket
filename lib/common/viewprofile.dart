@@ -40,7 +40,6 @@ class ViewProfileState extends State<ViewProfile>
     locationinputcontroller.text = widget.location;
     phoneinputcontroller.text = widget.phone;
     addressinputcontroller.text = widget.address;
-    // TODO: implement initState
     super.initState();
   }
 
@@ -292,17 +291,6 @@ class ViewProfileState extends State<ViewProfile>
                                     ),
                                     flex: 2,
                                   ),
-                                  // Expanded(
-                                  //   child: Container(
-                                  //     child: new Text(
-                                  //       'State',
-                                  //       style: TextStyle(
-                                  //           fontSize: 16.0,
-                                  //           fontWeight: FontWeight.bold),
-                                  //     ),
-                                  //   ),
-                                  //   flex: 2,
-                                  // ),
                                 ],
                               )),
                           Padding(
@@ -326,14 +314,6 @@ class ViewProfileState extends State<ViewProfile>
                                     ),
                                     flex: 2,
                                   ),
-                                  // Flexible(
-                                  //   child: new TextFormField(
-                                  //     decoration: const InputDecoration(
-                                  //         hintText: "Enter State"),
-                                  //     enabled: !_status,
-                                  //   ),
-                                  //   flex: 2,
-                                  // ),
                                 ],
                               )),
                           !_status ? _getActionButtons() : new Container(),
@@ -350,7 +330,6 @@ class ViewProfileState extends State<ViewProfile>
 
   @override
   void dispose() {
-    // Clean up the controller when the Widget is disposed
     myFocusNode.dispose();
     super.dispose();
   }

@@ -74,7 +74,6 @@ class _LoginPageState extends State<LoginPage> {
                     controller: passwordinputcontroller,
                     obscureText: _isHidden,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    // keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: 'Password',
                       prefixIcon: Icon(Icons.lock),
@@ -99,9 +98,6 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20,
                   ),
                   Container(
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(80),
-                    // ),
                     width: 150,
                     height: 40,
                     child: ElevatedButton.icon(

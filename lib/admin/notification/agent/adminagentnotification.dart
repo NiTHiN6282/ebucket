@@ -60,7 +60,6 @@ class _AdminAgentNotificationState extends State<AdminAgentNotification> {
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: 100,
                 decoration: BoxDecoration(
-                  // color: Colors.red,
                   color: Color(0xff00adb5),
                   borderRadius: BorderRadius.circular(20),
                 ),

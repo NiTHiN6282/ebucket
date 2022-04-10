@@ -45,7 +45,6 @@ class _AgentListState extends State<AgentList> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              // color: Colors.red,
                               color: snapshot.data!.docs[index]['status'] == 1
                                   ? Colors.green
                                   : Colors.red,

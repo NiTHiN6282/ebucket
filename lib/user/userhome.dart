@@ -35,8 +35,6 @@ class _UserHomeState extends State<UserHome> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print(size.height);
-    print(size.width);
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Container(
@@ -209,11 +207,6 @@ class _UserHomeState extends State<UserHome> {
                         email: widget.email,
                       )));
         }
-
-        // setState(() {
-        //   selected=1;
-        //
-        // });
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 20, bottom: 20),
@@ -231,10 +224,6 @@ class _UserHomeState extends State<UserHome> {
                   bottomLeft: Radius.circular(10),
                   topLeft: Radius.circular(10),
                   topRight: Radius.circular(10)),
-              // gradient: LinearGradient(
-              //     begin: Alignment.topCenter,
-              //     end: Alignment.bottomCenter,
-              //     colors: [color1, color2])
             ),
             height: 150,
             width: cardwidth,

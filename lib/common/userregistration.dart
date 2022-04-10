@@ -131,9 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     value: category,
                     decoration: InputDecoration(
                       hintText: "Category",
-
                       prefixIcon: Icon(Icons.email),
-                      //suffixIcon: Icon(Icons.panorama_fish_eye),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -174,9 +172,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 20,
                   ),
                   Container(
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(80),
-                    // ),
                     width: 150,
                     height: 40,
                     child: ElevatedButton.icon(

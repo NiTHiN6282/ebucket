@@ -26,7 +26,6 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
 
   void initState() {
     apid = DateTime.now().toString();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -126,9 +125,6 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
                     height: 20,
                   ),
                   Container(
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(80),
-                    // ),
                     width: 150,
                     height: 40,
                     child: ElevatedButton.icon(
@@ -137,7 +133,6 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
                             showsnackbar('insert image');
                           } else if (_addproductskey.currentState!.validate()) {
                             String fileName = DateTime.now().toString();
-//imgController=fileName as TextEditingController;//basename(_image.path);
 
                             var ref = FirebaseStorage.instance
                                 .ref()
@@ -147,7 +142,6 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
 
                             uploadTask.then((res) async {
                               url = (await ref.getDownloadURL()).toString();
-                              print(url);
                             }).then((value) => FirebaseFirestore.instance
                                     .collection("recycleproducts")
                                     .doc(apid)
@@ -184,7 +178,6 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
   }
 
   _imgFromGallery() async {
-    // ignore: deprecated_member_use
     final XFile? image =
         await _picker.pickImage(source: ImageSource.gallery, imageQuality: 70);
 
@@ -194,7 +187,6 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
   }
 
   _imgFromCamera() async {
-    // ignore: deprecated_member_use
     final XFile? photo =
         await _picker.pickImage(source: ImageSource.camera, imageQuality: 70);
 

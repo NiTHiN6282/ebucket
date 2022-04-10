@@ -19,7 +19,6 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
   @override
   void initState() {
     anid = DateTime.now().toString();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -33,7 +32,7 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
       ),
       body: SafeArea(
         child: Form(
-          key: addagentnotificationkey, // set key(it specifies the form
+          key: addagentnotificationkey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: SingleChildScrollView(
@@ -53,13 +52,11 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
                   SizedBox(
                     height: 30,
                   ),
-                  // Image.asset('images/demo2.png',height: 100,width: 500,),
                   SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: titleinputcontroller,
-
                     decoration: InputDecoration(
                         labelText: 'Title',
                         hintText: 'abc bd',
@@ -69,31 +66,26 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return 'mandatory';
-                    }, //check whether its correct
+                    },
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   TextFormField(
                     controller: descriptioninputcontroller,
-                    //obscureText: true,
-
                     decoration: InputDecoration(
                         labelText: 'description',
-                        //hintText: '********',
                         prefixIcon: Icon(Icons.description),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return ' pls add description';
-                    }, //check whether its correct
+                    },
                   ),
-
                   SizedBox(
                     height: 30,
                   ),
-
                   Container(
                     width: 150,
                     height: 50,

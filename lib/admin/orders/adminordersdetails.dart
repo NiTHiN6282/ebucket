@@ -71,7 +71,6 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                 fontSize: 25,
                               ),
                             ),
-
                             widget.url == null
                                 ? Image.asset(
                                     "images/logo.png",
@@ -84,7 +83,6 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                         Image.asset('images/oos.png',
                                             fit: BoxFit.fitWidth),
                                   ),
-
                             SizedBox(
                               height: 40,
                             ),
@@ -184,59 +182,9 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                             SizedBox(
                               height: 40,
                             ),
-                            // Row(
-                            //   children: [
-                            //     SizedBox(
-                            //       width: 10,
-                            //     ),
-                            //     Text('apid: '+widget.apid,
-                            //       style: GoogleFonts.lato(
-                            //         fontSize: 20,
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            // SizedBox(
-                            //   height: 40,
-                            // ),
-                            // Row(
-                            //   children: [
-                            //     SizedBox(
-                            //       width: 10,
-                            //     ),
-                            //     Text('oid: '+widget.oid,
-                            //       style: GoogleFonts.lato(
-                            //         fontSize: 20,
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            // SizedBox(
-                            //   height: 40,
-                            // ),
-                            // Row(
-                            //   children: [
-                            //     SizedBox(
-                            //       width: 10,
-                            //     ),
-                            //     Text('Date of order: '+widget.date,
-                            //       style: GoogleFonts.lato(
-                            //         fontSize: 20,
-                            //       ),
-                            //     ),
-                            //   ],
-                            // ),
-                            // SizedBox(
-                            //   height: 20,
-                            // ),
                             Container(
                               width: 150,
                               height: 50,
-                              // decoration: BoxDecoration(
-                              //   borderRadius: BorderRadius.circular(50),
-                              //       color: Colors.green,
-                              // ),
-
                               child: ElevatedButton.icon(
                                   onPressed: () {
                                     FirebaseFirestore.instance

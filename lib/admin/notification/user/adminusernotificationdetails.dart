@@ -47,14 +47,8 @@ class _AdminUserNotificationDetailsState
               Container(
                 width: 150,
                 height: 50,
-                // decoration: BoxDecoration(
-                //   borderRadius: BorderRadius.circular(50),
-                //       color: Colors.green,
-                // ),
-
                 child: ElevatedButton.icon(
                     onPressed: () {
-                      // showalert();
                       launch("https://google.com/");
                     },
                     icon: Icon(Icons.delete),

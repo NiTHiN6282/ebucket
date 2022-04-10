@@ -19,7 +19,6 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
   @override
   void initState() {
     cid = DateTime.now().toString();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -32,10 +31,9 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
       ),
       body: SafeArea(
         child: Form(
-          key: addcampaignkey, // set key(it specifies the form
+          key: addcampaignkey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            // all _all align
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -52,14 +50,12 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                   )),
                   SizedBox(
                     height: 30,
-                  ), //align center
-                  // Image.asset('images/demo2.png',height: 100,width: 500,),
+                  ),
                   SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: titleinputcontroller,
-
                     decoration: InputDecoration(
                         labelText: 'Title',
                         hintText: 'abc bd',
@@ -68,51 +64,42 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
-                      //anonymous function
                       if (value!.length <= 1) return 'mandatory';
-                    }, //check whether its correct
+                    },
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   TextFormField(
                     controller: descriptioninputcontroller,
-                    //obscureText: true,
-
                     decoration: InputDecoration(
                         labelText: 'description',
-                        //hintText: '********',
                         prefixIcon: Icon(Icons.description),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return ' pls add description';
-                    }, //check whether its correct
+                    },
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   TextFormField(
                     controller: linkinputcontroller,
-                    //obscureText: true,
-
                     decoration: InputDecoration(
                         labelText: 'link',
-                        //hintText: '********',
                         prefixIcon: Icon(Icons.link),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 5) return ' pls add description';
-                    }, //check whether its correct
+                    },
                   ),
-
                   SizedBox(
                     height: 30,
                   ),
-
                   Container(
                     width: 150,
                     height: 50,

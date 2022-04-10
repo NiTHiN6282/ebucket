@@ -39,7 +39,6 @@ class RecycleProductsDetails extends StatefulWidget {
 class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -141,22 +140,6 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
               Container(
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    // FirebaseFirestore.instance
-                    //     .collection('sales')
-                    //     .doc(sid)
-                    //     .set({
-                    //   'sid': sid,
-                    //   'apid': widget.apid,
-                    //   'uid': widget.uid,
-                    //   'name': widget.name,
-                    //   'product': widget.productname,
-                    //   'price': widget.price,
-                    //   'status': 1,
-                    //   'date': DateTime.now()
-                    // }).then((value) {
-                    //   Navigator.push(context,
-                    //       MaterialPageRoute(builder: (context) => BuyPage(uid: widget.uid,name: widget.name,phone: widget.phone,address: widget.address,location: widget.location,email: widget.email,productname: widget.productname,price: widget.price,)));
-                    // });
                     Navigator.push(
                         context,
                         MaterialPageRoute(

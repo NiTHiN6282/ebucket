@@ -31,7 +31,6 @@ class EwasteListDetails extends StatefulWidget {
 }
 
 class _EwasteListDetailsState extends State<EwasteListDetails> {
-  // var estatus=true;
   var aid;
   var status;
   var auctioncheck;
@@ -40,13 +39,11 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
   TextEditingController auctionpriceinputcontroller =
       new TextEditingController();
 
-  // var snapshot;
   var documents;
 
   @override
   void initState() {
     aid = DateTime.now().toString();
-    // TODO: implement initState
     super.initState();
     FirebaseFirestore.instance
         .collection('ewastes')
@@ -58,7 +55,6 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
       }
       oldaid = value.data()![widget.agentid];
     });
-    // snapshot=FirebaseFirestore.instance.collection('auctions').get();
   }
 
   @override
@@ -68,9 +64,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
         visible: true,
         child: FloatingActionButton(
           onPressed: () {
-            print(auctioncheck);
             if (auctioncheck == true) {
-              print(oldaid);
               showalertupdate();
             } else {
               showalert();
@@ -199,7 +193,6 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    // color: Colors.red,
                                     color: Color(0xff009e60),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
@@ -288,9 +281,6 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                         height: 20,
                       ),
                       Container(
-                        // decoration: BoxDecoration(
-                        //   borderRadius: BorderRadius.circular(80),
-                        // ),
                         width: 150,
                         height: 40,
                         child: ElevatedButton.icon(

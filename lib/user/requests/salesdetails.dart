@@ -23,7 +23,6 @@ class _SalesDetailsState extends State<SalesDetails> {
 
   @override
   void initState() {
-    // TODO: implement initState
     oid = DateTime.now().toString();
     super.initState();
   }
@@ -105,11 +104,6 @@ class _SalesDetailsState extends State<SalesDetails> {
                                     Container(
                                       width: 150,
                                       height: 50,
-                                      // decoration: BoxDecoration(
-                                      //   borderRadius: BorderRadius.circular(50),
-                                      //       color: Colors.green,
-                                      // ),
-
                                       child: ElevatedButton.icon(
                                           onPressed: () {
                                             FirebaseFirestore.instance
@@ -151,7 +145,6 @@ class _SalesDetailsState extends State<SalesDetails> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      // color: Colors.red,
                                       color: Color(0xff009e60),
                                       borderRadius: BorderRadius.circular(20),
                                     ),

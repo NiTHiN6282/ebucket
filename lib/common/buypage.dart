@@ -51,7 +51,6 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
     phoneinputcontroller.text = widget.phone;
     addressinputcontroller.text = widget.address;
     oid = DateTime.now().toString();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -386,7 +385,6 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    // Clean up the controller when the Widget is disposed
     myFocusNode.dispose();
     super.dispose();
   }

@@ -98,7 +98,6 @@ class _AdminHomeState extends State<AdminHome> {
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
                       decoration: BoxDecoration(
-                        // color: Colors.red,
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
