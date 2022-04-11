@@ -1,5 +1,5 @@
 List<String> gallery = [
-  'images/cam1.jpg',
-  'images/cam2.jpg',
-  'images/cam3.jpg'
+  'images/poster1.png',
+  'images/poster2.jpg',
+  'images/poster3.jpg'
 ];
