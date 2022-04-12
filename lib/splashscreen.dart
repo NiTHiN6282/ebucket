@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebucket/admin/adminhome.dart';
 import 'package:ebucket/common/loginpage.dart';
 import 'package:ebucket/user/userlandingpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -56,6 +57,11 @@ class _SplashScreenState extends State<SplashScreen> {
                           email: value.data()!['email'],
                           category: value.data()!['usertype'],
                         )));
+          }else if (value.data()!['status'] == 'admin') {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AdminHome()));
           }
         });
       }
