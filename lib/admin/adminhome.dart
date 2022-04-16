@@ -11,10 +11,11 @@ import 'package:flutter/material.dart';
 
 import '../common/loginpage.dart';
 
+// ignore: must_be_immutable
 class AdminHome extends StatefulWidget {
-  var status;
-  var name;
-  var phone;
+  dynamic status;
+  dynamic name;
+  dynamic phone;
 
   AdminHome({Key? key, this.status, this.name, this.phone}) : super(key: key);
 
@@ -28,8 +29,8 @@ class _AdminHomeState extends State<AdminHome> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xff000000),
-        title: Text("Admin"),
+        backgroundColor: const Color(0xff000000),
+        title: const Text("Admin"),
         centerTitle: true,
         actions: [
           IconButton(
@@ -37,15 +38,15 @@ class _AdminHomeState extends State<AdminHome> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => AdminNotification()));
+                        builder: (context) => const AdminNotification()));
               },
-              icon: Icon(Icons.notification_add, color: Colors.yellow)),
+              icon: const Icon(Icons.notification_add, color: Colors.yellow)),
           IconButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
               },
-              icon: Icon(Icons.logout, color: Colors.red)),
+              icon: const Icon(Icons.logout, color: Colors.red)),
         ],
       ),
       body: SafeArea(
@@ -54,7 +55,7 @@ class _AdminHomeState extends State<AdminHome> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Center(
@@ -64,31 +65,31 @@ class _AdminHomeState extends State<AdminHome> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.person,
                             size: 40,
                           ),
-                          title: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                          title: const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text("View Users"),
                           ),
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => UserList()));
+                                    builder: (context) => const UserList()));
                           },
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
@@ -98,17 +99,17 @@ class _AdminHomeState extends State<AdminHome> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.group,
                             size: 40,
                           ),
-                          title: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                          title: const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text("View Agents"),
                           ),
                           onTap: () {
@@ -126,7 +127,7 @@ class _AdminHomeState extends State<AdminHome> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
@@ -136,31 +137,32 @@ class _AdminHomeState extends State<AdminHome> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.campaign,
                             size: 40,
                           ),
-                          title: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                          title: const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text("Campaign"),
                           ),
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AdminCampaign()));
+                                    builder: (context) =>
+                                        const AdminCampaign()));
                           },
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
@@ -170,31 +172,32 @@ class _AdminHomeState extends State<AdminHome> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.card_travel,
                             size: 40,
                           ),
-                          title: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                          title: const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text("Products"),
                           ),
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AdminProducts()));
+                                    builder: (context) =>
+                                        const AdminProducts()));
                           },
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
@@ -204,31 +207,32 @@ class _AdminHomeState extends State<AdminHome> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.shopping_cart,
                             size: 40,
                           ),
-                          title: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                          title: const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text("Orders"),
                           ),
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AdminOrdersList()));
+                                    builder: (context) =>
+                                        const AdminOrdersList()));
                           },
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
@@ -238,31 +242,32 @@ class _AdminHomeState extends State<AdminHome> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.shopping_cart,
                             size: 40,
                           ),
-                          title: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                          title: const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text("EOrders"),
                           ),
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AdminEOrdersList()));
+                                    builder: (context) =>
+                                        const AdminEOrdersList()));
                           },
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
@@ -272,31 +277,32 @@ class _AdminHomeState extends State<AdminHome> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.computer,
                             size: 40,
                           ),
-                          title: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                          title: const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text("Ewaste Requests"),
                           ),
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => EwasteRequestList()));
+                                    builder: (context) =>
+                                        const EwasteRequestList()));
                           },
                         ),
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
@@ -306,24 +312,25 @@ class _AdminHomeState extends State<AdminHome> {
                     child: Container(
                       width: MediaQuery.of(context).size.width * 0.75,
                       height: 100,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff00adb5),
                       ),
                       child: Center(
                         child: ListTile(
-                          leading: Icon(
+                          leading: const Icon(
                             Icons.person,
                             size: 40,
                           ),
-                          title: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                          title: const Padding(
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text("Settings"),
                           ),
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AdminSettings()));
+                                    builder: (context) =>
+                                        const AdminSettings()));
                           },
                         ),
                       ),

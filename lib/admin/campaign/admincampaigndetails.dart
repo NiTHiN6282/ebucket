@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class AdminCampaignDetails extends StatefulWidget {
-  var title;
-  var description;
-  var link;
+  dynamic title;
+  dynamic description;
+  dynamic link;
 
-  AdminCampaignDetails({this.title, this.description, this.link});
+  AdminCampaignDetails({Key? key, this.title, this.description, this.link})
+      : super(key: key);
 
   @override
   _AdminCampaignDetailsState createState() => _AdminCampaignDetailsState();
@@ -17,7 +19,7 @@ class _AdminCampaignDetailsState extends State<AdminCampaignDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details"),
+        title: const Text("Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -25,45 +27,45 @@ class _AdminCampaignDetailsState extends State<AdminCampaignDetails> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(widget.title),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.description),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Text("Link: "),
-                  SizedBox(
+                  const Text("Link: "),
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.link),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 width: 150,
                 height: 50,
                 child: ElevatedButton.icon(
                     onPressed: () {
                       launch("https://google.com/");
                     },
-                    icon: Icon(Icons.delete),
-                    label: Text("delete")),
+                    icon: const Icon(Icons.delete),
+                    label: const Text("delete")),
               ),
             ],
           ),
@@ -77,15 +79,15 @@ class _AdminCampaignDetailsState extends State<AdminCampaignDetails> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            content: Text("Do you want to delete?"),
-            title: Text("alertbox"),
+            content: const Text("Do you want to delete?"),
+            title: const Text("alertbox"),
             actions: [
               TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text("confirm")),
-              TextButton(onPressed: () {}, child: Text("cancel"))
+                  child: const Text("confirm")),
+              TextButton(onPressed: () {}, child: const Text("cancel"))
             ],
           );
         });

@@ -9,12 +9,11 @@ class AddAdminCampaign extends StatefulWidget {
 }
 
 class _AddAdminCampaignState extends State<AddAdminCampaign> {
-  var addcampaignkey = new GlobalKey<FormState>();
-  TextEditingController titleinputcontroller = new TextEditingController();
-  TextEditingController descriptioninputcontroller =
-      new TextEditingController();
-  TextEditingController linkinputcontroller = new TextEditingController();
-  var cid;
+  var addcampaignkey = GlobalKey<FormState>();
+  TextEditingController titleinputcontroller = TextEditingController();
+  TextEditingController descriptioninputcontroller = TextEditingController();
+  TextEditingController linkinputcontroller = TextEditingController();
+  dynamic cid;
 
   @override
   void initState() {
@@ -26,7 +25,7 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Campaigns"),
+        title: const Text("Campaigns"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -37,10 +36,10 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Center(
+                  const Center(
                       child: Text(
                     "Add Campaign",
                     style: TextStyle(
@@ -48,10 +47,10 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                         color: Colors.green,
                         fontWeight: FontWeight.bold),
                   )),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -59,30 +58,32 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                     decoration: InputDecoration(
                         labelText: 'Title',
                         hintText: 'abc bd',
-                        prefixIcon: Icon(Icons.title),
+                        prefixIcon: const Icon(Icons.title),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return 'mandatory';
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   TextFormField(
                     controller: descriptioninputcontroller,
                     decoration: InputDecoration(
                         labelText: 'description',
-                        prefixIcon: Icon(Icons.description),
+                        prefixIcon: const Icon(Icons.description),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return ' pls add description';
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   TextFormField(
@@ -90,12 +91,12 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                         labelText: 'link',
-                        prefixIcon: Icon(Icons.link),
+                        prefixIcon: const Icon(Icons.link),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
-                      final pattern =
+                      const pattern =
                           r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
                       final regExp = RegExp(pattern);
 
@@ -108,7 +109,7 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -136,10 +137,10 @@ class _AddAdminCampaignState extends State<AddAdminCampaign> {
                             });
                           }
                         },
-                        icon: Icon(Icons.save),
-                        label: Text("ADD")),
+                        icon: const Icon(Icons.save),
+                        label: const Text("ADD")),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                 ],

@@ -15,9 +15,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isHidden = true;
-  var _loginkey = new GlobalKey<FormState>();
-  TextEditingController emailinputcontroller = new TextEditingController();
-  TextEditingController passwordinputcontroller = new TextEditingController();
+  final _loginkey = GlobalKey<FormState>();
+  TextEditingController emailinputcontroller = TextEditingController();
+  TextEditingController passwordinputcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Image.asset(
@@ -38,23 +38,23 @@ class _LoginPageState extends State<LoginPage> {
                     height: 100,
                     width: 100,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: emailinputcontroller,
-                    autofillHints: [AutofillHints.email],
+                    autofillHints: const [AutofillHints.email],
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: 'Email',
                       hintText: 'abc@gmail.com',
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: const Icon(Icons.email),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      final pattern =
+                      const pattern =
                           r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
                       final regExp = RegExp(pattern);
 
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                       labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       suffix: InkWell(
                         onTap: _togglePasswordView,
                         child: Icon(
@@ -94,10 +94,10 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 150,
                     height: 40,
                     child: ElevatedButton.icon(
@@ -166,17 +166,18 @@ class _LoginPageState extends State<LoginPage> {
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     AdminHome()));
-                                      } else
+                                      } else {
                                         showsnackbar('Cannot login');
+                                      }
                                     }))
                                 .catchError(
                                     (e) => showsnackbar('Login failed'));
                           }
                         },
-                        icon: Icon(Icons.login),
-                        label: Text("Login")),
+                        icon: const Icon(Icons.login),
+                        label: const Text("Login")),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Padding(
@@ -186,9 +187,9 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => RegisterPage()));
+                                  builder: (context) => const RegisterPage()));
                         },
-                        child: Text(
+                        child: const Text(
                           "New User? Register",
                           style: TextStyle(
                               fontSize: 20,

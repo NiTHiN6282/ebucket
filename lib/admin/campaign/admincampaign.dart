@@ -14,8 +14,8 @@ class _AdminCampaignState extends State<AdminCampaign> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff246EE9),
-        title: Text("Campaign"),
+        backgroundColor: const Color(0xff246EE9),
+        title: const Text("Campaign"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -28,30 +28,30 @@ class _AdminCampaignState extends State<AdminCampaign> {
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: Color(0xffFF4060),
+                  color: const Color(0xffFF4060),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(
                   child: ListTile(
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.campaign,
                       size: 40,
                     ),
-                    title: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                    title: const Padding(
+                      padding: EdgeInsets.only(left: 20.0),
                       child: Text("View Campaigns"),
                     ),
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AdminViewCampaign()));
+                              builder: (context) => const AdminViewCampaign()));
                     },
                   ),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Center(
@@ -59,24 +59,24 @@ class _AdminCampaignState extends State<AdminCampaign> {
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: Color(0xffFF4060),
+                  color: const Color(0xffFF4060),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(
                   child: ListTile(
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.add,
                       size: 40,
                     ),
-                    title: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                    title: const Padding(
+                      padding: EdgeInsets.only(left: 20.0),
                       child: Text("Add Campaign"),
                     ),
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddAdminCampaign()));
+                              builder: (context) => const AddAdminCampaign()));
                     },
                   ),
                 ),

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class CampaignDetails extends StatefulWidget {
-  var title;
-  var description;
-  var link;
+  dynamic title;
+  dynamic description;
+  dynamic link;
 
-  CampaignDetails({this.title, this.description, this.link});
+  CampaignDetails({Key? key, this.title, this.description, this.link})
+      : super(key: key);
 
   @override
   _CampaignDetailsState createState() => _CampaignDetailsState();
@@ -18,7 +20,7 @@ class _CampaignDetailsState extends State<CampaignDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Campaigns"),
+        title: const Text("Campaigns"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -26,7 +28,7 @@ class _CampaignDetailsState extends State<CampaignDetails> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
@@ -35,7 +37,7 @@ class _CampaignDetailsState extends State<CampaignDetails> {
                   fontSize: 25,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Row(
@@ -49,7 +51,7 @@ class _CampaignDetailsState extends State<CampaignDetails> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -59,11 +61,11 @@ class _CampaignDetailsState extends State<CampaignDetails> {
                       onPressed: () {
                         launch(widget.link);
                       },
-                      icon: Icon(Icons.open_in_browser),
-                      label: Text("Open in Browser")),
+                      icon: const Icon(Icons.open_in_browser),
+                      label: const Text("Open in Browser")),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],

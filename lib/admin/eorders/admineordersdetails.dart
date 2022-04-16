@@ -1,17 +1,17 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class AdminEOrdersDetails extends StatefulWidget {
-  var category;
-  var price;
-  var quantity;
-  var agentid;
-  var uid;
-  var eid;
-  var eoid;
-  var date;
+  dynamic category;
+  dynamic price;
+  dynamic quantity;
+  dynamic agentid;
+  dynamic uid;
+  dynamic eid;
+  dynamic eoid;
+  dynamic date;
 
   AdminEOrdersDetails(
       {Key? key,
@@ -35,7 +35,7 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Order Details"),
+        title: const Text("Order Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -46,17 +46,16 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                   FirebaseFirestore.instance.collection('eorders').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('No Eorders found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('No Eorders found'));
+                } else {
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -65,12 +64,12 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                 fontSize: 25,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -81,12 +80,12 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -97,12 +96,12 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Expanded(
@@ -115,12 +114,12 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -131,12 +130,12 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -147,12 +146,12 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -163,12 +162,12 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -179,10 +178,10 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: ElevatedButton.icon(
@@ -202,12 +201,13 @@ class _AdminEOrdersDetailsState extends State<AdminEOrdersDetails> {
                                       Navigator.pop(context);
                                     });
                                   },
-                                  icon: Icon(Icons.remove_shopping_cart),
-                                  label: Text("Cancel Order")),
+                                  icon: const Icon(Icons.remove_shopping_cart),
+                                  label: const Text("Cancel Order")),
                             ),
                           ],
                         );
                       });
+                }
               }),
         ),
       ),

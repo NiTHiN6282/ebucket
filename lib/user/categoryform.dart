@@ -2,14 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebucket/styles/colors.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CategoryForm extends StatefulWidget {
-  var category;
-  var uid;
-  var name;
-  var address;
-  var location;
-  var phone;
-  var email;
+  dynamic category;
+  dynamic uid;
+  dynamic name;
+  dynamic address;
+  dynamic location;
+  dynamic phone;
+  dynamic email;
 
   CategoryForm(
       {Key? key,
@@ -27,14 +28,14 @@ class CategoryForm extends StatefulWidget {
 }
 
 class _CategoryFormState extends State<CategoryForm> {
-  var _categorykey = new GlobalKey<FormState>();
-  TextEditingController categoryinputcontroller = new TextEditingController();
-  TextEditingController quantityinputcontroller = new TextEditingController();
-  TextEditingController priceinputcontroller = new TextEditingController();
-  TextEditingController phoneinputcontroller = new TextEditingController();
-  TextEditingController emailinputcontroller = new TextEditingController();
-  TextEditingController locationinputcontroller = new TextEditingController();
-  var eid;
+  final _categorykey = GlobalKey<FormState>();
+  TextEditingController categoryinputcontroller = TextEditingController();
+  TextEditingController quantityinputcontroller = TextEditingController();
+  TextEditingController priceinputcontroller = TextEditingController();
+  TextEditingController phoneinputcontroller = TextEditingController();
+  TextEditingController emailinputcontroller = TextEditingController();
+  TextEditingController locationinputcontroller = TextEditingController();
+  dynamic eid;
 
   @override
   void initState() {
@@ -50,7 +51,7 @@ class _CategoryFormState extends State<CategoryForm> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appbarcolor,
-        title: Text("E-Bucket"),
+        title: const Text("E-Bucket"),
       ),
       body: SafeArea(
           child: Container(
@@ -59,7 +60,7 @@ class _CategoryFormState extends State<CategoryForm> {
           color: Colors.grey.shade200.withOpacity(0.5),
         ),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [Colors.white, Colors.transparent],
                   begin: Alignment.topCenter,
@@ -71,7 +72,7 @@ class _CategoryFormState extends State<CategoryForm> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Image.asset(
@@ -84,12 +85,12 @@ class _CategoryFormState extends State<CategoryForm> {
                       enabled: false,
                       decoration: InputDecoration(
                         labelText: 'category',
-                        prefixIcon: Icon(Icons.category),
+                        prefixIcon: const Icon(Icons.category),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -98,16 +99,19 @@ class _CategoryFormState extends State<CategoryForm> {
                       decoration: InputDecoration(
                         hintText: 'Quantity in KG',
                         labelText: 'Quantity',
-                        prefixIcon: Icon(Icons.production_quantity_limits),
+                        prefixIcon:
+                            const Icon(Icons.production_quantity_limits),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30)),
                       ),
                       validator: (value) {
-                        if (value!.length < 1)
+                        if (value!.isEmpty) {
                           return 'This field must be filled!';
+                        }
+                        return null;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -116,28 +120,30 @@ class _CategoryFormState extends State<CategoryForm> {
                       decoration: InputDecoration(
                         hintText: 'Price in Rupees',
                         labelText: 'Price',
-                        prefixIcon: Icon(Icons.attach_money),
+                        prefixIcon: const Icon(Icons.attach_money),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30)),
                       ),
                       validator: (value) {
-                        if (value!.length < 1)
+                        if (value!.isEmpty) {
                           return 'This field must be filled!';
+                        }
+                        return null;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
                       controller: locationinputcontroller,
                       decoration: InputDecoration(
                         labelText: 'Location',
-                        prefixIcon: Icon(Icons.add_location),
+                        prefixIcon: const Icon(Icons.add_location),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30)),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -146,19 +152,21 @@ class _CategoryFormState extends State<CategoryForm> {
                       maxLength: 10,
                       decoration: InputDecoration(
                         labelText: 'Phone no.',
-                        prefixIcon: Icon(Icons.add_call),
+                        prefixIcon: const Icon(Icons.add_call),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30)),
                       ),
                       validator: (value) {
-                        if (value!.length != 10)
+                        if (value!.length != 10) {
                           return 'Number should contain 10 characters!';
+                        }
+                        return null;
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Container(
+                    SizedBox(
                       width: 150,
                       height: 44,
                       child: ElevatedButton.icon(
@@ -188,10 +196,10 @@ class _CategoryFormState extends State<CategoryForm> {
                               });
                             }
                           },
-                          icon: Icon(Icons.done),
-                          label: Text("submit")),
+                          icon: const Icon(Icons.done),
+                          label: const Text("submit")),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                   ],

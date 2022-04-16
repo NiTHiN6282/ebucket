@@ -13,17 +13,16 @@ class AdminAddProducts extends StatefulWidget {
 }
 
 class _AdminAddProductsState extends State<AdminAddProducts> {
-  var url;
+  dynamic url;
   XFile? _image;
   final ImagePicker _picker = ImagePicker();
-  var apid;
-  var _addproductskey = new GlobalKey<FormState>();
-  TextEditingController productnameinputcontroller =
-      new TextEditingController();
-  TextEditingController descriptioninputcontroller =
-      new TextEditingController();
-  TextEditingController priceinputcontroller = new TextEditingController();
+  dynamic apid;
+  final _addproductskey = GlobalKey<FormState>();
+  TextEditingController productnameinputcontroller = TextEditingController();
+  TextEditingController descriptioninputcontroller = TextEditingController();
+  TextEditingController priceinputcontroller = TextEditingController();
 
+  @override
   void initState() {
     apid = DateTime.now().toString();
     super.initState();
@@ -33,7 +32,7 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Products"),
+        title: const Text("Add Products"),
         centerTitle: true,
       ),
       backgroundColor: Colors.grey[200],
@@ -45,39 +44,43 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: productnameinputcontroller,
                     decoration: InputDecoration(
                       labelText: 'Product Name',
-                      prefixIcon: Icon(Icons.business_center),
+                      prefixIcon: const Icon(Icons.business_center),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      if (value!.length < 1)
+                      if (value!.isEmpty) {
                         return 'This field must be filled!';
+                      }
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: descriptioninputcontroller,
                     decoration: InputDecoration(
                       labelText: 'Description',
-                      prefixIcon: Icon(Icons.description),
+                      prefixIcon: const Icon(Icons.description),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      if (value!.length < 1)
+                      if (value!.isEmpty) {
                         return 'This field must be filled!';
+                      }
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -85,23 +88,25 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Price',
-                      prefixIcon: Icon(Icons.attach_money),
+                      prefixIcon: const Icon(Icons.attach_money),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      if (value!.length < 1)
+                      if (value!.isEmpty) {
                         return 'This field must be filled!';
+                      }
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   GestureDetector(
                     onTap: () {
                       _showPicker(context);
                     },
-                    child: Container(
+                    child: SizedBox(
                       width: 250,
                       height: 250,
                       child: _image != null
@@ -122,10 +127,10 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
                             ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 150,
                     height: 40,
                     child: ElevatedButton.icon(
@@ -163,10 +168,10 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
                                 }));
                           }
                         },
-                        icon: Icon(Icons.add),
-                        label: Text("Add Product")),
+                        icon: const Icon(Icons.add),
+                        label: const Text("Add Product")),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                 ],
@@ -201,26 +206,24 @@ class _AdminAddProductsState extends State<AdminAddProducts> {
         context: context,
         builder: (BuildContext bc) {
           return SafeArea(
-            child: Container(
-              child: new Wrap(
-                children: <Widget>[
-                  new ListTile(
-                      leading: new Icon(Icons.photo_library),
-                      title: new Text('Photo Library'),
-                      onTap: () {
-                        _imgFromGallery();
-                        Navigator.of(context).pop();
-                      }),
-                  new ListTile(
-                    leading: new Icon(Icons.photo_camera),
-                    title: new Text('Camera'),
+            child: Wrap(
+              children: <Widget>[
+                ListTile(
+                    leading: const Icon(Icons.photo_library),
+                    title: const Text('Photo Library'),
                     onTap: () {
-                      _imgFromCamera();
+                      _imgFromGallery();
                       Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              ),
+                    }),
+                ListTile(
+                  leading: const Icon(Icons.photo_camera),
+                  title: const Text('Camera'),
+                  onTap: () {
+                    _imgFromCamera();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
             ),
           );
         });

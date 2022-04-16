@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_page_indicator_tv/flutter_page_indicator.dart';
 import 'package:flutter_swiper_tv/flutter_swiper.dart';
 
+// ignore: must_be_immutable
 class UserHome extends StatefulWidget {
-  var uid;
-  var name;
-  var address;
-  var location;
-  var phone;
-  var email;
-  var category;
+  dynamic uid;
+  dynamic name;
+  dynamic address;
+  dynamic location;
+  dynamic phone;
+  dynamic email;
+  dynamic category;
 
   UserHome(
       {Key? key,
@@ -30,30 +31,30 @@ class UserHome extends StatefulWidget {
 }
 
 class _UserHomeState extends State<UserHome> {
-  var selected = 0;
+  dynamic selected = 0;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Container(
+      child: SizedBox(
         width: size.width,
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _slider(),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 20, right: 20, bottom: 2, top: 20),
+              const Padding(
+                padding:
+                    EdgeInsets.only(left: 20, right: 20, bottom: 2, top: 20),
                 child: Text(
                   "Fill Your Bucket",
                   style: mainhead,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 child: Text(
                   "Select Category",
                   style: subhead,
@@ -123,9 +124,10 @@ class _UserHomeState extends State<UserHome> {
     );
   }
 
-  _cards(String title, IconData icons, Color color1, Color color2, var index) {
+  _cards(
+      String title, IconData icons, Color color1, Color color2, dynamic index) {
     Size size = MediaQuery.of(context).size;
-    var cardwidth = size.width * 0.40;
+    dynamic cardwidth = size.width * 0.40;
     return GestureDetector(
       onTap: () {
         if (index == 1) {
@@ -219,7 +221,7 @@ class _UserHomeState extends State<UserHome> {
           child: Container(
             decoration: BoxDecoration(
               color: selected == 0 ? Colors.black : Colors.green,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   bottomRight: Radius.circular(50),
                   bottomLeft: Radius.circular(10),
                   topLeft: Radius.circular(10),

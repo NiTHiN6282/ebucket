@@ -10,14 +10,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
+// ignore: must_be_immutable
 class UserLandingPage extends StatefulWidget {
-  var uid;
-  var name;
-  var address;
-  var location;
-  var phone;
-  var email;
-  var category;
+  dynamic uid;
+  dynamic name;
+  dynamic address;
+  dynamic location;
+  dynamic phone;
+  dynamic email;
+  dynamic category;
 
   UserLandingPage(
       {Key? key,
@@ -35,9 +36,9 @@ class UserLandingPage extends StatefulWidget {
 }
 
 class _UserLandingPageState extends State<UserLandingPage> {
-  var _selectedIndex = 0;
+  dynamic _selectedIndex = 0;
 
-  var _widgetOptions;
+  dynamic _widgetOptions;
 
   void setdata() {
     _widgetOptions = <Widget>[
@@ -59,7 +60,7 @@ class _UserLandingPageState extends State<UserLandingPage> {
         email: widget.email,
         category: widget.category,
       ),
-      ViewCampaigns(),
+      const ViewCampaigns(),
       OrdersList(
         uid: widget.uid,
       ),
@@ -86,7 +87,7 @@ class _UserLandingPageState extends State<UserLandingPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appbarcolor,
-        title: Text("E-Bucket"),
+        title: const Text("E-Bucket"),
         centerTitle: true,
         actions: [
           IconButton(
@@ -94,9 +95,9 @@ class _UserLandingPageState extends State<UserLandingPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => UserNotification()));
+                        builder: (context) => const UserNotification()));
               },
-              icon: Icon(Icons.notifications, color: Colors.yellow)),
+              icon: const Icon(Icons.notifications, color: Colors.yellow)),
           IconButton(
               onPressed: () {
                 Navigator.push(
@@ -112,7 +113,7 @@ class _UserLandingPageState extends State<UserLandingPage> {
                               category: widget.category,
                             )));
               },
-              icon: Icon(Icons.person_outline, color: Colors.blueAccent)),
+              icon: const Icon(Icons.person_outline, color: Colors.blueAccent)),
         ],
       ),
       drawer: Drawer(
@@ -142,28 +143,28 @@ class _UserLandingPageState extends State<UserLandingPage> {
         onTap: _onItemTapped,
         items: [
           SalomonBottomBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
+            icon: const Icon(Icons.home),
+            title: const Text("Home"),
             selectedColor: Colors.purple,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.change_circle),
-            title: Text("Recycle Mall"),
+            icon: const Icon(Icons.change_circle),
+            title: const Text("Recycle Mall"),
             selectedColor: Colors.pink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.campaign),
-            title: Text("Campaigns"),
+            icon: const Icon(Icons.campaign),
+            title: const Text("Campaigns"),
             selectedColor: Colors.orange,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text("Orders"),
+            icon: const Icon(Icons.shopping_cart),
+            title: const Text("Orders"),
             selectedColor: Colors.pink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.event_note),
-            title: Text("Requests"),
+            icon: const Icon(Icons.event_note),
+            title: const Text("Requests"),
             selectedColor: Colors.teal,
           ),
         ],

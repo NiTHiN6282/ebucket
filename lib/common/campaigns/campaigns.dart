@@ -21,11 +21,10 @@ class _ViewCampaignsState extends State<ViewCampaigns> {
                   FirebaseFirestore.instance.collection('campaign').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no campaigns found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no campaigns found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -33,7 +32,7 @@ class _ViewCampaignsState extends State<ViewCampaigns> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff009E60),
+                              color: const Color(0xff009E60),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             height: 100,
@@ -65,6 +64,7 @@ class _ViewCampaignsState extends State<ViewCampaigns> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

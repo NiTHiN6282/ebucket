@@ -3,18 +3,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class AdminOrdersDetails extends StatefulWidget {
-  var product;
-  var price;
-  var url;
-  var name;
-  var location;
-  var address;
-  var phone;
-  var email;
-  var date;
-  var oid;
-  var apid;
+  dynamic product;
+  dynamic price;
+  dynamic url;
+  dynamic name;
+  dynamic location;
+  dynamic address;
+  dynamic phone;
+  dynamic email;
+  dynamic date;
+  dynamic oid;
+  dynamic apid;
 
   AdminOrdersDetails(
       {Key? key,
@@ -41,7 +42,7 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Order Details"),
+        title: const Text("Order Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -52,17 +53,16 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                   FirebaseFirestore.instance.collection('orders').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no orders found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no orders found'));
+                } else {
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -83,12 +83,12 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                         Image.asset('images/oos.png',
                                             fit: BoxFit.fitWidth),
                                   ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -99,12 +99,12 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -115,12 +115,12 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -131,12 +131,12 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -147,12 +147,12 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -163,12 +163,12 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -179,10 +179,10 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: ElevatedButton.icon(
@@ -196,12 +196,13 @@ class _AdminOrdersDetailsState extends State<AdminOrdersDetails> {
                                       Navigator.pop(context);
                                     });
                                   },
-                                  icon: Icon(Icons.remove_shopping_cart),
-                                  label: Text("Cancel Order")),
+                                  icon: const Icon(Icons.remove_shopping_cart),
+                                  label: const Text("Cancel Order")),
                             ),
                           ],
                         );
                       });
+                }
               }),
         ),
       ),

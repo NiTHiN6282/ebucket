@@ -9,11 +9,10 @@ class AddUserNotification extends StatefulWidget {
 }
 
 class _AddUserNotificationState extends State<AddUserNotification> {
-  var unid;
-  var addusernotificationkey = new GlobalKey<FormState>();
-  TextEditingController titleinputcontroller = new TextEditingController();
-  TextEditingController descriptioninputcontroller =
-      new TextEditingController();
+  dynamic unid;
+  var addusernotificationkey = GlobalKey<FormState>();
+  TextEditingController titleinputcontroller = TextEditingController();
+  TextEditingController descriptioninputcontroller = TextEditingController();
 
   @override
   void initState() {
@@ -26,7 +25,7 @@ class _AddUserNotificationState extends State<AddUserNotification> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Sent User Notifications"),
+        title: const Text("Sent User Notifications"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -37,10 +36,10 @@ class _AddUserNotificationState extends State<AddUserNotification> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Center(
+                  const Center(
                       child: Text(
                     "Add User Notification",
                     style: TextStyle(
@@ -48,10 +47,10 @@ class _AddUserNotificationState extends State<AddUserNotification> {
                         color: Colors.green,
                         fontWeight: FontWeight.bold),
                   )),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -59,30 +58,32 @@ class _AddUserNotificationState extends State<AddUserNotification> {
                     decoration: InputDecoration(
                         labelText: 'Title',
                         hintText: 'abc bd',
-                        prefixIcon: Icon(Icons.title),
+                        prefixIcon: const Icon(Icons.title),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return 'mandatory';
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   TextFormField(
                     controller: descriptioninputcontroller,
                     decoration: InputDecoration(
                         labelText: 'description',
-                        prefixIcon: Icon(Icons.description),
+                        prefixIcon: const Icon(Icons.description),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return ' pls add description';
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -109,10 +110,10 @@ class _AddUserNotificationState extends State<AddUserNotification> {
                             });
                           }
                         },
-                        icon: Icon(Icons.send),
-                        label: Text("Sent")),
+                        icon: const Icon(Icons.send),
+                        label: const Text("Sent")),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                 ],

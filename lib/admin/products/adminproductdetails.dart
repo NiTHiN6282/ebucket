@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AdminProductDetails extends StatefulWidget {
-  var productname;
-  var description;
-  var price;
+  dynamic productname;
+  dynamic description;
+  dynamic price;
 
-  var uid;
-  var name;
-  var address;
-  var location;
-  var phone;
-  var email;
-  var category;
+  dynamic uid;
+  dynamic name;
+  dynamic address;
+  dynamic location;
+  dynamic phone;
+  dynamic email;
+  dynamic category;
 
   AdminProductDetails(
-      {this.productname,
+      {Key? key,
+      this.productname,
       this.description,
       this.price,
       this.uid,
@@ -23,7 +25,8 @@ class AdminProductDetails extends StatefulWidget {
       this.location,
       this.phone,
       this.email,
-      this.category});
+      this.category})
+      : super(key: key);
 
   @override
   _AdminProductDetailsState createState() => _AdminProductDetailsState();
@@ -34,7 +37,7 @@ class _AdminProductDetailsState extends State<AdminProductDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details"),
+        title: const Text("Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -42,38 +45,38 @@ class _AdminProductDetailsState extends State<AdminProductDetails> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text("Product Details"),
-              SizedBox(
+              const Text("Product Details"),
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Text("Product Name: "),
-                  SizedBox(
+                  const Text("Product Name: "),
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.productname),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Text("Description: "),
-                  SizedBox(
+                  const Text("Description: "),
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.description),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Text("Price: "),
-                  SizedBox(
+                  const Text("Price: "),
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.price),

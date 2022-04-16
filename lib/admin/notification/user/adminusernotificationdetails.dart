@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class AdminUserNotificationDetails extends StatefulWidget {
-  var title;
-  var description;
+  dynamic title;
+  dynamic description;
 
-  AdminUserNotificationDetails({this.title, this.description});
+  AdminUserNotificationDetails({Key? key, this.title, this.description})
+      : super(key: key);
 
   @override
   _AdminUserNotificationDetailsState createState() =>
@@ -18,7 +20,7 @@ class _AdminUserNotificationDetailsState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notification"),
+        title: const Text("Notification"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -26,33 +28,33 @@ class _AdminUserNotificationDetailsState
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(widget.title),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.description),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 width: 150,
                 height: 50,
                 child: ElevatedButton.icon(
                     onPressed: () {
                       launch("https://google.com/");
                     },
-                    icon: Icon(Icons.delete),
-                    label: Text("delete")),
+                    icon: const Icon(Icons.delete),
+                    label: const Text("delete")),
               ),
             ],
           ),
@@ -66,15 +68,15 @@ class _AdminUserNotificationDetailsState
         context: context,
         builder: (context) {
           return AlertDialog(
-            content: Text("Do you want to delete?"),
-            title: Text("alertbox"),
+            content: const Text("Do you want to delete?"),
+            title: const Text("alertbox"),
             actions: [
               TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: Text("confirm")),
-              TextButton(onPressed: () {}, child: Text("cancel"))
+                  child: const Text("confirm")),
+              TextButton(onPressed: () {}, child: const Text("cancel"))
             ],
           );
         });

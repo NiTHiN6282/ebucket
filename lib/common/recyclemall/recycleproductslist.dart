@@ -3,15 +3,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebucket/common/recyclemall/recycleproductsdetails.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class RecycleProductsList extends StatefulWidget {
-  var uid;
-  var name;
-  var address;
-  var location;
-  var phone;
-  var email;
-  var category;
-  var url;
+  dynamic uid;
+  dynamic name;
+  dynamic address;
+  dynamic location;
+  dynamic phone;
+  dynamic email;
+  dynamic category;
+  dynamic url;
 
   RecycleProductsList(
       {Key? key,
@@ -43,11 +44,10 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no products found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no products found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -96,7 +96,7 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
                                                 ['url'],
                                             errorWidget:
                                                 (context, url, error) =>
-                                                    Icon(Icons.error),
+                                                    const Icon(Icons.error),
                                           ),
                                   ),
                                   Padding(
@@ -108,7 +108,7 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
                                           child: Text(
                                             snapshot.data!.docs[index]
                                                 ['productname'],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w700),
                                           ),
@@ -118,7 +118,7 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
                                             'Price: RS. ' +
                                                 snapshot.data!.docs[index]
                                                     ['price'],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 22,
                                                 fontWeight: FontWeight.w700),
                                           ),
@@ -132,6 +132,7 @@ class _RecycleProductsListState extends State<RecycleProductsList> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

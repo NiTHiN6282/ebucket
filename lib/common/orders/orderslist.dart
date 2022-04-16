@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebucket/common/orders/ordersdetails.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class OrdersList extends StatefulWidget {
-  var uid;
+  dynamic uid;
 
   OrdersList({Key? key, this.uid}) : super(key: key);
 
@@ -25,11 +26,10 @@ class _OrdersListState extends State<OrdersList> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no orders found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no orders found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -37,7 +37,7 @@ class _OrdersListState extends State<OrdersList> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff009E60),
+                              color: const Color(0xff009E60),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             height: 100,
@@ -74,6 +74,7 @@ class _OrdersListState extends State<OrdersList> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

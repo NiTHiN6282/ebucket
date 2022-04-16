@@ -15,7 +15,7 @@ class _AdminAgentNotificationState extends State<AdminAgentNotification> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Agent Notification"),
+        title: const Text("Agent Notification"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -28,17 +28,17 @@ class _AdminAgentNotificationState extends State<AdminAgentNotification> {
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: Color(0xff00adb5),
+                  color: const Color(0xff00adb5),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(
                   child: ListTile(
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.person,
                       size: 40,
                     ),
-                    title: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                    title: const Padding(
+                      padding: EdgeInsets.only(left: 20.0),
                       child: Text("View Agent Notifications"),
                     ),
                     onTap: () {
@@ -46,13 +46,13 @@ class _AdminAgentNotificationState extends State<AdminAgentNotification> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  AdminViewAgentNotifications()));
+                                  const AdminViewAgentNotifications()));
                     },
                   ),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Center(
@@ -60,24 +60,25 @@ class _AdminAgentNotificationState extends State<AdminAgentNotification> {
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: Color(0xff00adb5),
+                  color: const Color(0xff00adb5),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(
                   child: ListTile(
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.person,
                       size: 40,
                     ),
-                    title: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                    title: const Padding(
+                      padding: EdgeInsets.only(left: 20.0),
                       child: Text("Sent Agent Notification"),
                     ),
                     onTap: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AddAgentNotification()));
+                              builder: (context) =>
+                                  const AddAgentNotification()));
                     },
                   ),
                 ),

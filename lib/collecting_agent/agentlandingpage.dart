@@ -11,15 +11,16 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../common/orders/eorderslist.dart';
 
+// ignore: must_be_immutable
 class AgentLandingPage extends StatefulWidget {
-  var name;
-  var address;
-  var location;
-  var phone;
-  var email;
-  var category;
-  var agentid;
-  var agentname;
+  dynamic name;
+  dynamic address;
+  dynamic location;
+  dynamic phone;
+  dynamic email;
+  dynamic category;
+  dynamic agentid;
+  dynamic agentname;
 
   AgentLandingPage(
       {Key? key,
@@ -38,9 +39,9 @@ class AgentLandingPage extends StatefulWidget {
 }
 
 class _AgentLandingPageState extends State<AgentLandingPage> {
-  var _selectedIndex = 0;
+  dynamic _selectedIndex = 0;
 
-  var _widgetOptions;
+  dynamic _widgetOptions;
 
   void setdata() {
     _widgetOptions = <Widget>[
@@ -57,7 +58,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
         email: widget.email,
         category: widget.category,
       ),
-      ViewCampaigns(),
+      const ViewCampaigns(),
       OrdersList(
         uid: widget.agentid,
       ),
@@ -84,7 +85,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appbarcolor,
-        title: Text("E-Bucket"),
+        title: const Text("E-Bucket"),
         centerTitle: true,
         actions: [
           IconButton(
@@ -92,9 +93,9 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => AgentNotification()));
+                        builder: (context) => const AgentNotification()));
               },
-              icon: Icon(Icons.notifications, color: Colors.yellow)),
+              icon: const Icon(Icons.notifications, color: Colors.yellow)),
           IconButton(
               onPressed: () {
                 Navigator.push(
@@ -110,7 +111,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
                               category: widget.category,
                             )));
               },
-              icon: Icon(Icons.person_outline, color: Colors.blueAccent)),
+              icon: const Icon(Icons.person_outline, color: Colors.blueAccent)),
         ],
       ),
       drawer: Drawer(
@@ -135,7 +136,7 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
               title: const Text('Logout'),
               onTap: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
               },
             ),
           ],
@@ -146,28 +147,28 @@ class _AgentLandingPageState extends State<AgentLandingPage> {
         onTap: _onItemTapped,
         items: [
           SalomonBottomBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
+            icon: const Icon(Icons.home),
+            title: const Text("Home"),
             selectedColor: Colors.purple,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.change_circle),
-            title: Text("Recycle Mall"),
+            icon: const Icon(Icons.change_circle),
+            title: const Text("Recycle Mall"),
             selectedColor: Colors.pink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.campaign),
-            title: Text("Campaigns"),
+            icon: const Icon(Icons.campaign),
+            title: const Text("Campaigns"),
             selectedColor: Colors.orange,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text("Orders"),
+            icon: const Icon(Icons.shopping_cart),
+            title: const Text("Orders"),
             selectedColor: Colors.pink,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            title: Text("Eorders"),
+            icon: const Icon(Icons.shopping_cart_outlined),
+            title: const Text("Eorders"),
             selectedColor: Colors.purple,
           ),
         ],

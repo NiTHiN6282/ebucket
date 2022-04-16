@@ -2,17 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class EwasteRequestsDetails extends StatefulWidget {
-  var category;
-  var price;
-  var quantity;
-  var name;
-  var location;
-  var address;
-  var phone;
-  var date;
-  var eid;
-  var uid;
+  dynamic category;
+  dynamic price;
+  dynamic quantity;
+  dynamic name;
+  dynamic location;
+  dynamic address;
+  dynamic phone;
+  dynamic date;
+  dynamic eid;
+  dynamic uid;
 
   EwasteRequestsDetails(
       {Key? key,
@@ -38,7 +39,7 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Order Details"),
+        title: const Text("Order Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -49,17 +50,16 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                   FirebaseFirestore.instance.collection('ewastes').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no orders found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no orders found'));
+                } else {
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -68,12 +68,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 fontSize: 25,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -84,12 +84,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -100,12 +100,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -116,12 +116,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -132,12 +132,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -148,12 +148,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -164,12 +164,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -180,12 +180,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -196,12 +196,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -212,12 +212,12 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Expanded(
@@ -230,10 +230,10 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: ElevatedButton.icon(
@@ -247,12 +247,13 @@ class _EwasteRequestsDetailsState extends State<EwasteRequestsDetails> {
                                       Navigator.pop(context);
                                     });
                                   },
-                                  icon: Icon(Icons.remove_shopping_cart),
-                                  label: Text("Cancel Order")),
+                                  icon: const Icon(Icons.remove_shopping_cart),
+                                  label: const Text("Cancel Order")),
                             ),
                           ],
                         );
                       });
+                }
               }),
         ),
       ),

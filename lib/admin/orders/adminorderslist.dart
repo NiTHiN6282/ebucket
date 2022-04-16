@@ -3,7 +3,7 @@ import 'package:ebucket/admin/orders/adminordersdetails.dart';
 import 'package:flutter/material.dart';
 
 class AdminOrdersList extends StatefulWidget {
-  AdminOrdersList({Key? key}) : super(key: key);
+  const AdminOrdersList({Key? key}) : super(key: key);
 
   @override
   _AdminOrdersListState createState() => _AdminOrdersListState();
@@ -14,8 +14,8 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff246EE9),
-        title: Text("Orders"),
+        backgroundColor: const Color(0xff246EE9),
+        title: const Text("Orders"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -26,11 +26,10 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                   FirebaseFirestore.instance.collection('orders').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no orders found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no orders found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -38,7 +37,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff009E60),
+                              color: const Color(0xff009E60),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             height: 100,
@@ -90,6 +89,7 @@ class _AdminOrdersListState extends State<AdminOrdersList> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

@@ -3,7 +3,7 @@ import 'package:ebucket/admin/ewasterequests/ewasterequestsdetails.dart';
 import 'package:flutter/material.dart';
 
 class EwasteRequestList extends StatefulWidget {
-  EwasteRequestList({Key? key}) : super(key: key);
+  const EwasteRequestList({Key? key}) : super(key: key);
 
   @override
   _EwasteRequestListState createState() => _EwasteRequestListState();
@@ -14,8 +14,8 @@ class _EwasteRequestListState extends State<EwasteRequestList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff246EE9),
-        title: Text("Requests"),
+        backgroundColor: const Color(0xff246EE9),
+        title: const Text("Requests"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -26,11 +26,10 @@ class _EwasteRequestListState extends State<EwasteRequestList> {
                   FirebaseFirestore.instance.collection('ewastes').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no requests found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no requests found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -38,7 +37,7 @@ class _EwasteRequestListState extends State<EwasteRequestList> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff009E60),
+                              color: const Color(0xff009E60),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             height: 100,
@@ -52,7 +51,8 @@ class _EwasteRequestListState extends State<EwasteRequestList> {
                                         ['quantity'] +
                                     'KG'),
                                 trailing: IconButton(
-                                    icon: Icon(Icons.delete, color: Colors.red),
+                                    icon: const Icon(Icons.delete,
+                                        color: Colors.red),
                                     onPressed: () {
                                       FirebaseFirestore.instance
                                           .collection('ewastes')
@@ -97,6 +97,7 @@ class _EwasteRequestListState extends State<EwasteRequestList> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

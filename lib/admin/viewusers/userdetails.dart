@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class UserDetails extends StatefulWidget {
-  var names;
-  var email;
-  var address;
-  var phoneno;
-  var location;
+  dynamic names;
+  dynamic email;
+  dynamic address;
+  dynamic phoneno;
+  dynamic location;
 
   UserDetails(
-      {this.names, this.email, this.address, this.phoneno, this.location});
+      {Key? key,
+      this.names,
+      this.email,
+      this.address,
+      this.phoneno,
+      this.location})
+      : super(key: key);
 
   @override
   _UserDetailsState createState() => _UserDetailsState();
@@ -19,7 +26,7 @@ class _UserDetailsState extends State<UserDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details"),
+        title: const Text("Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -27,26 +34,26 @@ class _UserDetailsState extends State<UserDetails> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text("User Profile"),
-              SizedBox(
+              const Text("User Profile"),
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Text("Name: "),
-                  SizedBox(
+                  const Text("Name: "),
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.names),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: [
-                  Text("Address: "),
-                  SizedBox(
+                  const Text("Address: "),
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.address),

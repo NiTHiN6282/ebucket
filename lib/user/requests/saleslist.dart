@@ -3,8 +3,9 @@ import 'package:ebucket/collecting_agent/ordersummary.dart';
 import 'package:ebucket/user/requests/salesdetails.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SalesList extends StatefulWidget {
-  var uid;
+  dynamic uid;
 
   SalesList({Key? key, this.uid}) : super(key: key);
 
@@ -13,7 +14,7 @@ class SalesList extends StatefulWidget {
 }
 
 class _SalesListState extends State<SalesList> {
-  var category;
+  dynamic category;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +29,10 @@ class _SalesListState extends State<SalesList> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no requests found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no requests found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -47,7 +47,7 @@ class _SalesListState extends State<SalesList> {
                             width: 200,
                             child: Center(
                               child: ListTile(
-                                leading: Container(
+                                leading: const SizedBox(
                                   height: double.infinity,
                                   child: Icon(
                                     Icons.remove_from_queue,
@@ -102,6 +102,7 @@ class _SalesListState extends State<SalesList> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

@@ -15,16 +15,16 @@ class _AdminProductsState extends State<AdminProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff246EE9),
-        title: Text("Products"),
+        backgroundColor: const Color(0xff246EE9),
+        title: const Text("Products"),
         centerTitle: true,
         actions: [
           IconButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
               },
-              icon: Icon(Icons.logout, color: Colors.black)),
+              icon: const Icon(Icons.logout, color: Colors.black)),
         ],
       ),
       body: SafeArea(
@@ -37,30 +37,31 @@ class _AdminProductsState extends State<AdminProducts> {
                   width: MediaQuery.of(context).size.width * 0.75,
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Color(0xffFF4060),
+                    color: const Color(0xffFF4060),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
                     child: ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.person,
                         size: 40,
                       ),
-                      title: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      title: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: Text("View Products"),
                       ),
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AdminProductsList()));
+                                builder: (context) =>
+                                    const AdminProductsList()));
                       },
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Center(
@@ -68,24 +69,25 @@ class _AdminProductsState extends State<AdminProducts> {
                   width: MediaQuery.of(context).size.width * 0.75,
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Color(0xffFF4060),
+                    color: const Color(0xffFF4060),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
                     child: ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.person,
                         size: 40,
                       ),
-                      title: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      title: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: Text("Add Products"),
                       ),
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AdminAddProducts()));
+                                builder: (context) =>
+                                    const AdminAddProducts()));
                       },
                     ),
                   ),

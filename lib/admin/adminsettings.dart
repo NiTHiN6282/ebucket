@@ -22,22 +22,24 @@ class _AdminSettingState extends State<AdminSettings> {
                 width: MediaQuery.of(context).size.width * 0.75,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: Color(0xffFF4060),
+                  color: const Color(0xffFF4060),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Center(
                   child: ListTile(
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.person,
                       size: 40,
                     ),
-                    title: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
+                    title: const Padding(
+                      padding: EdgeInsets.only(left: 20.0),
                       child: Text("Logout"),
                     ),
                     onTap: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()));
                     },
                   ),
                 ),

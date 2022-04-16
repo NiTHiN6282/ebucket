@@ -17,7 +17,7 @@ class _AgentNotificationState extends State<AgentNotification> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Notifications"),
+        title: const Text("Notifications"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -30,7 +30,7 @@ class _AgentNotificationState extends State<AgentNotification> {
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color(0xff009E60),
+                      color: const Color(0xff009E60),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     height: 100,

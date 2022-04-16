@@ -5,9 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'ewastelistdetails.dart';
 
+// ignore: must_be_immutable
 class EwasteList extends StatefulWidget {
-  var agentid;
-  var agentname;
+  dynamic agentid;
+  dynamic agentname;
 
   EwasteList({Key? key, this.agentid, this.agentname}) : super(key: key);
 
@@ -29,11 +30,10 @@ class _EwasteListState extends State<EwasteList> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no ewaste found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no ewaste found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -62,65 +62,63 @@ class _EwasteListState extends State<EwasteList> {
                                 ),
                               );
                             },
-                            child: Container(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  color: Colors.grey,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10, bottom: 10, left: 10),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 30,
-                                        ),
-                                        Column(
-                                          children: [
-                                            Text(
-                                              'Product: ' +
-                                                  snapshot.data!.docs[index]
-                                                      ['category'],
-                                              style: GoogleFonts.lato(
-                                                fontSize: 20,
-                                              ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                color: Colors.grey,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10, bottom: 10, left: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(
+                                        width: 30,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            'Product: ' +
+                                                snapshot.data!.docs[index]
+                                                    ['category'],
+                                            style: GoogleFonts.lato(
+                                              fontSize: 20,
                                             ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          width: 30,
-                                        ),
-                                        Column(
-                                          children: [
-                                            Text(
-                                              'Location: ' +
-                                                  snapshot.data!.docs[index]
-                                                      ['location'],
-                                              style: GoogleFonts.lato(
-                                                fontSize: 20,
-                                              ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        width: 30,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            'Location: ' +
+                                                snapshot.data!.docs[index]
+                                                    ['location'],
+                                            style: GoogleFonts.lato(
+                                              fontSize: 20,
                                             ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          width: 30,
-                                        ),
-                                        Column(
-                                          children: [
-                                            Text(
-                                              'Quantity: ' +
-                                                  snapshot.data!.docs[index]
-                                                      ['quantity'],
-                                              style: GoogleFonts.lato(
-                                                fontSize: 20,
-                                              ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        width: 30,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            'Quantity: ' +
+                                                snapshot.data!.docs[index]
+                                                    ['quantity'],
+                                            style: GoogleFonts.lato(
+                                              fontSize: 20,
                                             ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -128,6 +126,7 @@ class _EwasteListState extends State<EwasteList> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

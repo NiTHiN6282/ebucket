@@ -1,19 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class EwasteListDetails extends StatefulWidget {
-  var category;
-  var uid;
-  var name;
-  var phone;
-  var quantity;
-  var location;
-  var price;
-  var agentid;
-  var agentname;
-  var eid;
+  dynamic category;
+  dynamic uid;
+  dynamic name;
+  dynamic phone;
+  dynamic quantity;
+  dynamic location;
+  dynamic price;
+  dynamic agentid;
+  dynamic agentname;
+  dynamic eid;
 
   EwasteListDetails({
+    Key? key,
     this.name,
     this.phone,
     this.quantity,
@@ -24,22 +26,21 @@ class EwasteListDetails extends StatefulWidget {
     this.agentid,
     this.price,
     this.eid,
-  });
+  }) : super(key: key);
 
   @override
   _EwasteListDetailsState createState() => _EwasteListDetailsState();
 }
 
 class _EwasteListDetailsState extends State<EwasteListDetails> {
-  var aid;
-  var status;
-  var auctioncheck;
-  var oldaid;
-  var _auctionkey = new GlobalKey<FormState>();
-  TextEditingController auctionpriceinputcontroller =
-      new TextEditingController();
+  dynamic aid;
+  dynamic status;
+  dynamic auctioncheck;
+  dynamic oldaid;
+  final _auctionkey = GlobalKey<FormState>();
+  TextEditingController auctionpriceinputcontroller = TextEditingController();
 
-  var documents;
+  dynamic documents;
 
   @override
   void initState() {
@@ -70,14 +71,14 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
               showalert();
             }
           },
-          child: Icon(
+          child: const Icon(
             Icons.add,
             size: 40,
           ),
         ),
       ),
       appBar: AppBar(
-        title: Text("Details"),
+        title: const Text("Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -98,74 +99,74 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                               children: [
                                 Row(
                                   children: [
-                                    Text("Seller Name: "),
-                                    SizedBox(
+                                    const Text("Seller Name: "),
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(widget.name),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Seller Phone: "),
-                                    SizedBox(
+                                    const Text("Seller Phone: "),
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(widget.phone),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Location: "),
-                                    SizedBox(
+                                    const Text("Location: "),
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(widget.location),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Product Name: "),
-                                    SizedBox(
+                                    const Text("Product Name: "),
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(widget.category),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Quantity: "),
-                                    SizedBox(
+                                    const Text("Quantity: "),
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(widget.quantity),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Row(
                                   children: [
-                                    Text("Price: "),
-                                    SizedBox(
+                                    const Text("Price: "),
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(widget.price),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                               ],
@@ -181,11 +182,11 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                         .snapshots(),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return Center(child: CircularProgressIndicator());
+                        return const Center(child: CircularProgressIndicator());
                       } else if (snapshot.hasData &&
-                          snapshot.data!.docs.length == 0) {
-                        return Center(child: Text('no auctions found'));
-                      } else
+                          snapshot.data!.docs.isEmpty) {
+                        return const Center(child: Text('no auctions found'));
+                      } else {
                         return ListView.builder(
                             itemCount: snapshot.data!.docs.length,
                             itemBuilder: (context, index) {
@@ -193,7 +194,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: Color(0xff009e60),
+                                    color: const Color(0xff009e60),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   height: 100,
@@ -209,9 +210,9 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                           icon: snapshot.data!.docs[index]
                                                       ['agentid'] ==
                                                   widget.agentid
-                                              ? Icon(Icons.edit,
+                                              ? const Icon(Icons.edit,
                                                   color: Colors.blue)
-                                              : Icon(Icons.call,
+                                              : const Icon(Icons.call,
                                                   color: Color(0xff009e60)),
                                           onPressed: () {
                                             if (snapshot.data!.docs[index]
@@ -242,6 +243,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                 ),
                               );
                             });
+                      }
                     }),
               ),
             ],
@@ -256,7 +258,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Auction"),
+          title: const Text("Auction"),
           content: Column(children: [
             Form(
               key: _auctionkey,
@@ -265,22 +267,22 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
                         controller: auctionpriceinputcontroller,
                         decoration: InputDecoration(
                           labelText: 'Price',
-                          prefixIcon: Icon(Icons.category),
+                          prefixIcon: const Icon(Icons.category),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30)),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Container(
+                      SizedBox(
                         width: 150,
                         height: 40,
                         child: ElevatedButton.icon(
@@ -310,10 +312,10 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                 });
                               }
                             },
-                            icon: Icon(Icons.done),
-                            label: Text("submit")),
+                            icon: const Icon(Icons.done),
+                            label: const Text("submit")),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],
@@ -332,7 +334,7 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Auction"),
+          title: const Text("Auction"),
           content: Column(children: [
             Form(
               key: _auctionkey,
@@ -341,22 +343,22 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextFormField(
                         controller: auctionpriceinputcontroller,
                         decoration: InputDecoration(
                           labelText: 'Price',
-                          prefixIcon: Icon(Icons.category),
+                          prefixIcon: const Icon(Icons.category),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30)),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Container(
+                      SizedBox(
                         width: 150,
                         height: 40,
                         child: ElevatedButton.icon(
@@ -374,10 +376,10 @@ class _EwasteListDetailsState extends State<EwasteListDetails> {
                                 });
                               }
                             },
-                            icon: Icon(Icons.done),
-                            label: Text("submit")),
+                            icon: const Icon(Icons.done),
+                            label: const Text("submit")),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],

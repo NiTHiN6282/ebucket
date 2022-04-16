@@ -2,18 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class BuyPage extends StatefulWidget {
-  var uid;
-  var name;
-  var address;
-  var location;
-  var phone;
-  var email;
-  var category;
-  var apid;
-  var productname;
-  var price;
-  var url;
+  dynamic uid;
+  dynamic name;
+  dynamic address;
+  dynamic location;
+  dynamic phone;
+  dynamic email;
+  dynamic category;
+  dynamic apid;
+  dynamic productname;
+  dynamic price;
+  dynamic url;
 
   BuyPage(
       {Key? key,
@@ -35,12 +36,12 @@ class BuyPage extends StatefulWidget {
 }
 
 class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
-  var oid;
-  var apid;
-  TextEditingController nameinputcontroller = new TextEditingController();
-  TextEditingController locationinputcontroller = new TextEditingController();
-  TextEditingController phoneinputcontroller = new TextEditingController();
-  TextEditingController addressinputcontroller = new TextEditingController();
+  dynamic oid;
+  dynamic apid;
+  TextEditingController nameinputcontroller = TextEditingController();
+  TextEditingController locationinputcontroller = TextEditingController();
+  TextEditingController phoneinputcontroller = TextEditingController();
+  TextEditingController addressinputcontroller = TextEditingController();
   bool _status = true;
   final FocusNode myFocusNode = FocusNode();
 
@@ -56,30 +57,31 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: Text("Campaigns"),
+          title: const Text("Campaigns"),
           centerTitle: true,
         ),
-        body: new Container(
+        body: Container(
           color: Colors.white,
-          child: new ListView(
+          child: ListView(
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  new Container(
+                  Container(
                     height: 100.0,
                     color: Colors.white,
-                    child: new Column(
+                    child: Column(
                       children: <Widget>[
                         Padding(
-                            padding: EdgeInsets.only(left: 20.0, top: 20.0),
-                            child: new Row(
+                            padding:
+                                const EdgeInsets.only(left: 20.0, top: 20.0),
+                            child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
+                              children: const <Widget>[
                                 Padding(
                                   padding: EdgeInsets.only(left: 25.0),
-                                  child: new Text('Order Details',
+                                  child: Text('Order Details',
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20.0,
@@ -91,11 +93,11 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                       ],
                     ),
                   ),
-                  new Container(
-                    color: Color(0xffFFFFFF),
+                  Container(
+                    color: const Color(0xffFFFFFF),
                     child: Padding(
-                      padding: EdgeInsets.only(bottom: 25.0),
-                      child: new Column(
+                      padding: const EdgeInsets.only(bottom: 25.0),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
@@ -111,7 +113,7 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                         fontSize: 20,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(
@@ -122,7 +124,7 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Row(
@@ -133,7 +135,7 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                         fontSize: 20,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Text(
@@ -148,18 +150,18 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                             ),
                           ),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 25.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  new Column(
+                                  Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      new Text(
+                                    children: const <Widget>[
+                                      Text(
                                         'Address',
                                         style: TextStyle(
                                             fontSize: 18.0,
@@ -167,28 +169,26 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                       ),
                                     ],
                                   ),
-                                  new Column(
+                                  Column(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
-                                      _status
-                                          ? _getEditIcon()
-                                          : new Container(),
+                                      _status ? _getEditIcon() : Container(),
                                     ],
                                   )
                                 ],
                               )),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 25.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  new Column(
+                                  Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      new Text(
+                                    children: const <Widget>[
+                                      Text(
                                         'Name',
                                         style: TextStyle(
                                             fontSize: 16.0,
@@ -199,13 +199,13 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                 ],
                               )),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 2.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  new Flexible(
-                                    child: new TextFormField(
+                                  Flexible(
+                                    child: TextFormField(
                                       controller: nameinputcontroller,
                                       keyboardType: TextInputType.name,
                                       textCapitalization:
@@ -220,16 +220,16 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                 ],
                               )),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 25.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  new Column(
+                                  Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      new Text(
+                                    children: const <Widget>[
+                                      Text(
                                         'Location',
                                         style: TextStyle(
                                             fontSize: 16.0,
@@ -240,13 +240,13 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                 ],
                               )),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 2.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  new Flexible(
-                                    child: new TextFormField(
+                                  Flexible(
+                                    child: TextFormField(
                                       controller: locationinputcontroller,
                                       decoration: const InputDecoration(
                                           hintText: "Enter Location"),
@@ -256,16 +256,16 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                 ],
                               )),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 25.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  new Column(
+                                  Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      new Text(
+                                    children: const <Widget>[
+                                      Text(
                                         'Mobile',
                                         style: TextStyle(
                                             fontSize: 16.0,
@@ -276,13 +276,13 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                 ],
                               )),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 2.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
-                                  new Flexible(
-                                    child: new TextFormField(
+                                  Flexible(
+                                    child: TextFormField(
                                       controller: phoneinputcontroller,
                                       keyboardType: TextInputType.phone,
                                       maxLength: 10,
@@ -294,36 +294,35 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                 ],
                               )),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 25.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
+                                children: const <Widget>[
                                   Expanded(
-                                    child: Container(
-                                      child: new Text(
-                                        'Address',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                    child: Text(
+                                      'Address',
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     flex: 2,
                                   ),
                                 ],
                               )),
                           Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   left: 25.0, right: 25.0, top: 2.0),
-                              child: new Row(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Flexible(
                                     child: Padding(
-                                      padding: EdgeInsets.only(right: 10.0),
-                                      child: new TextFormField(
+                                      padding:
+                                          const EdgeInsets.only(right: 10.0),
+                                      child: TextFormField(
                                         controller: addressinputcontroller,
                                         keyboardType:
                                             TextInputType.streetAddress,
@@ -336,45 +335,43 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                                   ),
                                 ],
                               )),
-                          !_status ? _getActionButtons() : new Container(),
+                          !_status ? _getActionButtons() : Container(),
                         ],
                       ),
                     ),
                   ),
-                  Container(
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        FirebaseFirestore.instance
-                            .collection('recycleproducts')
-                            .doc(widget.apid)
-                            .update({
-                          'status': 0,
-                        });
-                        FirebaseFirestore.instance
-                            .collection('orders')
-                            .doc(oid)
-                            .set({
-                          'oid': oid,
-                          'apid': widget.apid,
-                          'uid': widget.uid,
-                          'name': widget.name,
-                          'product': widget.productname,
-                          'price': widget.price,
-                          'location': widget.location,
-                          'address': widget.address,
-                          'phone': widget.phone,
-                          'email': widget.email,
-                          'status': 1,
-                          'url': widget.url,
-                          'date': DateTime.now()
-                        }).then((value) {
-                          showsnackbar('Order Placed');
-                          Navigator.pop(context);
-                        });
-                      },
-                      icon: Icon(Icons.shopping_cart),
-                      label: Text("Place Order"),
-                    ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      FirebaseFirestore.instance
+                          .collection('recycleproducts')
+                          .doc(widget.apid)
+                          .update({
+                        'status': 0,
+                      });
+                      FirebaseFirestore.instance
+                          .collection('orders')
+                          .doc(oid)
+                          .set({
+                        'oid': oid,
+                        'apid': widget.apid,
+                        'uid': widget.uid,
+                        'name': widget.name,
+                        'product': widget.productname,
+                        'price': widget.price,
+                        'location': widget.location,
+                        'address': widget.address,
+                        'phone': widget.phone,
+                        'email': widget.email,
+                        'status': 1,
+                        'url': widget.url,
+                        'date': DateTime.now()
+                      }).then((value) {
+                        showsnackbar('Order Placed');
+                        Navigator.pop(context);
+                      });
+                    },
+                    icon: const Icon(Icons.shopping_cart),
+                    label: const Text("Place Order"),
                   ),
                 ],
               ),
@@ -391,22 +388,21 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
 
   Widget _getActionButtons() {
     return Padding(
-      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 45.0),
-      child: new Row(
+      padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 45.0),
+      child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: Container(
-                  child: new ElevatedButton(
-                child: new Text("Save"),
+              padding: const EdgeInsets.only(right: 10.0),
+              child: ElevatedButton(
+                child: const Text("Save"),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.green,
                   onPrimary: Colors.white,
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
                 onPressed: () {
@@ -416,33 +412,32 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
                     widget.phone = phoneinputcontroller.text;
                     widget.address = addressinputcontroller.text;
                     _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
+                    FocusScope.of(context).requestFocus(FocusNode());
                   });
                 },
-              )),
+              ),
             ),
             flex: 2,
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Container(
-                  child: new ElevatedButton(
-                child: new Text("Cancel"),
+              padding: const EdgeInsets.only(left: 10.0),
+              child: ElevatedButton(
+                child: const Text("Cancel"),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.red,
                   onPrimary: Colors.white,
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
                 onPressed: () {
                   setState(() {
                     _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
+                    FocusScope.of(context).requestFocus(FocusNode());
                   });
                 },
-              )),
+              ),
             ),
             flex: 2,
           ),
@@ -452,11 +447,11 @@ class BuyPageState extends State<BuyPage> with SingleTickerProviderStateMixin {
   }
 
   Widget _getEditIcon() {
-    return new GestureDetector(
-      child: new CircleAvatar(
+    return GestureDetector(
+      child: const CircleAvatar(
         backgroundColor: Colors.red,
         radius: 14.0,
-        child: new Icon(
+        child: Icon(
           Icons.edit,
           color: Colors.white,
           size: 16.0,

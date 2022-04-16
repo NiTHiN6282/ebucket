@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AgentNotificationDetails extends StatefulWidget {
-  var title;
-  var description;
+  dynamic title;
+  dynamic description;
 
-  AgentNotificationDetails({this.title, this.description});
+  AgentNotificationDetails({Key? key, this.title, this.description})
+      : super(key: key);
 
   @override
   _AgentNotificationDetailsState createState() =>
@@ -16,7 +18,7 @@ class _AgentNotificationDetailsState extends State<AgentNotificationDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notification"),
+        title: const Text("Notification"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -24,22 +26,22 @@ class _AgentNotificationDetailsState extends State<AgentNotificationDetails> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(widget.title),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(widget.description),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],

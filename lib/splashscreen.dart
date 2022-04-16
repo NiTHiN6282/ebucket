@@ -20,8 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     FirebaseAuth.instance.authStateChanges().listen((currentuser) {
       if (currentuser == null) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const LoginPage()));
       } else {
         FirebaseFirestore.instance
             .collection('user')
@@ -57,11 +57,9 @@ class _SplashScreenState extends State<SplashScreen> {
                           email: value.data()!['email'],
                           category: value.data()!['usertype'],
                         )));
-          }else if (value.data()!['status'] == 'admin') {
+          } else if (value.data()!['status'] == 'admin') {
             Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => AdminHome()));
+                context, MaterialPageRoute(builder: (context) => AdminHome()));
           }
         });
       }

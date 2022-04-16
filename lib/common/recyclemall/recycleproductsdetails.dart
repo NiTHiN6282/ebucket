@@ -3,23 +3,25 @@ import 'package:ebucket/common/buypage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class RecycleProductsDetails extends StatefulWidget {
-  var productname;
-  var description;
-  var price;
+  dynamic productname;
+  dynamic description;
+  dynamic price;
 
-  var uid;
-  var name;
-  var address;
-  var location;
-  var phone;
-  var email;
-  var category;
-  var apid;
-  var url;
+  dynamic uid;
+  dynamic name;
+  dynamic address;
+  dynamic location;
+  dynamic phone;
+  dynamic email;
+  dynamic category;
+  dynamic apid;
+  dynamic url;
 
   RecycleProductsDetails(
-      {this.apid,
+      {Key? key,
+      this.apid,
       this.productname,
       this.description,
       this.price,
@@ -30,7 +32,8 @@ class RecycleProductsDetails extends StatefulWidget {
       this.location,
       this.phone,
       this.email,
-      this.category});
+      this.category})
+      : super(key: key);
 
   @override
   _RecycleProductsDetailsState createState() => _RecycleProductsDetailsState();
@@ -46,7 +49,7 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details"),
+        title: const Text("Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -71,7 +74,7 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                       errorWidget: (context, url, error) =>
                           Image.asset('images/oos.png', fit: BoxFit.fitWidth),
                     ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -82,7 +85,7 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                       fontSize: 20,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -93,7 +96,7 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -104,7 +107,7 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                       fontSize: 20,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -115,7 +118,7 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -126,7 +129,7 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                       fontSize: 20,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Text(
@@ -137,28 +140,26 @@ class _RecycleProductsDetailsState extends State<RecycleProductsDetails> {
                   ),
                 ],
               ),
-              Container(
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => BuyPage(
-                                  apid: widget.apid,
-                                  uid: widget.uid,
-                                  name: widget.name,
-                                  phone: widget.phone,
-                                  address: widget.address,
-                                  location: widget.location,
-                                  email: widget.email,
-                                  productname: widget.productname,
-                                  price: widget.price,
-                                  url: widget.url,
-                                )));
-                  },
-                  icon: Icon(Icons.shopping_cart),
-                  label: Text("Buy"),
-                ),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BuyPage(
+                                apid: widget.apid,
+                                uid: widget.uid,
+                                name: widget.name,
+                                phone: widget.phone,
+                                address: widget.address,
+                                location: widget.location,
+                                email: widget.email,
+                                productname: widget.productname,
+                                price: widget.price,
+                                url: widget.url,
+                              )));
+                },
+                icon: const Icon(Icons.shopping_cart),
+                label: const Text("Buy"),
               ),
             ],
           ),

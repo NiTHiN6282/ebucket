@@ -16,7 +16,7 @@ class _AdminViewCampaignState extends State<AdminViewCampaign> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Campaigns"),
+        title: const Text("Campaigns"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -29,11 +29,10 @@ class _AdminViewCampaignState extends State<AdminViewCampaign> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no campaigns found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no campaigns found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -41,7 +40,7 @@ class _AdminViewCampaignState extends State<AdminViewCampaign> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff009E60),
+                              color: const Color(0xff009E60),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             height: 100,
@@ -54,7 +53,8 @@ class _AdminViewCampaignState extends State<AdminViewCampaign> {
                                 subtitle: Text(
                                     snapshot.data!.docs[index]['description']),
                                 trailing: IconButton(
-                                    icon: Icon(Icons.delete, color: Colors.red),
+                                    icon: const Icon(Icons.delete,
+                                        color: Colors.red),
                                     onPressed: () {
                                       FirebaseFirestore.instance
                                           .collection('campaign')
@@ -87,6 +87,7 @@ class _AdminViewCampaignState extends State<AdminViewCampaign> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

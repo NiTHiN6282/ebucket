@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class EOrdersDetails extends StatefulWidget {
-  var category;
-  var price;
+  dynamic category;
+  dynamic price;
 
   EOrdersDetails({Key? key, this.price, this.category}) : super(key: key);
 
@@ -13,14 +14,14 @@ class EOrdersDetails extends StatefulWidget {
 }
 
 class _EOrdersDetailsState extends State<EOrdersDetails> {
-  var eid;
+  dynamic eid;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("EOrder Details"),
+        title: const Text("EOrder Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -31,17 +32,16 @@ class _EOrdersDetailsState extends State<EOrdersDetails> {
                   FirebaseFirestore.instance.collection('eorders').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no eorders found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no eorders found'));
+                } else {
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -50,12 +50,12 @@ class _EOrdersDetailsState extends State<EOrdersDetails> {
                                 fontSize: 25,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -66,10 +66,10 @@ class _EOrdersDetailsState extends State<EOrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               // decoration: BoxDecoration(
@@ -97,12 +97,13 @@ class _EOrdersDetailsState extends State<EOrdersDetails> {
                                       'status': 1,
                                     });
                                   },
-                                  icon: Icon(Icons.remove_shopping_cart),
-                                  label: Text("Cancel Order")),
+                                  icon: const Icon(Icons.remove_shopping_cart),
+                                  label: const Text("Cancel Order")),
                             ),
                           ],
                         );
                       });
+                }
               }),
         ),
       ),

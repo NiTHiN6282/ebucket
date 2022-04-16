@@ -14,8 +14,8 @@ class _AgentBuyEwasteState extends State<AgentBuyEwaste> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff000000),
-        title: Text("Agent"),
+        backgroundColor: const Color(0xff000000),
+        title: const Text("Agent"),
         centerTitle: true,
         actions: [
           IconButton(
@@ -23,15 +23,15 @@ class _AgentBuyEwasteState extends State<AgentBuyEwaste> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => AgentNotification()));
+                        builder: (context) => const AgentNotification()));
               },
-              icon: Icon(Icons.notifications, color: Colors.yellow)),
+              icon: const Icon(Icons.notifications, color: Colors.yellow)),
           IconButton(
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
               },
-              icon: Icon(Icons.logout, color: Colors.red)),
+              icon: const Icon(Icons.logout, color: Colors.red)),
         ],
       ),
     );

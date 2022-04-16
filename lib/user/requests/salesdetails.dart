@@ -2,12 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class SalesDetails extends StatefulWidget {
-  var category;
-  var price;
-  var quantity;
-  var eid;
-  var uid;
+  dynamic category;
+  dynamic price;
+  dynamic quantity;
+  dynamic eid;
+  dynamic uid;
 
   SalesDetails(
       {Key? key, this.price, this.category, this.quantity, this.eid, this.uid})
@@ -18,8 +19,8 @@ class SalesDetails extends StatefulWidget {
 }
 
 class _SalesDetailsState extends State<SalesDetails> {
-  var oid;
-  var agentid;
+  dynamic oid;
+  dynamic agentid;
 
   @override
   void initState() {
@@ -32,7 +33,7 @@ class _SalesDetailsState extends State<SalesDetails> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Order Details"),
+        title: const Text("Order Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -47,17 +48,18 @@ class _SalesDetailsState extends State<SalesDetails> {
                           .snapshots(),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
-                          return Center(child: CircularProgressIndicator());
+                          return const Center(
+                              child: CircularProgressIndicator());
                         } else if (snapshot.hasData &&
-                            snapshot.data!.docs.length == 0) {
-                          return Center(child: Text('no sales found'));
-                        } else
+                            snapshot.data!.docs.isEmpty) {
+                          return const Center(child: Text('no sales found'));
+                        } else {
                           return ListView.builder(
                               itemCount: 1,
                               itemBuilder: (context, index) {
                                 return Column(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Text(
@@ -66,12 +68,12 @@ class _SalesDetailsState extends State<SalesDetails> {
                                         fontSize: 25,
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 40,
                                     ),
                                     Row(
                                       children: [
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         Text(
@@ -82,12 +84,12 @@ class _SalesDetailsState extends State<SalesDetails> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 40,
                                     ),
                                     Row(
                                       children: [
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         Text(
@@ -98,10 +100,10 @@ class _SalesDetailsState extends State<SalesDetails> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: 150,
                                       height: 50,
                                       child: ElevatedButton.icon(
@@ -116,13 +118,14 @@ class _SalesDetailsState extends State<SalesDetails> {
                                               Navigator.pop(context);
                                             });
                                           },
-                                          icon:
-                                              Icon(Icons.remove_shopping_cart),
-                                          label: Text("Cancel Sale")),
+                                          icon: const Icon(
+                                              Icons.remove_shopping_cart),
+                                          label: const Text("Cancel Sale")),
                                     ),
                                   ],
                                 );
                               });
+                        }
                       }),
                 ),
                 Expanded(
@@ -133,11 +136,12 @@ class _SalesDetailsState extends State<SalesDetails> {
                           .snapshots(),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData) {
-                          return Center(child: CircularProgressIndicator());
+                          return const Center(
+                              child: CircularProgressIndicator());
                         } else if (snapshot.hasData &&
-                            snapshot.data!.docs.length == 0) {
-                          return Center(child: Text('no auctions found'));
-                        } else
+                            snapshot.data!.docs.isEmpty) {
+                          return const Center(child: Text('no auctions found'));
+                        } else {
                           return ListView.builder(
                               itemCount: snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
@@ -145,7 +149,7 @@ class _SalesDetailsState extends State<SalesDetails> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0xff009e60),
+                                      color: const Color(0xff009e60),
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                     height: 100,
@@ -158,7 +162,7 @@ class _SalesDetailsState extends State<SalesDetails> {
                                         subtitle: Text(snapshot
                                             .data!.docs[index]['agentprice']),
                                         trailing: IconButton(
-                                            icon: Icon(Icons.done,
+                                            icon: const Icon(Icons.done,
                                                 color: Colors.blue),
                                             onPressed: () {
                                               setState(() {
@@ -186,7 +190,8 @@ class _SalesDetailsState extends State<SalesDetails> {
                                                           'eid': widget.eid,
                                                           'uid': agentid,
                                                           'agentid': agentid,
-                                                          'date': DateTime.now().toString()
+                                                          'date': DateTime.now()
+                                                              .toString()
                                                         }).then((value) {
                                                           showsnackbar(
                                                               'Order Submitted');
@@ -200,6 +205,7 @@ class _SalesDetailsState extends State<SalesDetails> {
                                   ),
                                 );
                               });
+                        }
                       }),
                 ),
               ],

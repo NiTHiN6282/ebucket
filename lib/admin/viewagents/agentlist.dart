@@ -3,10 +3,11 @@ import 'package:ebucket/admin/viewagents/agentdetails.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// ignore: must_be_immutable
 class AgentList extends StatefulWidget {
-  var status;
-  var phone;
-  var name;
+  dynamic status;
+  dynamic phone;
+  dynamic name;
 
   AgentList({Key? key, this.status, this.phone, this.name}) : super(key: key);
 
@@ -20,7 +21,7 @@ class _AgentListState extends State<AgentList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Agents List"),
+        title: const Text("Agents List"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -33,11 +34,10 @@ class _AgentListState extends State<AgentList> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no agent found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no agent found'));
+                } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
@@ -59,7 +59,8 @@ class _AgentListState extends State<AgentList> {
                                 subtitle:
                                     Text(snapshot.data!.docs[index]['phone']),
                                 trailing: IconButton(
-                                    icon: Icon(Icons.call, color: Colors.blue),
+                                    icon: const Icon(Icons.call,
+                                        color: Colors.blue),
                                     onPressed: () {
                                       launch(
                                           "tel:${snapshot.data!.docs[index]['phone']}");
@@ -91,6 +92,7 @@ class _AgentListState extends State<AgentList> {
                           ),
                         );
                       });
+                }
               }),
         ),
       ),

@@ -16,7 +16,7 @@ class _UserListState extends State<UserList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Users List"),
+        title: const Text("Users List"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -30,10 +30,9 @@ class _UserListState extends State<UserList> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no users found'));
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no users found'));
                 } else {
                   return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
@@ -42,7 +41,7 @@ class _UserListState extends State<UserList> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0xff009E60),
+                              color: const Color(0xff009E60),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             height: 100,
@@ -54,7 +53,8 @@ class _UserListState extends State<UserList> {
                                 subtitle:
                                     Text(snapshot.data!.docs[index]['phone']),
                                 trailing: IconButton(
-                                    icon: Icon(Icons.call, color: Colors.blue),
+                                    icon: const Icon(Icons.call,
+                                        color: Colors.blue),
                                     onPressed: () {
                                       launch(
                                           "tel:${snapshot.data!.docs[index]['phone']}");

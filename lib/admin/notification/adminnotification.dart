@@ -15,7 +15,7 @@ class _AdminNotificationState extends State<AdminNotification> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Sent Notifications"),
+        title: const Text("Sent Notifications"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -23,7 +23,7 @@ class _AdminNotificationState extends State<AdminNotification> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Center(
@@ -31,17 +31,17 @@ class _AdminNotificationState extends State<AdminNotification> {
                   width: MediaQuery.of(context).size.width * 0.75,
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Color(0xff00adb5),
+                    color: const Color(0xff00adb5),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
                     child: ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.person,
                         size: 40,
                       ),
-                      title: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      title: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: Text("Agent"),
                       ),
                       onTap: () {
@@ -49,13 +49,13 @@ class _AdminNotificationState extends State<AdminNotification> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    AdminAgentNotification()));
+                                    const AdminAgentNotification()));
                       },
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Center(
@@ -63,24 +63,25 @@ class _AdminNotificationState extends State<AdminNotification> {
                   width: MediaQuery.of(context).size.width * 0.75,
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Color(0xff00adb5),
+                    color: const Color(0xff00adb5),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(
                     child: ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.person,
                         size: 40,
                       ),
-                      title: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
+                      title: const Padding(
+                        padding: EdgeInsets.only(left: 20.0),
                         child: Text("User"),
                       ),
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AdminUserNotification()));
+                                builder: (context) =>
+                                    const AdminUserNotification()));
                       },
                     ),
                   ),

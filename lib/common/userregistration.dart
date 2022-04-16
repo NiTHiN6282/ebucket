@@ -10,14 +10,14 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  var category;
-  var _loginkey = new GlobalKey<FormState>();
-  TextEditingController nameinputcontroller = new TextEditingController();
-  TextEditingController addressinputcontroller = new TextEditingController();
-  TextEditingController phoneinputcontroller = new TextEditingController();
-  TextEditingController emailinputcontroller = new TextEditingController();
-  TextEditingController passwordinputcontroller = new TextEditingController();
-  TextEditingController locationinputcontroller = new TextEditingController();
+  dynamic category;
+  final _loginkey = GlobalKey<FormState>();
+  TextEditingController nameinputcontroller = TextEditingController();
+  TextEditingController addressinputcontroller = TextEditingController();
+  TextEditingController phoneinputcontroller = TextEditingController();
+  TextEditingController emailinputcontroller = TextEditingController();
+  TextEditingController passwordinputcontroller = TextEditingController();
+  TextEditingController locationinputcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Image.asset(
@@ -39,46 +39,47 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 100,
                     width: 100,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: nameinputcontroller,
                     decoration: InputDecoration(
                       labelText: 'Name',
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: const Icon(Icons.person),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
                       if (value!.length < 3) return 'Invalid Name';
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: addressinputcontroller,
                     decoration: InputDecoration(
                       labelText: 'Address',
-                      prefixIcon: Icon(Icons.home),
+                      prefixIcon: const Icon(Icons.home),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
                     controller: locationinputcontroller,
                     decoration: InputDecoration(
                       labelText: 'Location',
-                      prefixIcon: Icon(Icons.home),
+                      prefixIcon: const Icon(Icons.home),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -87,17 +88,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     maxLength: 10,
                     decoration: InputDecoration(
                       labelText: 'Phone no.',
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      if (value!.length != 10)
+                      if (value!.length != 10) {
                         return 'Number should contain 10 characters!';
+                      }
                       return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -106,12 +108,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       labelText: 'Email',
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: const Icon(Icons.email),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
                     validator: (value) {
-                      final pattern =
+                      const pattern =
                           r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
                       final regExp = RegExp(pattern);
 
@@ -124,14 +126,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   DropdownButtonFormField<String>(
                     value: category,
                     decoration: InputDecoration(
                       hintText: "Category",
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: const Icon(Icons.email),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -147,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       );
                     }).toList(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -156,7 +158,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: InputDecoration(
                       labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30)),
                     ),
@@ -168,10 +170,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: 150,
                     height: 40,
                     child: ElevatedButton.icon(
@@ -204,10 +206,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                     (e) => showsnackbar('Registration failed'));
                           }
                         },
-                        icon: Icon(Icons.login),
-                        label: Text("Sign Up")),
+                        icon: const Icon(Icons.login),
+                        label: const Text("Sign Up")),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                 ],

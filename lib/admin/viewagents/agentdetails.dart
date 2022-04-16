@@ -1,23 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AgentDetails extends StatefulWidget {
-  var status;
-  var uid;
-  var names;
-  var email;
-  var address;
-  var phoneno;
-  var location;
+  dynamic status;
+  dynamic uid;
+  dynamic names;
+  dynamic email;
+  dynamic address;
+  dynamic phoneno;
+  dynamic location;
 
   AgentDetails(
-      {this.names,
+      {Key? key,
+      this.names,
       this.email,
       this.address,
       this.phoneno,
       this.location,
       this.status,
-      this.uid});
+      this.uid})
+      : super(key: key);
 
   @override
   _AgentDetailsState createState() => _AgentDetailsState();
@@ -28,7 +31,7 @@ class _AgentDetailsState extends State<AgentDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Details"),
+        title: const Text("Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -36,17 +39,17 @@ class _AgentDetailsState extends State<AgentDetails> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text(
+              const Text(
                 "Agent Profile",
                 style: TextStyle(
                   fontSize: 35,
                   fontStyle: FontStyle.italic,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 height: 70,
                 child: Card(
                   elevation: 3,
@@ -54,19 +57,19 @@ class _AgentDetailsState extends State<AgentDetails> {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           "Name: ",
                           style: TextStyle(
                             fontSize: 25,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
                           widget.names,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 25,
                             fontStyle: FontStyle.italic,
                           ),
@@ -76,10 +79,10 @@ class _AgentDetailsState extends State<AgentDetails> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 height: 70,
                 child: Card(
                   elevation: 3,
@@ -87,19 +90,19 @@ class _AgentDetailsState extends State<AgentDetails> {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           "Email: ",
                           style: TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
                           widget.email,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
                           ),
@@ -109,10 +112,10 @@ class _AgentDetailsState extends State<AgentDetails> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 height: 70,
                 child: Card(
                   elevation: 3,
@@ -120,19 +123,19 @@ class _AgentDetailsState extends State<AgentDetails> {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           "Address: ",
                           style: TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
                           widget.address,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
                           ),
@@ -142,10 +145,10 @@ class _AgentDetailsState extends State<AgentDetails> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 height: 70,
                 child: Card(
                   elevation: 3,
@@ -153,19 +156,19 @@ class _AgentDetailsState extends State<AgentDetails> {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           "Phone: ",
                           style: TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
                           widget.phoneno,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
                           ),
@@ -175,10 +178,10 @@ class _AgentDetailsState extends State<AgentDetails> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Container(
+              SizedBox(
                 height: 70,
                 child: Card(
                   elevation: 3,
@@ -186,19 +189,19 @@ class _AgentDetailsState extends State<AgentDetails> {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           "Location: ",
                           style: TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
                           widget.location,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
                           ),
@@ -208,8 +211,7 @@ class _AgentDetailsState extends State<AgentDetails> {
                   ),
                 ),
               ),
-              Container(
-                  child: Padding(
+              Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -224,9 +226,9 @@ class _AgentDetailsState extends State<AgentDetails> {
                           });
                           showsnackbar("Approved");
                         },
-                        icon: Icon(Icons.done),
-                        label: Text("Approve")),
-                    SizedBox(
+                        icon: const Icon(Icons.done),
+                        label: const Text("Approve")),
+                    const SizedBox(
                       width: 30,
                     ),
                     ElevatedButton.icon(
@@ -239,11 +241,11 @@ class _AgentDetailsState extends State<AgentDetails> {
                           });
                           showsnackbar("Rejected");
                         },
-                        icon: Icon(Icons.close),
-                        label: Text("Reject")),
+                        icon: const Icon(Icons.close),
+                        label: const Text("Reject")),
                   ],
                 ),
-              ))
+              )
             ],
           ),
         ),

@@ -9,12 +9,11 @@ class AddAgentNotification extends StatefulWidget {
 }
 
 class _AddAgentNotificationState extends State<AddAgentNotification> {
-  var anid;
+  dynamic anid;
 
-  var addagentnotificationkey = new GlobalKey<FormState>();
-  TextEditingController titleinputcontroller = new TextEditingController();
-  TextEditingController descriptioninputcontroller =
-      new TextEditingController();
+  var addagentnotificationkey = GlobalKey<FormState>();
+  TextEditingController titleinputcontroller = TextEditingController();
+  TextEditingController descriptioninputcontroller = TextEditingController();
 
   @override
   void initState() {
@@ -27,7 +26,7 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Sent Agent Notifications"),
+        title: const Text("Sent Agent Notifications"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -38,10 +37,10 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
-                  Center(
+                  const Center(
                       child: Text(
                     "Add Agent Notification",
                     style: TextStyle(
@@ -49,10 +48,10 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
                         color: Colors.green,
                         fontWeight: FontWeight.bold),
                   )),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextFormField(
@@ -60,30 +59,32 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
                     decoration: InputDecoration(
                         labelText: 'Title',
                         hintText: 'abc bd',
-                        prefixIcon: Icon(Icons.title),
+                        prefixIcon: const Icon(Icons.title),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return 'mandatory';
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   TextFormField(
                     controller: descriptioninputcontroller,
                     decoration: InputDecoration(
                         labelText: 'description',
-                        prefixIcon: Icon(Icons.description),
+                        prefixIcon: const Icon(Icons.description),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         )),
                     validator: (value) {
                       if (value!.length <= 1) return ' pls add description';
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -111,10 +112,10 @@ class _AddAgentNotificationState extends State<AddAgentNotification> {
                             });
                           }
                         },
-                        icon: Icon(Icons.send),
-                        label: Text("Sent")),
+                        icon: const Icon(Icons.send),
+                        label: const Text("Sent")),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                 ],

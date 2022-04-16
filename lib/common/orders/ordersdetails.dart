@@ -3,10 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class OrdersDetails extends StatefulWidget {
-  var product;
-  var price;
-  var url;
+  dynamic product;
+  dynamic price;
+  dynamic url;
 
   OrdersDetails({Key? key, this.price, this.product, this.url})
       : super(key: key);
@@ -16,14 +17,14 @@ class OrdersDetails extends StatefulWidget {
 }
 
 class _OrdersDetailsState extends State<OrdersDetails> {
-  var apid;
+  dynamic apid;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Order Details"),
+        title: const Text("Order Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -34,17 +35,16 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                   FirebaseFirestore.instance.collection('orders').snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasData &&
-                    snapshot.data!.docs.length == 0) {
-                  return Center(child: Text('no orders found'));
-                } else
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasData && snapshot.data!.docs.isEmpty) {
+                  return const Center(child: Text('no orders found'));
+                } else {
                   return ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -65,12 +65,12 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                                         Image.asset('images/oos.png',
                                             fit: BoxFit.fitWidth),
                                   ),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -81,10 +81,10 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: ElevatedButton.icon(
@@ -107,12 +107,13 @@ class _OrdersDetailsState extends State<OrdersDetails> {
                                       'status': 1,
                                     });
                                   },
-                                  icon: Icon(Icons.remove_shopping_cart),
-                                  label: Text("Cancel Order")),
+                                  icon: const Icon(Icons.remove_shopping_cart),
+                                  label: const Text("Cancel Order")),
                             ),
                           ],
                         );
                       });
+                }
               }),
         ),
       ),
